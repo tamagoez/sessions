@@ -2,16 +2,15 @@ import { useState } from 'react'
 import { supabase } from 'lib/Store'
 
 const Home = () => {
-  const [mail, setmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleLogin = async (type, mail, password) => {
+  const handleLogin = async (type, username, password) => {
     try {
       const { error, user } =
         type === 'LOGIN'
-          ? await supabase.auth.signIn({ email: mail, password })
-          : await supabase.auth.signUp({ email: mail, password })
+          ? await supabase.auth.signIn({ email: username, password })
+          : await supabase.auth.signUp({ email: username, password })
       // If the user doesn't exist here and an error hasn't been raised yet,
       // that must mean that a confirmation email has been sent.
       // NOTE: Confirming your email address is required by default.
@@ -30,16 +29,6 @@ const Home = () => {
         <div className="border-teal p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg bg-white">
           <div className="mb-4">
             <label className="font-bold text-grey-darker block mb-2">Email</label>
-            <input
-              type="text"
-              className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-              placeholder="Your Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <label className="font-bold text-grey-darker block mb-2">Username</label>
             <input
               type="text"
               className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
@@ -63,7 +52,7 @@ const Home = () => {
             <a
               onClick={(e) => {
                 e.preventDefault()
-                handleLogin('SIGNUP', email, password)
+                handleLogin('SIGNUP', username, password)
               }}
               href={'/channels'}
               className="bg-indigo-700 hover:bg-teal text-white py-2 px-4 rounded text-center transition duration-150 hover:bg-indigo-600 hover:text-white"
@@ -73,7 +62,7 @@ const Home = () => {
             <a
               onClick={(e) => {
                 e.preventDefault()
-                handleLogin('LOGIN', email, password)
+                handleLogin('LOGIN', username, password)
               }}
               href={'/channels'}
               className="border border-indigo-700 text-indigo-700 py-2 px-4 rounded w-full text-center transition duration-150 hover:bg-indigo-700 hover:text-white"

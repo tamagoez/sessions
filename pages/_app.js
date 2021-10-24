@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import Router from 'next/router'
 import UserContext from 'lib/UserContext'
 import { supabase, fetchUserRoles } from 'lib/Store'
-import { ChakraProvider } from "@chakra-ui/react"
 
 
 export default function SupabaseSlackClone({ Component, pageProps }) {
@@ -57,9 +56,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
         signOut,
       }}
     >
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <Component {...pageProps} />
     </UserContext.Provider>
   )
 }

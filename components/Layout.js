@@ -29,13 +29,13 @@ export default function Layout(props) {
     <main className="main flex h-screen w-screen overflow-hidden">
       {/* Sidebar */}
       <nav
-        className="w-64 bg-green-900 text-gray-100 overflow-scroll "
+        className="w-64 bg-green-800 text-gray-100 overflow-scroll "
         style={{ maxWidth: '20%', minWidth: 150, maxHeight: '100vh' }}
       >
         <div className="p-2 ">
           <div className="p-2">
             <button
-              className="bg-green-900 hover:bg-green-800 text-white py-2 px-4 rounded w-full transition duration-150"
+              className="bg-green-700 hover:bg-green-600 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => newChannel()}
             >
               New Channel
@@ -45,7 +45,7 @@ export default function Layout(props) {
           <div className="p-2 flex flex-col space-y-2">
             <h6 className="text-xs">{user?.email}</h6>
             <button
-              className="bg-green-900 hover:bg-green-800 text-white py-2 px-4 rounded w-full transition duration-150"
+              className="bg-green-700 hover:bg-green-600 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => signOut()}
             >
               Log out
@@ -68,7 +68,7 @@ export default function Layout(props) {
       </nav>
 
       {/* Messages */}
-      <div className="flex-1 bg-gray-800 h-screen">{props.children}</div>
+      <div className="flex-1 bg-green-800 h-screen">{props.children}</div>
     </main>
   )
 }

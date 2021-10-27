@@ -35,7 +35,7 @@ export default function Layout(props) {
         <div className="p-2 ">
           <div className="p-2">
             <button
-              className="bg-gleen-900 hover:bg-gleen-800 text-white py-2 px-4 rounded w-full transition duration-150"
+              className="bg-green-900 hover:bg-green-800 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => newChannel()}
             >
               New Channel
@@ -45,7 +45,7 @@ export default function Layout(props) {
           <div className="p-2 flex flex-col space-y-2">
             <h6 className="text-xs">{user?.email}</h6>
             <button
-              className="bg-green-900 hover:bg-blue-800 text-white py-2 px-4 rounded w-full transition duration-150"
+              className="bg-green-900 hover:bg-green-800 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => signOut()}
             >
               Log out

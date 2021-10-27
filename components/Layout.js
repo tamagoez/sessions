@@ -29,7 +29,7 @@ export default function Layout(props) {
     <main className="main flex h-screen w-screen overflow-hidden">
       {/* Sidebar */}
       <nav
-        className="w-64 bg-green-300 text-gray-100 overflow-scroll "
+        className="w-64 bg-green-500 text-gray-100 overflow-scroll "
         style={{ maxWidth: '20%', minWidth: 150, maxHeight: '100vh' }}
       >
         <div className="p-2 ">
@@ -68,7 +68,7 @@ export default function Layout(props) {
       </nav>
 
       {/* Messages */}
-      <div className="flex-1 bg-green-300 h-screen">{props.children}</div>
+      <div className="flex-1 bg-green-500 h-screen">{props.children}</div>
     </main>
   )
 }

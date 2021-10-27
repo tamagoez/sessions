@@ -7,10 +7,11 @@ const Home = () => {
 
   const handleLogin = async (type, username, password) => {
     try {
+      const userid = $username + '@utamake-teams-livechat.vercel.app'
       const { error, user } =
         type === "LOGIN"
-          ? await supabase.auth.signIn({ email: username, password })
-          : await supabase.auth.signUp({ email: username, password });
+          ? await supabase.auth.signIn({ email: userid, password })
+          : await supabase.auth.signUp({ email: userid, password });
       // If the user doesn't exist here and an error hasn't been raised yet,
       // that must mean that a confirmation email has been sent.
       // NOTE: Confirming your email address is required by default.
@@ -35,7 +36,7 @@ const Home = () => {
             <input
               type="text"
               className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-              placeholder="Your Username"
+              placeholder="Your UserID"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />

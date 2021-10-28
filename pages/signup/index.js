@@ -3,6 +3,7 @@ import { supabase } from "lib/Store";
 
 const Home = () => {
   const [username, setUsername] = useState("");
+  const [usernames, setUsernames] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (type, username, password) => {

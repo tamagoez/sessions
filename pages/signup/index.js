@@ -26,6 +26,7 @@ const Home = () => {
         .match({ username: userid })
       if (error) {
         alert("Error with setting: " + error.message);
+      }
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

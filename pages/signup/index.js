@@ -78,6 +78,12 @@ const Home = () => {
             >
               Sign up
             </a>
+            <a
+              href={"../"}
+              className="bg-green-500 hover:bg-teal text-white py-2 px-4 rounded text-center transition duration-150 hover:bg-white hover:text-green-500 border hover:border-green-500"
+            >
+              or Login
+            </a>
           </div>
         </div>
       </div>

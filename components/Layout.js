@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import UserContext from '~/lib/UserContext'
 import { addChannel, deleteChannel } from '~/lib/Store'
 import TrashIcon from '~/components/TrashIcon'
+import { supabase } from "lib/Store";
 
 export default function Layout(props) {
   const { signOut, user, userRoles } = useContext(UserContext)

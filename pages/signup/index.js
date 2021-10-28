@@ -20,14 +20,16 @@ const Home = () => {
         alert("Error with auth: " + error.message);
       } else if (!user)
         alert("Signup successful! Your UserId is " + userid);
+      const { data, error } = await supabase
+        .from('users')
+        .update({ username: name })
+        .match({ username: userid })
+      if (error) {
+        alert("Error with setting: " + error.message);
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);
-    }   
-    const { data, error } = await supabase
-      .from('users')
-      .update({ username: name })
-      .match({ username: userid })
+    } 
   };
 
   return (

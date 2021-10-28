@@ -75,7 +75,7 @@ const Home = () => {
             <a
               onClick={(e) => {
                 e.preventDefault();
-                handleLogin("SIGNUP", username, password);
+                handleLogin("SIGNUP", username, password, name);
               }}
               href={"/channels"}
               className="border border-green-500 text-green-500 py-2 px-4 rounded w-full text-center transition duration-150 hover:bg-green-500 hover:text-white"

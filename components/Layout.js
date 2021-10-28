@@ -7,7 +7,7 @@ import TrashIcon from '~/components/TrashIcon'
 export default function Layout(props) {
   const { signOut, user, userRoles } = useContext(UserContext)
   
-  let { username, error } = await supabase
+  let { data: username, error } = await supabase
     .from('users')
     .select('username')
     .eq('id', user.id)

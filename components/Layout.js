@@ -6,6 +6,11 @@ import TrashIcon from '~/components/TrashIcon'
 
 export default function Layout(props) {
   const { signOut, user, userRoles } = useContext(UserContext)
+  
+  let { username, error } = await supabase
+    .from('users')
+    .select('username')
+    .eq('id', user.id)
 
   const slugify = (text) => {
     return text
@@ -19,7 +24,7 @@ export default function Layout(props) {
   }
 
   const newChannel = async () => {
-    const slug = prompt('Please enter your name')
+    const slug = prompt('Please enter ChannelID')
     if (slug) {
       addChannel(slugify(slug), user.id)
     }
@@ -43,7 +48,7 @@ export default function Layout(props) {
           </div>
           <hr className="m-2" />
           <div className="p-2 flex flex-col space-y-2">
-            <h6 className="text-xs">{user?.email}</h6>
+            <h6 className="text-xs">{username}</h6>
             <button
               className="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => signOut()}

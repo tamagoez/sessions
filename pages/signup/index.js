@@ -41,15 +41,16 @@ const Home = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <label className="font-bold text-grey-darker block mb-2">
-              UserID
+          <div className="mb-4">
+            <label className="font-bold text-grey-darker block mb-2">
+              UserName
             </label>
             <input
               type="text"
               className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
-              placeholder="Your UserID"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Your UserName"
+              value={usernames}
+              onChange={(e) => console.log("a")}
             />
           </div>
           <div className="mb-4">
@@ -64,6 +65,8 @@ const Home = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
+          <div className="flex flex-col gap-2">
             <a
               onClick={(e) => {
                 e.preventDefault();
@@ -76,6 +79,8 @@ const Home = () => {
             </a>
           </div>
         </div>
+      </div>
+    </div>
   );
 };
 

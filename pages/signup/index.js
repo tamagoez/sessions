@@ -31,7 +31,18 @@ const Home = () => {
         <div className="border-teal p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg bg-white">
           <div className="mb-4">
             <label className="font-bold text-grey-darker block mb-2">
-              Username
+              UserID
+            </label>
+            <input
+              type="text"
+              className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
+              placeholder="Your UserID"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <label className="font-bold text-grey-darker block mb-2">
+              UserID
             </label>
             <input
               type="text"
@@ -53,22 +64,18 @@ const Home = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
-          <div className="flex flex-col gap-2">
             <a
               onClick={(e) => {
                 e.preventDefault();
-                handleLogin("LOGIN", username, password);
+                handleLogin("SIGNUP", username, password);
               }}
               href={"/channels"}
-              className="bg-green-500 hover:bg-teal text-white py-2 px-4 rounded text-center transition duration-150 hover:bg-white hover:text-green-500 border hover:border-green-500"
+              className="border border-green-500 text-green-500 py-2 px-4 rounded w-full text-center transition duration-150 hover:bg-green-500 hover:text-white"
             >
-              Login
+              Sign up
             </a>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 

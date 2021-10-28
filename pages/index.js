@@ -67,7 +67,7 @@ const Home = () => {
             </a>
             <a
               href={"/signup"}
-              className="border border-green-300 text-green-500 py-1 px-4 rounded w-full text-center transition duration-150 hover:bg-green-300 hover:text-white"
+              className="border border-green-400 text-green-500 py-1 px-4 rounded w-full text-center transition duration-150 hover:bg-green-400 hover:text-white"
             >
               or SignUp
             </a>

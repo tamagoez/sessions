@@ -3,10 +3,10 @@ import { supabase } from "lib/Store";
 
 const Home = () => {
   const [username, setUsername] = useState("");
-  const [usernames, setUsernames] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async (type, username, password) => {
+  const handleLogin = async (type, username, password, name) => {
     try {
       const userid = username + '@utamake-teams-livechat.vercel.app'
       const { error, user } =
@@ -23,7 +23,11 @@ const Home = () => {
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);
-    }
+    }   
+    const { data, error } = await supabase
+      .from('users')
+      .update({ username: name })
+      .eq('username', userid)
   };
 
   return (
@@ -50,8 +54,8 @@ const Home = () => {
               type="text"
               className="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow"
               placeholder="Your UserName"
-              value={usernames}
-              onChange={(e) => console.log("a")}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="mb-4">

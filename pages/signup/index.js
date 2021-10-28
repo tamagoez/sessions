@@ -27,7 +27,7 @@ const Home = () => {
     const { data, error } = await supabase
       .from('users')
       .update({ username: name })
-      .eq('username', userid)
+      .match({ username: userid })
   };
 
   return (

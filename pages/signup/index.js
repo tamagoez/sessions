@@ -19,7 +19,7 @@ const Home = () => {
       if (error) {
         alert("Error with auth: " + error.message);
       } else if (!user)
-        alert("Signup successful, confirmation mail should be sent soon!");
+        alert("Signup successful! Your UserId is " + userid);
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

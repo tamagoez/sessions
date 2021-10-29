@@ -25,6 +25,13 @@ const Home = () => {
     }
   };
 
+  const submitOnEnter = (event) => {
+    // Watch for enter key
+    if (event.keyCode === 13) {
+      handleLogin("LOGIN", username, password);
+    }
+  }
+
   return (
     <div className="w-full h-full flex justify-center items-center p-4 bg-gray-300">
       <div className="w-full sm:w-1/2 xl:w-1/3">
@@ -51,6 +58,7 @@ const Home = () => {
               placeholder="Your password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => submitOnEnter(e)}
             />
           </div>
 

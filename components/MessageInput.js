@@ -14,7 +14,7 @@ const MessageInput = ({ onSubmit }) => {
   return (
     <>
       <input
-        className="bg-gray-600 appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:shadow-outline"
+        className="bg-gray-600 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:shadow-outline"
         type="text"
         placeholder="Send a message"
         value={messageText}

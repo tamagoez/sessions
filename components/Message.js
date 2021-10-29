@@ -18,7 +18,7 @@ const Message = ({ message }) => {
       </div>
       <div>
         <p className="text-white font-bold">{message.author.username}</p>
-        <p className="text-gray-500">{message.inserted_at.replace('T', ' ')}</p>
+        <p className="text-gray-500">{message.inserted_at.replace('T', '  ')}</p>
         <p className="text-white">{message.message}</p>
       </div>
     </div>

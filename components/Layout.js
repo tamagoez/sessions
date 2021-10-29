@@ -10,13 +10,13 @@ export default function Layout(props) {
   
   const usersname = async (userid) => {
   try {
-    const { users, error } = 
+    const { error, user } = 
       await supabase
         .from('users')
         .select('username')
         .eq('id', userid)
     }
-    return users
+    return user
   }
 
   const slugify = (text) => {

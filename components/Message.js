@@ -17,7 +17,7 @@ const Message = ({ message }) => {
         )}
       </div>
       <div>
-        <p className="text-white font-bold">{message.author.username}</p>
+        <p className="text-white font-bold">{message.author.username} - {message.inserted_at}</p>
         <p className="text-white">{message.message}</p>
       </div>
     </div>

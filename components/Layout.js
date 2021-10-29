@@ -7,17 +7,6 @@ import { supabase } from "~/lib/Store"
 
 export default function Layout(props) {
   const { signOut, user, userRoles } = useContext(UserContext)
-  
-  const usersname = async (userid) => {
-  try {
-    const { error, user } = 
-      await supabase
-        .from('users')
-        .select('username')
-        .eq('id', userid)
-    }
-    return user
-  }
 
   const slugify = (text) => {
     return text
@@ -55,7 +44,7 @@ export default function Layout(props) {
           </div>
           <hr className="m-2" />
           <div className="p-2 flex flex-col space-y-2">
-            <h6 className="text-xs">{username(user.id)}</h6>
+            <h6 className="text-xs">{user.id}</h6>
             <button
               className="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => signOut()}

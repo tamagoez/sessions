@@ -26,13 +26,10 @@ export default function Layout(props) {
     }
   }
   
-  const username = async() => {
-    let { data: users, error } = await supabase
+  const username = supabase
       .from('users')
       .select('username')
       .eq('id', user.id)
-    return data.users
-  }
 
   return (
     <main className="main flex h-screen w-screen overflow-hidden">

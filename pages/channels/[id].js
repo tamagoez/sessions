@@ -27,11 +27,10 @@ const ChannelsPage = (props) => {
     if (!channels.some((channel) => channel.id === Number(channelId))) {
       router.push('/channels/1')
     }
+    if (process.browser) {
+      document.title = channel.slug + " - UtamakeChat";
+    }
   }, [channels, channelId])
-
-  if (process.browser) {
-    document.title = channel.slug + " - UtamakeChat";
-  }
 
   // Render the channels and messages
   return (

@@ -76,7 +76,6 @@ export default function Layout(props) {
 
 const SidebarItem = ({ channel, isActiveChannel, user, userRoles }) => (
   <>
-    console.log('New message')
     <li className="flex items-center justify-between">
       <Link href="/channels/[id]" as={`/channels/${channel.id}`}>
         <a className={isActiveChannel ? 'font-bold' : ''}>{channel.slug}</a>

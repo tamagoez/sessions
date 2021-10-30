@@ -30,7 +30,7 @@ const ChannelsPage = (props) => {
   }, [channels, channelId])
 
   if (process.browser) {
-    document.title = channels.slug + " - UtamakeChat";
+    document.title = channel.slug + " - UtamakeChat";
   }
 
   // Render the channels and messages

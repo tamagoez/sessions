@@ -5,7 +5,7 @@ import TrashIcon from '~/components/TrashIcon'
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext)
-  const replacedmessage = message.inserted_at.replace('T', '  ').replace('-', '/')
+  const replacedmessage = message.inserted_at.replace('T', '  ').replace('-', '/').replace('-', '/')
 
   return (
     <div className="py-1 flex items-center space-x-2">

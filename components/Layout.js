@@ -13,7 +13,7 @@ export default function Layout(props) {
       .toString()
       .toLowerCase()
       .replace(/\s+/g, '-') // Replace spaces with -
-      .replace(/[^\w-]+/g, '') // Remove all non-word chars
+      // .replace(/[^\w-]+/g, '') // Remove all non-word chars
       .replace(/--+/g, '-') // Replace multiple - with single -
       .replace(/^-+/, '') // Trim - from start of text
       .replace(/-+$/, '') // Trim - from end of text
@@ -26,12 +26,12 @@ export default function Layout(props) {
     }
   }
   
-  const username = async() => {
+  const username =  => {
     let { data: users, error } = await supabase
       .from('users')
       .select('username')
       .eq('id', user.id)
-    return users
+    return data.users
   }
 
   return (

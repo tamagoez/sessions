@@ -32,6 +32,7 @@ export default function Layout(props) {
       .select('username')
       .eq('id', user.id)
     return users
+  }
 
   return (
     <main className="main flex h-screen w-screen overflow-hidden">

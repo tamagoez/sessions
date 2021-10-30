@@ -29,6 +29,10 @@ const ChannelsPage = (props) => {
     }
   }, [channels, channelId])
 
+  if (process.browser) {
+    document.title = channels.slug + " - UtamakeChat";
+  }
+
   // Render the channels and messages
   return (
     <Layout channels={channels} activeChannelId={channelId}>

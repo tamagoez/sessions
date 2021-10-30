@@ -26,7 +26,7 @@ export default function Layout(props) {
     }
   }
   
-  const username =  => {
+  const username = async() => {
     let { data: users, error } = await supabase
       .from('users')
       .select('username')

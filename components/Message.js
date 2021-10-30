@@ -5,7 +5,7 @@ import TrashIcon from '~/components/TrashIcon'
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext)
-  const replacedmessage = message.inserted_at.replace('T', '  ')
+  const replacedmessage = message.inserted_at.replace('T', '  ').replace('-', '/')
 
   return (
     <div className="py-1 flex items-center space-x-2">
@@ -19,7 +19,7 @@ const Message = ({ message }) => {
       </div>
       <div>
         <p className="text-white font-bold">{message.author.username}</p>
-        <p className="text-gray-500">{message.id} {replacedmessage.replace('Z', '')}</p>
+        <p className="text-gray-500">{message.id} - {replacedmessage.replace('Z', '')}</p>
         <p className="text-white">{message.message}</p>
       </div>
     </div>

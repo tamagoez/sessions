@@ -5,6 +5,8 @@ const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  document.title = "Login - UtamakeChat";
+
   const handleLogin = async (type, username, password) => {
     try {
       const userid = username + '@utamake-teams-livechat.vercel.app'

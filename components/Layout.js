@@ -27,7 +27,7 @@ export default function Layout(props) {
   }
   
   const username = async () => {
-    return await supabase.from('users').select('username').eq('id', user.id)
+    return await supabase.from('users').select('username').eq('id', user?.id)
   }
 
   return (

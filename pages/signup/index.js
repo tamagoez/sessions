@@ -6,7 +6,9 @@ const Home = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  document.title = "SignUp - UtamakeChat";
+  if (process.browser) {
+    document.title = "SignUp - UtamakeChat";
+  }
 
   const handleLogin = async (type, username, password, name) => {
     try {

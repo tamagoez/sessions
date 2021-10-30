@@ -28,7 +28,7 @@ const ChannelsPage = (props) => {
       router.push('/channels/1')
     }
     if (process.browser) {
-      document.title = channel.slug + " - UtamakeChat";
+      document.title = channelId + " - UtamakeChat";
     }
   }, [channels, channelId])
 

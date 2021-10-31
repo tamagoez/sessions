@@ -25,9 +25,11 @@ export default function Layout(props) {
       addChannel(slugify(slug), user.id)
     }
   }
+
+  const userID = user.id
   
   const username = async () => {
-    return await supabase.from('users').select('username').eq('id', user?.id)
+    return await supabase.from('users').select('username').eq('id', userID)
   }
 
   return (

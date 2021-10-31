@@ -50,7 +50,7 @@ export default function Layout(props) {
           </div>
           <hr className="m-2" />
           <div className="p-2 flex flex-col space-y-2">
-            <h6 className="text-xs">{supabase.from('users').select('username').eq('id', user?.id)}</h6>
+            <h6 className="text-xs">{user.username}</h6>
             <button
               className="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => signOut()}

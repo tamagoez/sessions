@@ -24,7 +24,7 @@ const ChannelsPage = (props) => {
 
   // redirect to public channel when current channel is deleted
   useEffect(() => {
-    const channelids = channel.id.substring(0, replacedmessage.indexOf("#"))
+    const channelids = channelID.substring(0, replacedmessage.indexOf("#"))
     if (!channels.some((channel) => channelids === Number(channelId))) {
       router.push('/channels/1')
     }

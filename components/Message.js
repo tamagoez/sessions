@@ -18,9 +18,9 @@ const Message = ({ message }) => {
         )}
       </div>
       <div>
-        <p className="text-white font-bold">{message.author.username}</p>
+        <a name={message.id}><p className="text-white font-bold">{message.author.username}</p>
         <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
-        <p className="text-white">{message.message}</p>
+        <p className="text-white">{message.message}</p></a>
       </div>
     </div>
   )

@@ -20,6 +20,10 @@ const Message = ({ message }) => {
     }
   }
 
+  function changedmess(messagevalues, messageids){
+    return addid(messagevalues, messageids).replace('%%', '>>')
+  }
+
   return (
     <div className="py-1 flex items-center space-x-2">
       <div className="text-gray-100 w-4">
@@ -33,7 +37,7 @@ const Message = ({ message }) => {
       <div>
         <a name={message.id}><p className="text-white font-bold">{message.author.username}</p>
         <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
-        <p className="text-white">{addid(message.message, message.id).replace('%%', '>>')}</p></a>
+        <p className="text-white">{changedmess(message.message, message.id)}</p></a>
       </div>
     </div>
   )

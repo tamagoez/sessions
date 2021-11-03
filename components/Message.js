@@ -9,7 +9,9 @@ const Message = ({ message }) => {
 
   function addid(textstr, id){
     if (!(textstr.indexOf(">>", 0) == -1)) {
-      console.log('[' + id + '] >> found in' + textstr.indexOf(">>", 0))
+      console.log('[' + id + '] >> found in ' + textstr.indexOf(">>", 0))
+      const clip = textstr.slice(textstr.indexOf(' ', textstr.indexOf(">>", 0)), textstr.indexOf(">>", 0))
+      console.log('Cliped: ' + clip)
       return textstr
     } else {
       console.log('[' + id + '] >> Not found!')

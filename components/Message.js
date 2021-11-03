@@ -21,7 +21,7 @@ const Message = ({ message }) => {
   }
 
   function changedmess(messagevalues, messageids){
-    document.getElementById(messageids).innerHTML = '<p classname=text-white' + addid(messagevalues, messageids).replace('%%', '>>') + '</p>'
+    document.getElementById(messageids).innerHTML = '<p className="text-white">' + addid(messagevalues, messageids).replace('%%', '>>') + '</p>'
     return null
   }
 

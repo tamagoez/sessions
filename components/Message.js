@@ -7,12 +7,12 @@ const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext)
   const replacedmessage = message.inserted_at.replace('T', '  ').replace('-', '/').replace('-', '/').replace('Z', '')
 
-  function addid(textstr){
+  function addid(textstr, id){
     if (!(textstr.indexOf(">>", 0) == -1)) {
-      console.log('>> found!')
+      console.log('[' + id + '] >> found!')
       return textstr
     } else {
-      console.log('>> Not found!')
+      console.log('[' + id + '] >> Not found!')
       return textstr
     }
   }
@@ -30,7 +30,7 @@ const Message = ({ message }) => {
       <div>
         <a name={message.id}><p className="text-white font-bold">{message.author.username}</p>
         <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
-        <p className="text-white">{addid(message.message)}</p></a>
+        <p className="text-white">{addid(message.message, message.id)}</p></a>
       </div>
     </div>
   )

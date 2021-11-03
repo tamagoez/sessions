@@ -13,7 +13,7 @@ const Message = ({ message }) => {
       const clip = textstr.slice(textstr.indexOf(">>", 0), textstr.indexOf(' ', textstr.indexOf(">>", 0)))
       console.log('Cliped: ' + clip)
       console.log('ID' + clip.replace('>>', ''))
-      addid(textstr.replace(clip, '<a href=.#' + clip.replace('>>', '') + '>' + clip + '</a>').replace('>>', '%%'))
+      return (textstr.replace(clip, '<a href=.#' + clip.replace('>>', '') + '>' + clip + '</a>').replace('>>', '%%'))
     } else {
       console.log('[' + id + '] >> Not found!')
       return textstr

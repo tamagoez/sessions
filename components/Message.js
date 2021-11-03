@@ -22,6 +22,7 @@ const Message = ({ message }) => {
 
   function changedmess(messagevalues, messageids){
     document.getElementById(messageids).innerHTML = '<p classname=text-white' + addid(messagevalues, messageids).replace('%%', '>>') + '</p>'
+    return null
   }
 
   return (
@@ -37,7 +38,8 @@ const Message = ({ message }) => {
       <div>
         <a name={message.id}><p className="text-white font-bold">{message.author.username}</p>
         <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
-        <div id={message.id}><p className="text-white">{changedmess(message.message, message.id)}</p></div></a>
+        <div id={message.id}><p className="text-white"></p></div></a>
+        {changedmess(message.message, message.id)}
       </div>
     </div>
   )

@@ -9,7 +9,7 @@ const Message = ({ message }) => {
 
   function addid(textstr, id){
     if (!(textstr.indexOf(">>", 0) == -1)) {
-      console.log('[' + id + '] >> found!')
+      console.log('[' + id + '] >> found in' + textstr.indexOf(">>", 0))
       return textstr
     } else {
       console.log('[' + id + '] >> Not found!')

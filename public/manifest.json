@@ -2,7 +2,7 @@
 	"name": "UtamakeTeamsLivechat",
 	"short_name": "UTL",
 	"description": "Livechat for UtamakeTemas",
-	"start_url": "/",
+	"start_url": ".",
 	"display": "standalone",
 	"orientation": "any",
 	"background_color": "#fff",

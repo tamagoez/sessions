@@ -1,12 +1,12 @@
 {
-	"name":				"UtamakeTeamsLivechat",
-	"short_name":		"UTL",
-	"description":		"Livechat for UtamakeTemas",
-	"start_url":		"/",
-	"display":			"standalone",
-	"orientation":		"any",
-	"background_color":	"#fff",
-	"theme_color":		"#fff",
+	"name": "UtamakeTeamsLivechat",
+	"short_name": "UTL",
+	"description": "Livechat for UtamakeTemas",
+	"start_url": "/",
+	"display": "standalone",
+	"orientation": "any",
+	"background_color": "#fff",
+	"theme_color": "#fff",
 	"icons": [
 		{
 			"src": "/android-chrome-36x36.png",

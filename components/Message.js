@@ -38,7 +38,7 @@ const Message = ({ message }) => {
       <div>
         <a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
         <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
-        <p className="text-white"><a href="#163">{message.message}</a></p></a>
+        <p className="text-white">{addid(message.message, message.id).replace('%%', '>>')}</p></a>
       </div>
     </div>
   )

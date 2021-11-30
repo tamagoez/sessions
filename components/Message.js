@@ -40,10 +40,14 @@ const Message = ({ message }) => {
         )}
       </div>
       <div id="Message">
+        <a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
+        <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
+        <p className="text-white">{addid(message.message, message.id).replace('%%', '>>')}</p></a>
       </div>
-      {document.querySelector('#Message').innerHTML = returnmessage(message.message, message.id, message.author.username)}
     </div>
   )
 }
+
+/* {document.querySelector('#Message').innerHTML = returnmessage(message.message, message.id, message.author.username)} */
 
 export default Message

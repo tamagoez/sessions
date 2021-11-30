@@ -25,6 +25,12 @@ const Message = ({ message }) => {
     return null
   }
 
+  function returnmessage(message2, ids, usernames) {
+    return '<a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p><p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p><p className="text-white">' + "{addid(message.message, message.id).replace('%%', '>>')}</p></a>"
+  }
+
+  document.querySelector('#Message').innerHTML = returnmessage(message.message, message.id, message.author.username)
+
   return (
     <div className="py-1 flex items-center space-x-2">
       <div className="text-gray-100 w-4">
@@ -35,10 +41,7 @@ const Message = ({ message }) => {
           </button>
         )}
       </div>
-      <div>
-        <a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
-        <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
-        <p className="text-white">{addid(message.message, message.id).replace('%%', '>>')}</p></a>
+      <div id="Message">
       </div>
     </div>
   )

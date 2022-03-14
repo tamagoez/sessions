@@ -1,3 +1,19 @@
+# Sessions
+*Way to communicate with your friends, community and so on.*  
+**Simple** design, **useful** tools, **no ADs** to concentrate.  
+**100% Free** to use.  
+Try it now!  
+[https://web-sessions.vercel.app](https://web-sessions.vercel.app)
+
+## What technology?
+### Front-end
+ - **Next.js** (framework) 
+ - **Tailwindcss** & **DaisyUI** (CSS framework)
+### Back-end
+ - **Supabase** (DB)  
+ - React (framework)
+
+<!--
 # Realtime chat example using Supabase
 
 This is a full-stack Slack clone example using:
@@ -308,3 +324,4 @@ values
 - [Supabase](https://supabase.io)
 
 Supabase is open source, we'd love for you to follow along and get involved at https://github.com/supabase/supabase
+-->

@@ -6,12 +6,12 @@ const Home = () => {
   const [password, setPassword] = useState("");
 
   if (process.browser) {
-    document.title = "Login - UtamakeChat";
+    document.title = "Login - Sessions";
   }
 
   const handleLogin = async (type, username, password) => {
     try {
-      const userid = username + '@utamake-teams-livechat.vercel.app'
+      const userid = username + '@web-sessions.vercel.app'
       const { error, user } =
         type === "LOGIN"
           ? await supabase.auth.signIn({ email: userid, password })

@@ -12,7 +12,7 @@ const Home = () => {
 
   const handleLogin = async (type, username, password, name) => {
     try {
-      const userid = username + '@utamake-teams-livechat.vercel.app'
+      const userid = username + '@web-sessions.vercel.app'
       const { error, user } =
         type === "LOGIN"
           ? await supabase.auth.signIn({ email: userid, password })

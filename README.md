@@ -11,6 +11,7 @@ Try it now!
  - **Tailwindcss** & **DaisyUI** (CSS framework)
 ### Back-end
  - **Supabase** (DB)  
+ - **Vercel** (hosting)
  - React (framework)
 
 <!--

@@ -16,7 +16,7 @@ const Home = () => {
         </h1>
       </div>
       <div>
-        <button className="btn btn-block" onClick={() => authpage}>
+        <button className="btn btn-block" onClick={() => authpage()}>
           Login / Sign Up
         </button>
       </div>

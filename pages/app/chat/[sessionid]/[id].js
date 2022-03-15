@@ -12,7 +12,8 @@ const ChannelsPage = (props) => {
   const messagesEndRef = useRef(null)
 
   // Else load up the page
-  const { id: channelId } = router.query
+  const { id: channelId, sessionid: sessionId } = router.query
+  CheckMember(userid, sessionId)
   const { messages, channels } = useStore({ channelId })
 
   useEffect(() => {

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useStore, addMessage } from '~/lib/Store'
 import { useContext, useEffect, useRef } from 'react'
 import UserContext from '~/lib/UserContext'
+import { CheckSessionMember } from '~/lib/CheckUser'
 
 const ChannelsPage = (props) => {
   const router = useRouter()
@@ -13,7 +14,10 @@ const ChannelsPage = (props) => {
 
   // Else load up the page
   const { id: channelId, sessionid: sessionId } = router.query
-  CheckMember(userid, sessionId)
+  
+  const sessioncheck = CheckSessionMember(userid, sessionId)
+  if (sessioncheck) { console.log('[Main] This user is a member of this session') } else { router.push('/404') }
+  
   const { messages, channels } = useStore({ channelId })
 
   useEffect(() => {

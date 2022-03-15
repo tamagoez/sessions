@@ -19,7 +19,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     setUserLoaded(session ? true : false)
     if (user) {
       signIn()
-      Router.push('/channels/[id]', '/channels/1')
+      Router.push('/app/dashboard')
     }
 
     const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
@@ -29,7 +29,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
       setUserLoaded(!!currentUser)
       if (currentUser) {
         signIn(currentUser.id, currentUser.email)
-        Router.push('/channels/[id]', '/channels/1')
+        Router.push('/app/dashboard')
       }
     })
 

@@ -17,7 +17,7 @@ const ChannelsPage = (props) => {
   const { id: channelId, sessionid: sessionId } = router.query
   
   const usersession = supabase.auth.session()
-  const userid = session.user.id
+  const userid = usersession.user.id
   const sessioncheck = CheckSessionMember(userid, sessionId)
   if (sessioncheck) { console.log('[Main] This user is a member of this session') } else { router.push('/404') }
   

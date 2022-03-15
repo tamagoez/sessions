@@ -6,6 +6,7 @@ import { useStore, addMessage } from '~/lib/Store'
 import { useContext, useEffect, useRef } from 'react'
 import UserContext from '~/lib/UserContext'
 import { CheckSessionMember } from '~/lib/CheckUser'
+import supabase from '~/utils/supabaseClient'
 
 const ChannelsPage = (props) => {
   const router = useRouter()

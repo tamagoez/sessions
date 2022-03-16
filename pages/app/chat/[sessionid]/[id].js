@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useStore, addMessage } from '~/lib/Store'
 import { useContext, useEffect, useRef } from 'react'
 import UserContext from '~/lib/UserContext'
-import { CheckSessionMember } from '~/lib/CheckUser'
+import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
 
 const ChannelsPage = (props) => {
@@ -20,6 +20,7 @@ const ChannelsPage = (props) => {
     const usersession = supabase.auth.session()
     const userid = usersession.user.id
     const sessioncheck = CheckSessionMember(userid, sessionId)
+    const channelcheck = CheckChannelMember(userid, channelId)
     if (sessioncheck) { console.log('[Main] This user is a member of this session') } else { router.push('/404') }
     }
   

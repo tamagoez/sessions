@@ -26,11 +26,11 @@ export default function Layout(props) {
     }
   }
 
-  const userID = user.id
+  // const userID = user.id
   
   const username = async () => {
     try {
-      const { data, error } = await supabase.from('profiles').select('username').eq('id', userID)
+      const { data, error } = await supabase.from('profiles').select('username').eq('id', user.id)
       if (error) throw error
       return data;
       } catch (error) {

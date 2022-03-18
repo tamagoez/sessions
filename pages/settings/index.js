@@ -140,7 +140,7 @@ export default function Settings() {
   const session = supabase.auth.session();
   return (
     <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      {!session ? router.push('/login?next=/settings') : <AccountData key={session.user.id} session={session} />}
+      {!session ? if (process.browser) { router.push('/login?next=/settings') } : <AccountData key={session.user.id} session={session} />}
     </div>
   )
 }

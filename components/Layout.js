@@ -26,7 +26,7 @@ export default function Layout(props) {
     }
   }
 
-  const userID = user?.id
+  const userID = user.id
   
   const username = async () => {
     try {

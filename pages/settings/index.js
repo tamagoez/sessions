@@ -123,6 +123,7 @@ function AccountData({ session }) {
             className="textarea textarea-bordered h-24"
             placeholder="Bio"
           />
+        </div>
       </div>
 
       <div>

@@ -19,7 +19,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     setUserLoaded(session ? true : false)
     if (user) {
       signIn()
-      // Router.push('/app/dashboard')
+      Router.push('/app/dashboard')
     }
 
     const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {

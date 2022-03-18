@@ -6,13 +6,15 @@ Try it now!
 [https://web-sessions.vercel.app](https://web-sessions.vercel.app)
 
 ## Status
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)  
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)  
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=bugs)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)  
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)  
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
 
 ## What technology?
 ### Front-end

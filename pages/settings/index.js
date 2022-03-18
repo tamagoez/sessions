@@ -138,9 +138,13 @@ function AccountData({ session }) {
 export default function Settings() {
   const router = useRouter()
   const session = supabase.auth.session();
+  function RouteLogin() {
+    if (process.browser) { router.push('/login?next=/settings') }
+  }
+  
   return (
     <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      {!session ? if (process.browser) { router.push('/login?next=/settings') } : <AccountData key={session.user.id} session={session} />}
+      {!session ? RouteLogin() : <AccountData key={session.user.id} session={session} />}
     </div>
   )
 }

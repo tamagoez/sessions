@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabaseClient'
-import AvatarSetting from '../components/Avatar'
+import { supabase } from '~/lib/supabaseClient'
+import AvatarSetting from '~/components/Avatar'
 import { useRouter } from 'next/router'
 
 function AccountData({ session }) {
@@ -130,7 +130,7 @@ function AccountData({ session }) {
           onClick={() => updateProfile({ username, statustext, avatar_url, website })}
           disabled={loading}
         >
-          {loading ? <Spinner /> : 'Update'}
+          {loading ? 'Updating..' : 'Update'}
         </button>
       </div>
     </div>

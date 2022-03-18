@@ -10,10 +10,6 @@ import supabase from '~/utils/supabaseClient'
 
 const ChannelsPage = (props) => {  
   const router = useRouter()
-  const { user, authLoaded, signOut } = useContext(UserContext)
-  const messagesEndRef = useRef(null)
-
-  // Else load up the page
   const { id: channelId, sessionid: sessionId } = router.query
   
   const session = supabase.auth.session();
@@ -23,6 +19,11 @@ const ChannelsPage = (props) => {
       router.push(tempredirectlink)
     }
   }
+  
+  const { user, authLoaded, signOut } = useContext(UserContext)
+  const messagesEndRef = useRef(null)
+
+  // Else load up the page
   
   if (process.browser) {
     const usersession = supabase.auth.session()

@@ -10,6 +10,7 @@ function AccountData({ session }) {
   const [avatar_url, setAvatarUrl] = useState(null)
   const [website, setWebsite] = useState(null)
   const [login_id, setLogin_id] = useState(null)
+  const [hardload, setHardload] = useState(null)
 
   useEffect(() => {
     getProfile()
@@ -22,7 +23,7 @@ function AccountData({ session }) {
 
       let { data, error, status } = await supabase
         .from('profiles')
-        .select(`username, statustext, avatar_url, website, login_id`)
+        .select(`username, statustext, avatar_url, website, login_id, hardload`)
         .eq('id', user.id)
         .single()
 
@@ -36,6 +37,7 @@ function AccountData({ session }) {
         setAvatarUrl(data.avatar_url)
         setWebsite(data.website)
         setLogin_id(data.login_id)
+        setHardload(data.hardload)
       }
     } catch (error) {
       alert(error.message)
@@ -44,7 +46,7 @@ function AccountData({ session }) {
     }
   }
 
-  async function updateProfile({ login_id, username, statustext, avatar_url, website }) {
+  async function updateProfile({ login_id, username, statustext, avatar_url, website, hardload }) {
     try {
       setLoading(true)
       const user = supabase.auth.user()
@@ -56,7 +58,8 @@ function AccountData({ session }) {
         avatar_url,
         website,
         updated_at: new Date(),
-        login_id
+        login_id,
+        hardload
       }
 
       let { error } = await supabase.from('profiles').upsert(updates, {
@@ -124,6 +127,12 @@ function AccountData({ session }) {
             placeholder="Bio"
           />
         </div>
+      </div>
+      <div className="form-control">
+        <label className="label cursor-pointer">
+          <span className="label-text">HardLoad (No recommend. if true, don't use WebSocket but get chat every second.)</span> 
+          <input type="checkbox" className="toggle" {hardload ? null : 'checked'}>
+        </label>
       </div>
 
       <div>

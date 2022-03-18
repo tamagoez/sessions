@@ -112,14 +112,17 @@ function AccountData({ session }) {
         />
       </div>
       <div>
-        <label htmlFor="statustext">StatusText (Bio)</label>
-        <Textarea
-          id="statustext"
-          value={statustext || ''}
-          onChange={(e) => setStatustext(e.target.value)}
-          placeholder='Your status message :D'
-          size='md'
-        />
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Status text / bio</span>
+          </label> 
+          <textarea
+            id="statustext"
+            value={statustext || ''}
+            onChange={(e) => setStatustext(e.target.value)}
+            className="textarea textarea-bordered h-24"
+            placeholder="Bio"
+          />
       </div>
 
       <div>

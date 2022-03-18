@@ -30,7 +30,7 @@ export default function Layout(props) {
   
   const username = async () => {
     try {
-      const { data, error } = await supabase.from('profiles').select('username').eq('id', user.id)
+      const { data, error } = await supabase.from('profiles').select('username').eq('id', user?.id)
       if (error) throw error
       return data;
       } catch (error) {

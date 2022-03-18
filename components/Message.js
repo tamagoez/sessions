@@ -41,7 +41,6 @@ const Message = ({ message }) => {
       </div>
       <div id="Message">
         <a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
-        <p className="text-gray-500">{message.id}</p>
         <p className="text-white">{message.message}</p></a>
       </div>
     </div>

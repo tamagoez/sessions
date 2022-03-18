@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import supabase from '~/utils/supabaseClient'
 
-export default function Avatar({ url, size, onUpload }) {
+export default function AvatarSetting({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
 

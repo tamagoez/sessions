@@ -29,7 +29,16 @@ export default function Layout(props) {
   const userID = user?.id
   
   const username = async () => {
-    return await supabase.from('users').select('username').eq('id', userID)
+    try {
+      const { data, error } = await supabase.from('profiles').select('username').eq('id', userID)
+      if (error) throw error
+      return data;
+      } catch (error) {
+      console.log('[Username] Catch an error: ')
+      console.dir(error, { depth: null });
+    } finally {
+      console.log('[Username] finished succesfully: ')
+    }
   }
 
   return (
@@ -50,7 +59,7 @@ export default function Layout(props) {
           </div>
           <hr className="m-2" />
           <div className="p-2 flex flex-col space-y-2">
-            <h6 className="text-xs">{user?.id}</h6>
+            <h6 className="text-xs">{username}</h6>
             <button
               className="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded w-full transition duration-150"
               onClick={() => signOut()}

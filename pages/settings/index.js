@@ -131,7 +131,7 @@ function AccountData({ session }) {
       <div className="form-control">
         <label className="label cursor-pointer">
           <span className="label-text">HardLoad (No recommend)</span> 
-          <input type="checkbox" className="toggle" {...!hardload ? null : 'checked'} onChange={(e) => setHardload(e.target.value)} />
+          <input type="checkbox" className="toggle" {...!hardload ? null : 'checked'} onChange={(e) => {(e.target.value === 'on') ? setHardload(true) : setHardload(false)} />
         </label>
       </div>
       <span className="label-text">if true, don't use WebSocket but get chat every second.</span>

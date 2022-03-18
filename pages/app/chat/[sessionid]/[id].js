@@ -17,9 +17,11 @@ const ChannelsPage = (props) => {
   const { id: channelId, sessionid: sessionId } = router.query
   
   const session = supabase.auth.session();
-  if (!session) {
-    const tempredirectlink = '/login?next=/app/chat/' + sessionId + '/' + channelId
-    router.push(tempredirectlink)
+  if (process.browser) {
+    if (!session) {
+      const tempredirectlink = '/login?next=/app/chat/' + sessionId + '/' + channelId
+      router.push(tempredirectlink)
+    }
   }
   
   if (process.browser) {

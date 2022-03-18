@@ -5,7 +5,7 @@ import TrashIcon from '~/components/TrashIcon'
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext)
-  const replacedmessage = message.inserted_at.replace('T', '  ').replace('-', '/').replace('-', '/').replace('Z', '')
+  // const replacedmessage = message.inserted_at.replace('T', '  ').replace('-', '/').replace('-', '/').replace('Z', '')
 
   function addid(textstr, id){
     if (!(textstr.indexOf(">>", 0) == -1)) {
@@ -41,7 +41,7 @@ const Message = ({ message }) => {
       </div>
       <div id="Message">
         <a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
-        <p className="text-gray-500">{message.id} - {replacedmessage.substring(0, replacedmessage.indexOf("."))}</p>
+        <p className="text-gray-500">{message.id}</p>
         <p className="text-white">{message.message}</p></a>
       </div>
     </div>

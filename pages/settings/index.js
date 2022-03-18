@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import AvatarSetting from '../components/Avatar'
+import { useRouter } from 'next/router'
 
 function AccountData({ session }) {
+  const router = useRouter()
+  
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [statustext, setStatustext] = useState(null)
@@ -74,7 +77,6 @@ function AccountData({ session }) {
 
   return (
     <div className="form-widget">
-      <Skeleton isLoaded={!(login_id === null)}>
       <div>
         <Avatar
         url={avatar_url}

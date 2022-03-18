@@ -76,7 +76,7 @@ function AccountData({ session }) {
   return (
     <div className="form-widget">
       <div>
-        <Avatar
+        <AvatarSetting
         url={avatar_url}
         size={150}
         onUpload={(url) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import supabase from '~/utils/supabaseClient'
 import AvatarSetting from '~/components/Avatar'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
 
 function AccountData({ session }) {  
   const [loading, setLoading] = useState(true)
@@ -136,11 +136,11 @@ function AccountData({ session }) {
 }
 
 export default function Settings() {
-  const router = useRouter()
+  // const router = useRouter()
   const session = supabase.auth.session();
   return (
     <div className="container" style={{ padding: '50px 0 100px 0' }}>
-      {!session ? router.push("/login?next=/settings") : <AccountData key={session.user.id} session={session} />}
+      {!session ? Router.push("/login?next=/settings") : <AccountData key={session.user.id} session={session} />}
     </div>
   )
 }

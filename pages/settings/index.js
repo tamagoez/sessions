@@ -3,9 +3,7 @@ import supabase from '~/utils/supabaseClient'
 import AvatarSetting from '~/components/Avatar'
 import { useRouter } from 'next/router'
 
-function AccountData({ session }) {
-  const router = useRouter()
-  
+function AccountData({ session }) {  
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [statustext, setStatustext] = useState(null)
@@ -138,6 +136,7 @@ function AccountData({ session }) {
 }
 
 export default function Settings() {
+  const router = useRouter()
   const session = supabase.auth.session();
   return (
     <div className="container" style={{ padding: '50px 0 100px 0' }}>

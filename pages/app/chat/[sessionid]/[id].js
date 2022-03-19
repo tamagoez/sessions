@@ -7,7 +7,7 @@ import { useContext, useEffect, useRef } from 'react'
 import UserContext from '~/lib/UserContext'
 import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
-import { ChannelName, SessionName} from '~/lib/GetName'
+import { ChannelName, SessionName } from '~/lib/GetName'
 import NavBar from '~/components/NavBar'
 
 const ChannelsPage = (props) => {  
@@ -59,6 +59,7 @@ const ChannelsPage = (props) => {
 
   // Render the channels and messages
   return (
+    <div>
     <NavBar channelname={channelname} sessionname={sessionname} />
     <Layout channels={channels} activeChannelId={channelId}>
       <div className="relative h-screen">
@@ -75,6 +76,7 @@ const ChannelsPage = (props) => {
         </div>
       </div>
     </Layout>
+    </div>
   )
 }
 

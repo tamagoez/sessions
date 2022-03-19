@@ -125,6 +125,7 @@ function AvatarUrl(id) {
       console.log('Error downloading image: ', error.message)
     }
   }
+  console.log('[AvatarUrl] Got url: ' + avatarUrl)
   return avatarUrl;
 }
 

@@ -8,7 +8,7 @@ import UserContext from '~/lib/UserContext'
 import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
 import { ChannelName, SessionName } from '~/lib/GetName'
-import NavBar from '~/components/NavBar'
+// import NavBar from '~/components/NavBar'
 import { getWindowSize } from "~/utils/GetWindowSize";
 
 const ChannelsPage = (props) => {  
@@ -64,9 +64,6 @@ const ChannelsPage = (props) => {
   // Render the channels and messages
   return (
     <div>
-    <div>
-    <NavBar channelname={channelname} sessionname={sessionname} />
-    </div>
       <iframe id="chat-frame"
           title="Chat Frame"
           width="100%"

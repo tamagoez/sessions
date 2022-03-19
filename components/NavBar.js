@@ -10,7 +10,14 @@ export default function NavBar(){
   
   function navtitle(){
     if (props.channelid) {
-      return ();
+      return (
+      <div clas="text-sm breadcrumbs">
+<li><a>Home</a></li> 
+<li><a>Documents</a></li> 
+<li>Add Document</li>
+</ul>
+</div>
+      );
     } else if (props.sessionid) {
       return ();
     } else {

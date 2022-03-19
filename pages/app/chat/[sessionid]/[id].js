@@ -7,6 +7,8 @@ import { useContext, useEffect, useRef } from 'react'
 import UserContext from '~/lib/UserContext'
 import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
+import { ChannelName, SessionName} from '~/lib/GetName'
+import NavBar from '~/components/NavBar'
 
 const ChannelsPage = (props) => {  
   const router = useRouter()
@@ -19,6 +21,9 @@ const ChannelsPage = (props) => {
       router.push(tempredirectlink)
     }
   }
+  
+  const channnelname = ChannelName(channelId)
+  const sessionname = SessionName(sessionId)
   
   const { user, authLoaded, signOut } = useContext(UserContext)
   const messagesEndRef = useRef(null)
@@ -54,6 +59,7 @@ const ChannelsPage = (props) => {
 
   // Render the channels and messages
   return (
+    <NavBar channelname={channelname} sessionname={sessionname} />
     <Layout channels={channels} activeChannelId={channelId}>
       <div className="relative h-screen">
         <div className="Messages h-full pb-16">

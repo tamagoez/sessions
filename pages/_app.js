@@ -59,7 +59,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
         signOut,
       }}
     >
-      {process.browser ? <NavBar /> }
+      {process.browser ? <NavBar /> : console.log('Ignored NavBar')}
       <Component {...pageProps} />
     </UserContext.Provider>
   )

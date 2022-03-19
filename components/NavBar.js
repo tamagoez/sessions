@@ -3,8 +3,8 @@ import supabase from '~/utils/supabaseClient'
 
 export default function NavBar(){
   const user = supabase.auth.user()
-  if (user) getnavbar() else console.log('not user')
-  function getnavbar{
+  if (user) { getnavbar() } else { console.log('not user') }
+  function getnavbar() {
     const avatarurl = AvatarUrl(user.id)
     return (
       <div class="navbar bg-base-100 mb-40 shadow-xl rounded-box">

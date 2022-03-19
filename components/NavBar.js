@@ -18,7 +18,7 @@ export default function NavBar(props){
         </ul>
       </div>
       );
-    } else if (props.sessionid) {
+    } else if (props.sessionname) {
       return (
         <div className="text-sm breadcrumbs">
           <ul>

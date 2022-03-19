@@ -3,7 +3,7 @@ import Message from '~/components/Message'
 import MessageInput from '~/components/MessageInput'
 import { useRouter } from 'next/router'
 import { useStore, addMessage } from '~/lib/Store'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import UserContext from '~/lib/UserContext'
 import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
@@ -30,7 +30,6 @@ const ChannelsPage = (props) => {
   }, [])
   
   const { user, authLoaded, signOut } = useContext(UserContext)
-  const messagesEndRef = useRef(null)
 
   // Else load up the page
   
@@ -41,15 +40,6 @@ const ChannelsPage = (props) => {
     const channelcheck = CheckChannelMember(userid, channelId)
     if (sessioncheck) { console.log('[Main] This user is a member of this session') } else { router.push('/404') }
     }
-  
-  const { messages, channels } = useStore({ channelId })
-
-  useEffect(() => {
-    messagesEndRef.current.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    })
-  }, [messages])
 
   // redirect to public channel when current channel is deleted
   useEffect(() => {
@@ -65,19 +55,12 @@ const ChannelsPage = (props) => {
   return (
     <div>
     <NavBar channelname={channelname} sessionname={sessionname} />
-      <div className="relative h-screen">
-        <div className="Messages h-full pb-16">
-          <div className="p-2 overflow-y-auto">
-            {messages.map((x) => (
-              <Message key={x.id} message={x} />
-            ))}
-            <div ref={messagesEndRef} style={{ height: 0 }} />
-          </div>
-        </div>
-        <div className="p-2 absolute bottom-0 left-0 w-full">
-          <MessageInput onSubmit={async (text) => addMessage(text, channelId, user.id)} />
-        </div>
-      </div>
+      <iframe id="chatbox"
+          title="Chat Frame"
+          width="500"
+          height="800"
+          src="https://web-sessions.vercel.app/app/frame/chat/{sessionId}/{channelId}">
+      </iframe>
     </div>
   )
 }

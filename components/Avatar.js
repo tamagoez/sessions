@@ -87,9 +87,11 @@ function AvatarSetting({ url, size, onUpload }) {
 function AvatarUrl(id) {
   console.log('[AvatarUrl] Got prop: ' + id)
   const [avatarUrl, setAvatarUrl] = useState(null)
-  getProfile()
+  useEffect(() => {
+    getProfile(id)
+  }, [id])
   
-  async function getProfile() {
+  async function getProfile(id) {
     try {
       // setLoading(true)
       let { data, error, status } = await supabase

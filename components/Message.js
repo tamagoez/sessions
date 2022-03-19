@@ -2,6 +2,9 @@ import { useContext } from 'react'
 import UserContext from '~/lib/UserContext'
 import { deleteMessage } from '~/lib/Store'
 import TrashIcon from '~/components/TrashIcon'
+import React from "react";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext)
@@ -41,7 +44,11 @@ const Message = ({ message }) => {
       </div>
       <div id="Message">
         <a name={message.id}><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
-        <p className="text-white">{message.message}</p></a>
+        <p className="text-white">
+        <ReactMarkdown plugins={[gfm]} unwrapDisallowed={false}>
+          {message.message}
+        </ReactMarkdown>
+        </p>
       </div>
     </div>
   )

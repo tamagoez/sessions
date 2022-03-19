@@ -11,15 +11,21 @@ export default function NavBar(){
   function navtitle(){
     if (props.channelid) {
       return (
-      <div clas="text-sm breadcrumbs">
-<li><a>Home</a></li> 
-<li><a>Documents</a></li> 
-<li>Add Document</li>
-</ul>
-</div>
+      <div className="text-sm breadcrumbs">
+        <ul>
+        <li><a>{props.sessionid}</a></li>
+        <li>{props.channelid}</li>
+        </ul>
+      </div>
       );
     } else if (props.sessionid) {
-      return ();
+      return (
+        <div className="text-sm breadcrumbs">
+          <ul>
+          <li>{props.sessionid}</li>
+          </ul>
+        </div>
+      );
     } else {
       return (<a className="btn btn-ghost normal-case text-xl">Sessions</a>)
     }

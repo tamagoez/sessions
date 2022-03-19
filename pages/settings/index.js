@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import supabase from '~/utils/supabaseClient'
-import AvatarSetting from '~/components/Avatar'
+import { AvatarSetting } from '~/components/Avatar'
 import { useRouter } from 'next/router'
 
 function AccountData({ session }) {  

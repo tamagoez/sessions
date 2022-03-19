@@ -13,8 +13,8 @@ export default function NavBar(props){
       return (
       <div className="text-sm breadcrumbs">
         <ul>
-        <li><a>@ {props.sessionname}</a></li>
-        <li># {props.channelname}</li>
+        <li><a className="btn btn-ghost normal-case text-xl">@ {props.sessionname}</a></li>
+        <li><a className="btn btn-ghost normal-case text-xl"># {props.channelname}</a></li>
         </ul>
       </div>
       );
@@ -22,7 +22,7 @@ export default function NavBar(props){
       return (
         <div className="text-sm breadcrumbs">
           <ul>
-          <li>@ {props.sessionname}</li>
+          <li><a className="btn btn-ghost normal-case text-xl">@ {props.sessionname}</a></li>
           </ul>
         </div>
       );

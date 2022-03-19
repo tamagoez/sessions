@@ -75,6 +75,14 @@ function AccountData({ session }) {
       setLoading(false)
     }
   }
+  
+  function switchHL(value){
+    if (value === 'on') {
+      setHardload(true)
+    } else {
+      setHardload(false)
+    }
+  }
 
   return (
     <div className="form-widget">
@@ -131,7 +139,7 @@ function AccountData({ session }) {
       <div className="form-control">
         <label className="label cursor-pointer">
           <span className="label-text">HardLoad (No recommend)</span> 
-          <input type="checkbox" className="toggle" {...hardload ? null : 'checked'} onChange={(e) => {(e.target.value === 'on') ? setHardload(true) : setHardload(false)}} />
+          <input type="checkbox" className="toggle" {...hardload ? null : 'checked'} onChange={(e) => SwitchHL(e.target.value)}} />
         </label>
       </div>
       <span className="label-text">if true, don't use WebSocket but get chat every second.</span>

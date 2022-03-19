@@ -64,7 +64,9 @@ const ChannelsPage = (props) => {
   // Render the channels and messages
   return (
     <div>
+    <div>
     <NavBar channelname={channelname} sessionname={sessionname} />
+    </div>
       <iframe id="chat-frame"
           title="Chat Frame"
           width="100%"

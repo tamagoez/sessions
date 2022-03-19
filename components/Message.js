@@ -43,8 +43,8 @@ const Message = ({ message }) => {
         )}
       </div>
       <div id="Message">
-        <a name={message.id} /><p className="text-white font-bold" id={message.id}>{message.author.username}</p>
-        <p className="text-white">
+        <a name={message.id} /><p className="text-black font-bold" id={message.id}>{message.author.username}</p>
+        <p className="text-black">
         <ReactMarkdown plugins={[gfm]} unwrapDisallowed={false}>
           {message.message}
         </ReactMarkdown>

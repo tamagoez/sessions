@@ -1,6 +1,10 @@
+import NavBar from '~/components/NavBar'
 const Dashboard = () => {
   return (
-    <p>This is dashboard.(?!?!)</p>
+    <div>
+      {process.browser ? <NavBar /> : console.log('Ignored NavBar')}
+      <p>This is dashboard.(?!?!)</p>
+    </div>
   )
 }
 

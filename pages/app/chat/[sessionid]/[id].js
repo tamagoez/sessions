@@ -22,9 +22,11 @@ const ChannelsPage = (props) => {
     }
   }
   
+  const [channelname, setChannelname] = useState(null)
+  const [sessionname, setSessionname] = useState(null)
   useEffect(() => {
-    const channelname = ChannelName(channelId)
-    const sessionname = SessionName(sessionId)
+    setChannelname = ChannelName(channelId)
+    setSessionname = SessionName(sessionId)
   }, [])
   
   const { user, authLoaded, signOut } = useContext(UserContext)

@@ -125,6 +125,7 @@ function AvatarUrl(id) {
       console.log('Error downloading image: ', error.message)
     }
   }
+  return avatarUrl;
 }
 
 export { AvatarSetting, AvatarUrl }

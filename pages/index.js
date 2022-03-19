@@ -18,8 +18,8 @@ const Home = () => {
 
         <nav className="hidden lg:flex gap-12">
           <a href="#" className="text-indigo-500 text-lg font-semibold">Home</a>
-          <a href="/login" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">Login</a>
-          <a href="/signup" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">SignUp</a>
+          <a href="/login" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">Login/SignUp</a>
+          <a href="/dashboard" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">Dashboard</a>
           <a href="/about" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">About</a>
         </nav>
 

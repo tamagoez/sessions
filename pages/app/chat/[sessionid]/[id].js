@@ -22,7 +22,7 @@ const ChannelsPage = (props) => {
     }
   }
   
-  const channnelname = ChannelName(channelId)
+  const channelname = ChannelName(channelId)
   const sessionname = SessionName(sessionId)
   
   const { user, authLoaded, signOut } = useContext(UserContext)

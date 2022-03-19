@@ -55,15 +55,23 @@ const ChannelsPage = (props) => {
       document.title = channelId + " - Sessions";
     }
   }, [channels, channelId])
+  
+  if (process.browser){
+    resizeset()
+    window.addEventListener("resize", resizeset());
+    function resizeset(){
+      document.getElementById('chat-frame').height = window.innerHeight - 50;
+    }
+  
 
   // Render the channels and messages
   return (
     <div>
     <NavBar channelname={channelname} sessionname={sessionname} />
-      <iframe id="chatbox"
+      <iframe id="chat-frame"
           title="Chat Frame"
           width="100%"
-          height="100%"
+          height="1000"
           src={"https://web-sessions.vercel.app/app/frame/chat/" + sessionId + "/" + channelId}>
       </iframe>
     </div>

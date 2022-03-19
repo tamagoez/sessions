@@ -4,7 +4,7 @@ import supabase from '~/utils/supabaseClient'
 export default function NavBar(){
   const user = supabase.auth.user()
   const avatarurl = AvatarUrl(user.id)
-  return {
+  return (
     <div class="navbar bg-base-100 mb-40 shadow-xl rounded-box">
   <div class="navbar-start">
     <div class="dropdown">
@@ -46,5 +46,5 @@ export default function NavBar(){
     </button>
   </div>
 </div>
-  }
+  )
 }

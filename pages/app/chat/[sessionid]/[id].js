@@ -65,7 +65,6 @@ const ChannelsPage = (props) => {
   return (
     <div>
     <NavBar channelname={channelname} sessionname={sessionname} />
-    <Layout channels={channels} activeChannelId={channelId}>
       <div className="relative h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
@@ -79,7 +78,6 @@ const ChannelsPage = (props) => {
           <MessageInput onSubmit={async (text) => addMessage(text, channelId, user.id)} />
         </div>
       </div>
-    </Layout>
     </div>
   )
 }

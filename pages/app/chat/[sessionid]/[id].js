@@ -62,7 +62,7 @@ const ChannelsPage = (props) => {
     function resizeset(){
       document.getElementById('chat-frame').height = window.innerHeight - 50;
     }
-  
+  }
 
   // Render the channels and messages
   return (

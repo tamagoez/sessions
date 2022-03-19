@@ -63,7 +63,7 @@ const ChannelsPage = (props) => {
       <iframe id="chatbox"
           title="Chat Frame"
           width="100%"
-          height="80%"
+          height="100%"
           src={"https://web-sessions.vercel.app/app/frame/chat/" + sessionId + "/" + channelId}>
       </iframe>
     </div>

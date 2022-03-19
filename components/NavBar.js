@@ -3,7 +3,11 @@ import supabase from '~/utils/supabaseClient'
 
 export default function NavBar(){
   const user = supabase.auth.user()
-  if (user) { getnavbar() } else { console.log('not user') }
+  if (user) { getnavbar() } else { 
+    console.log('not user')
+    return null;
+  }
+  
   function getnavbar() {
     const avatarurl = AvatarUrl(user.id)
     return (

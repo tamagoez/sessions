@@ -84,7 +84,7 @@ function AvatarSetting({ url, size, onUpload }) {
   )
 }
 
-function AvatarUrl(id)
+function AvatarUrl(id) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   
   async function getProfile() {

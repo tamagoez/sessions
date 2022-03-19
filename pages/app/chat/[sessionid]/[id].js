@@ -9,6 +9,7 @@ import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
 import { ChannelName, SessionName } from '~/lib/GetName'
 import NavBar from '~/components/NavBar'
+import { getWindowSize } from "~/utils/GetWindowSize";
 
 const ChannelsPage = (props) => {  
   const router = useRouter()
@@ -57,12 +58,8 @@ const ChannelsPage = (props) => {
   }, [channels, channelId])
   
   if (process.browser){
-    resizeset()
-    window.addEventListener("resize", resizeset());
-    function resizeset(){
-      document.getElementById('chat-frame').height = document.documentElement.clientHeight - 50;
-    }
-  }
+    const height = getWindowSize();
+  } else { const height = 1000 }
 
   // Render the channels and messages
   return (
@@ -71,7 +68,7 @@ const ChannelsPage = (props) => {
       <iframe id="chat-frame"
           title="Chat Frame"
           width="100%"
-          height="1000"
+          height={height}
           src={"https://web-sessions.vercel.app/app/frame/chat/" + sessionId + "/" + channelId}>
       </iframe>
     </div>

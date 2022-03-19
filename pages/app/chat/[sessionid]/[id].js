@@ -22,8 +22,10 @@ const ChannelsPage = (props) => {
     }
   }
   
-  const channelname = ChannelName(channelId)
-  const sessionname = SessionName(sessionId)
+  useEffect(() => {
+    const channelname = ChannelName(channelId)
+    const sessionname = SessionName(sessionId)
+  }, [])
   
   const { user, authLoaded, signOut } = useContext(UserContext)
   const messagesEndRef = useRef(null)

@@ -8,6 +8,18 @@ export default function NavBar(){
     return null;
   }
   
+  if (props.channelid) {
+    const navtitle = `
+    `
+  } else if (props.sessionid) {
+    const navtitle = `
+    `
+  } else {
+    const navtitle = `
+      <a className="btn btn-ghost normal-case text-xl">Sessions</a>
+    `
+  }
+  
   function getnavbar() {
     const avatarurl = AvatarUrl(user.id)
     return (
@@ -24,7 +36,7 @@ export default function NavBar(){
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost normal-case text-xl">Sessions</a>
+          {navtitle}
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">

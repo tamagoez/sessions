@@ -19,7 +19,7 @@ const Home = () => {
         <nav className="hidden lg:flex gap-12">
           <a href="#" className="text-indigo-500 text-lg font-semibold">Home</a>
           <a href="/login" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">Login</a>
-          <a href="/signup" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">Sign Up</a>
+          <a href="/signup" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">SignUp</a>
           <a href="/about" className="text-gray-600 hover:text-indigo-500 active:text-indigo-700 text-lg font-semibold transition duration-100">About</a>
         </nav>
 
@@ -34,7 +34,7 @@ const Home = () => {
 
       <section className="flex flex-col items-center">
         <div className="flex items-center bg-gray-50 text-gray-500 border rounded gap-2 p-2">
-        <span className="badge badge-md">BETA</span>
+        <span className="badge badge-sm badge-accent">BETA</span>
 
           <span className="text-sm">Now developing!</span>
             <a href="#" className="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 text-sm font-bold transition duration-100">More</a>

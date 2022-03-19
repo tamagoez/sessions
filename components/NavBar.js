@@ -1,4 +1,4 @@
-import AvatarUrl from './Avatar'
+import { AvatarUrl } from './Avatar'
 import supabase from '~/utils/supabaseClient'
 
 export default function NavBar(){

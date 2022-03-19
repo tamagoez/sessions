@@ -49,7 +49,7 @@ const ChannelsPage = (props) => {
   // Render the channels and messages
   return (
     <div>
-      <div className="relative">
+      <div className="h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
             {messages.map((x) => (

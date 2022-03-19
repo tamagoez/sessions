@@ -30,6 +30,7 @@ const ChannelsPage = (props) => {
   }, [])
   
   const { user, authLoaded, signOut } = useContext(UserContext)
+  const { channels } = useStore({ channelId })
 
   // Else load up the page
   

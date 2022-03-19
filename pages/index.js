@@ -41,7 +41,7 @@ const Home = () => {
           </div>
 
           <div className="max-w-xl flex flex-col items-center text-center pt-8 lg:pt-32 pb-0 sm:pb-16 lg:pb-32">
-            <p className="text-indigo-500 md:text-lg xl:text-xl font-semibold mb-4 md:mb-6">Very proud to introduce</p>
+            <p className="text-indigo-500 md:text-lg xl:text-xl font-semibold mb-4 md:mb-6">Your next communication app.</p>
 
             <h1 className="text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">Way to chat with your community.</h1>
 

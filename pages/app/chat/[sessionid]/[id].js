@@ -14,6 +14,10 @@ const ChannelsPage = (props) => {
   const router = useRouter()
   const { id: channelId, sessionid: sessionId } = router.query
   
+  if (!router.isReady) {
+    return null
+  }
+  
   const session = supabase.auth.session();
   if (process.browser) {
     if (!session) {

@@ -5,7 +5,7 @@ import Router from 'next/router'
 import UserContext from 'lib/UserContext'
 import { supabase, fetchUserRoles } from 'lib/Store'
 // import App from 'next/app'
-// import NavBar from '~/components/NavBar'
+import NavBar from '~/components/NavBar'
 
 export default function SupabaseSlackClone({ Component, pageProps }) {
   // App.getInitialProps = async () => ({ pageProps: {} })
@@ -59,7 +59,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
         signOut,
       }}
     >
-      {process.browser ? console.log('replace NavBar') : console.log('Ignored NavBar')}
+      {process.browser ? <NavBar /> : console.log('Ignored NavBar')}
       <Component {...pageProps} />
     </UserContext.Provider>
   )

@@ -85,6 +85,7 @@ function AvatarSetting({ url, size, onUpload }) {
 }
 
 function AvatarUrl(id) {
+  console.log('[AvatarUrl] Got prop: ' + id)
   const [avatarUrl, setAvatarUrl] = useState(null)
   
   async function getProfile() {
@@ -123,10 +124,11 @@ function AvatarUrl(id) {
       setAvatarUrl(url)
     } catch (error) {
       console.log('Error downloading image: ', error.message)
+    } finally {
+      console.log('[AvatarUrl] Got url: ' + avatarUrl)
+      return avatarUrl;
     }
   }
-  console.log('[AvatarUrl] Got url: ' + avatarUrl)
-  return avatarUrl;
 }
 
 export { AvatarSetting, AvatarUrl }

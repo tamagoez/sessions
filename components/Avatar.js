@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import supabase from '~/utils/supabaseClient'
 
-export default function AvatarSetting({ url, size, onUpload }) {
+function AvatarSetting({ url, size, onUpload }) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
 
@@ -83,3 +83,48 @@ export default function AvatarSetting({ url, size, onUpload }) {
     </div>
   )
 }
+
+function AvatarUrl(id)
+  const [avatarUrl, setAvatarUrl] = useState(null)
+  
+  async function getProfile() {
+    try {
+      // setLoading(true)
+      let { data, error, status } = await supabase
+        .from('profiles')
+        .select(`avatar_url`)
+        .eq('id', id)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
+      }
+      if (data) {
+        setAvatarUrl(data.avatar_url)
+      }
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      // setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    if (avatarUrl) downloadImage(avatarUrl)
+  }, [avatarUrl])
+
+  async function downloadImage(path) {
+    try {
+      const { data, error } = await supabase.storage.from('avatars').download(path)
+      if (error) {
+        throw error
+      }
+      const url = URL.createObjectURL(data)
+      setAvatarUrl(url)
+    } catch (error) {
+      console.log('Error downloading image: ', error.message)
+    }
+  }
+}
+
+export { AvatarSetting, AvatarUrl }

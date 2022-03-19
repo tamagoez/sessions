@@ -58,7 +58,7 @@ const ChannelsPage = (props) => {
   }, [channels, channelId])
   
   if (process.browser){
-    const height = getWindowSize();
+    const { height } = getWindowSize();
   } else { const height = 1000 }
 
   // Render the channels and messages

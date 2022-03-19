@@ -1,7 +1,7 @@
 import { AvatarUrl } from './Avatar'
 import supabase from '~/utils/supabaseClient'
 
-export default function NavBar(){
+export default function NavBar(props){
   const user = supabase.auth.user()
   if (user) { return getnavbar() } else { 
     console.log('not user')

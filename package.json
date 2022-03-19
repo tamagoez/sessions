@@ -20,6 +20,7 @@
     "daisyui": "^2.11.0",
     "browserslist": ">=4.20.0",
     "react-markdown": "^8.0.1",
-    "remark-gfm": "^3.0.1"
+    "remark-gfm": "^3.0.1",
+    "snd-lib": "^1.0.2"
   }
 }

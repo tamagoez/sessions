@@ -89,7 +89,7 @@ function AvatarUrl(id) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   useEffect(() => {
     getProfile(id)
-  }, [id])
+  }, [])
   
   async function getProfile(id) {
     try {

@@ -87,6 +87,7 @@ function AvatarSetting({ url, size, onUpload }) {
 function AvatarUrl(id) {
   console.log('[AvatarUrl] Got prop: ' + id)
   const [avatarUrl, setAvatarUrl] = useState(null)
+  getProfile()
   
   async function getProfile() {
     try {

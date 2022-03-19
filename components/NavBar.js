@@ -9,12 +9,12 @@ export default function NavBar(props){
   }
   
   function navtitle(){
-    if (props.channelid) {
+    if (props.channelname) {
       return (
       <div className="text-sm breadcrumbs">
         <ul>
-        <li><a>{props.sessionid}</a></li>
-        <li>{props.channelid}</li>
+        <li><a>@ {props.sessionname}</a></li>
+        <li># {props.channelname}</li>
         </ul>
       </div>
       );
@@ -22,7 +22,7 @@ export default function NavBar(props){
       return (
         <div className="text-sm breadcrumbs">
           <ul>
-          <li>{props.sessionid}</li>
+          <li>@ {props.sessionname}</li>
           </ul>
         </div>
       );

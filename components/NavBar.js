@@ -3,12 +3,8 @@ import supabase from '~/utils/supabaseClient'
 
 export default function NavBar({ channelname, sessionname }){
   const user = supabase.auth.user()
-  if (user) { return getnavbar() } else { 
-    console.log('not user')
-    return null;
-  }
-  
-  function navtitle(){
+    
+  function getnavtitle(){
     if (channelname) {
       return (
       <div className="text-sm breadcrumbs">
@@ -31,8 +27,14 @@ export default function NavBar({ channelname, sessionname }){
     }
   }
   
+  if (user) { return getnavbar() } else { 
+    console.log('not user')
+    return null;
+  }
+  
   function getnavbar() {
     const avatarurl = AvatarUrl(user.id)
+    const navtitle = getnavtitle()
     return (
       <div className="navbar bg-base-100 mb-5 shadow-md rounded-box">
         <div className="navbar-start">
@@ -47,7 +49,7 @@ export default function NavBar({ channelname, sessionname }){
           </div>
         </div>
         <div className="navbar-center">
-          {navtitle()}
+          {navtitle}
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">

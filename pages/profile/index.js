@@ -82,7 +82,7 @@ function AccountData({ session }) {
 
   return (
     <div>
-      <NavBar />
+      <NavBar thispage="Profile" />
       <div className="form-widget">
         <div>
           <AvatarSetting

@@ -47,7 +47,7 @@ export default function NavBar({ channelname, sessionname }){
           </div>
         </div>
         <div className="navbar-center">
-          {navtitle()}
+          <navtitle />
         </div>
         <div className="navbar-end">
           <button className="btn btn-ghost btn-circle">

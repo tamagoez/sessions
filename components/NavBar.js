@@ -39,7 +39,7 @@ export default function NavBar({ channelname, sessionname }){
     const avatarurl = AvatarUrl(user.id)
     const navtitle = getnavtitle()
     return (
-      <div className="navbar bg-base-100 mb-2 shadow-md rounded-box">
+      <div className="navbar bg-base-100 mb-3 shadow-md rounded-box">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabindex="0" className="btn btn-ghost btn-circle">

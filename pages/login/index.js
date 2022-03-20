@@ -1,17 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "lib/Store";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [nextlink, setNextlink] = useState("");
+  const router = useRouter();
+  const query = router.query;
+
+  useEffect(() => {
+    if (router.isReady) {
+      if (!query.next) {
+        setNextlink("/app/dashboard");
+      } else {
+        setNextlink(query.next);
+      }
+    }
+  }, [query, router]);
 
   if (process.browser) {
+    const session = supabase.auth.session();
+    if (session) router.push(nextlink);
     document.title = "Login - Sessions";
   }
 
   const handleLogin = async (type, username, password) => {
     try {
-      const userid = username + '@web-sessions.vercel.app'
+      const userid = username + "@web-sessions.vercel.app";
       const { error, user } =
         type === "LOGIN"
           ? await supabase.auth.signIn({ email: userid, password })
@@ -34,7 +50,7 @@ const Home = () => {
     if (event.keyCode === 13) {
       handleLogin("LOGIN", username, password);
     }
-  }
+  };
 
   return (
     <div className="w-full h-full flex justify-center items-center p-4 bg-gray-300">

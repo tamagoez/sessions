@@ -28,7 +28,7 @@ export default function NavBar({ channelname, sessionname }){
   }
   
   if (user) {
-    console.log('[NavBar]: Got props' + channnelname + ' / ' + sessionname)
+    console.log('[NavBar]: Got props' + channelname + ' / ' + sessionname)
     return getnavbar()
   } else { 
     console.log('not user')

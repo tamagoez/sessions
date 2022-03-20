@@ -27,8 +27,8 @@ const ChannelsPage = (props) => {
     }
   }
   
-  const [channelname, setChannelname] = useState(null)
-  const [sessionname, setSessionname] = useState(null)
+  const [channelname, setChannelname] = useState('channelname')
+  const [sessionname, setSessionname] = useState('sessionname')
   
   const { user, authLoaded, signOut } = useContext(UserContext)
   const { channels } = useStore({ channelId })
@@ -50,8 +50,8 @@ const ChannelsPage = (props) => {
     }
     if (process.browser) {
       document.title = channelId + " - Sessions";
-      setChannelname(ChannelName(channelId))
-      setSessionname(SessionName(sessionId))
+      // setChannelname(ChannelName(channelId))
+      // setSessionname(SessionName(sessionId))
     }
   }, [channels, channelId])
   

@@ -29,11 +29,6 @@ const ChannelsPage = (props) => {
   
   const [channelname, setChannelname] = useState(null)
   const [sessionname, setSessionname] = useState(null)
-
-  useEffect(() => {
-    setChannelname(ChannelName(channelId))
-    setSessionname(SessionName(sessionId))
-  }, [])
   
   const { user, authLoaded, signOut } = useContext(UserContext)
   const { channels } = useStore({ channelId })
@@ -55,6 +50,8 @@ const ChannelsPage = (props) => {
     }
     if (process.browser) {
       document.title = channelId + " - Sessions";
+      setChannelname(ChannelName(channelId))
+      setSessionname(SessionName(sessionId))
     }
   }, [channels, channelId])
   

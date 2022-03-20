@@ -29,6 +29,7 @@ const ChannelsPage = (props) => {
   
   const [channelname, setChannelname] = useState(null)
   const [sessionname, setSessionname] = useState(null)
+  
   useEffect(() => {
     setChannelname(ChannelName(channelId))
     setSessionname(SessionName(sessionId))

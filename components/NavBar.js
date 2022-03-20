@@ -34,7 +34,7 @@ export default function NavBar(props){
   function getnavbar() {
     const avatarurl = AvatarUrl(user.id)
     return (
-      <div className="navbar bg-base-100 shadow-xl rounded-box">
+      <div className="navbar bg-base-100 mb-5 shadow-xl rounded-box">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabindex="0" className="btn btn-ghost btn-circle">

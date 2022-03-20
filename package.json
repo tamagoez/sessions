@@ -21,6 +21,7 @@
     "browserslist": ">=4.20.0",
     "react-markdown": "^8.0.1",
     "remark-gfm": "^3.0.1",
-    "snd-lib": "^1.0.2"
+    "snd-lib": "^1.0.2",
+    "ncrypt-js": "^2.0.0"
   }
 }

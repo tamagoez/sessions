@@ -1,7 +1,7 @@
 import { AvatarUrl } from './Avatar'
 import supabase from '~/utils/supabaseClient'
 
-export default function NavBar(props){
+export default function NavBar({ channelname, sessionname }){
   const user = supabase.auth.user()
   if (user) { return getnavbar() } else { 
     console.log('not user')
@@ -9,20 +9,20 @@ export default function NavBar(props){
   }
   
   function navtitle(){
-    if (props.channelname) {
+    if (channelname) {
       return (
       <div className="text-sm breadcrumbs">
         <ul>
-        <li><a className="btn btn-ghost normal-case text-xl">@ {props.sessionname}</a></li>
-        <li><a className="btn btn-ghost normal-case text-xl"># {props.channelname}</a></li>
+        <li><a className="btn btn-ghost normal-case text-xl">@ {sessionname}</a></li>
+        <li><a className="btn btn-ghost normal-case text-xl"># {channelname}</a></li>
         </ul>
       </div>
       );
-    } else if (props.sessionname) {
+    } else if (sessionname) {
       return (
         <div className="text-sm breadcrumbs">
           <ul>
-          <li><a className="btn btn-ghost normal-case text-xl">@ {props.sessionname}</a></li>
+          <li><a className="btn btn-ghost normal-case text-xl">@ {sessionname}</a></li>
           </ul>
         </div>
       );

@@ -1,42 +1,47 @@
-import Layout from '~/components/Layout'
-import Message from '~/components/Message'
-import MessageInput from '~/components/MessageInput'
-import { useRouter } from 'next/router'
-import { useStore, addMessage } from '~/lib/Store'
-import { useContext, useEffect, useRef, useState } from 'react'
-import UserContext from '~/lib/UserContext'
-import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
-import supabase from '~/utils/supabaseClient'
-import { ChannelName, SessionName } from '~/lib/GetName'
+import Layout from "~/components/Layout";
+import Message from "~/components/Message";
+import MessageInput from "~/components/MessageInput";
+import { useRouter } from "next/router";
+import { useStore, addMessage } from "~/lib/Store";
+import { useContext, useEffect, useRef, useState } from "react";
+import UserContext from "~/lib/UserContext";
+import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
+import supabase from "~/utils/supabaseClient";
+import { ChannelName, SessionName } from "~/lib/GetName";
 // import NavBar from '~/components/NavBar'
 import getfromsec from "~/lib/GetFromSec";
 
-const ChannelsPage = (props) => {  
-  const router = useRouter()
-  const { id: secondchannelId, sessionid: sessionId } = router.query
-  const channelId = getfromsec(sessionId, secondchannelId);
-    
-  const { user, authLoaded, signOut } = useContext(UserContext)
-  const messagesEndRef = useRef(null)
+const ChannelsPage = (props) => {
+  const router = useRouter();
+  const { id: secondchannelId, sessionid: sessionId } = router.query;
+  // const channelId = getfromsec(sessionId, secondchannelId);
+  const channelID = 1;
+
+  const { user, authLoaded, signOut } = useContext(UserContext);
+  const messagesEndRef = useRef(null);
 
   // Else load up the page
-  
+
   if (process.browser) {
-    const usersession = supabase.auth.session()
-    const userid = usersession.user.id
-    const sessioncheck = CheckSessionMember(userid, sessionId)
-    const channelcheck = CheckChannelMember(userid, channelId)
-    if (sessioncheck) { console.log('[Main] This user is a member of this session') } else { router.push('/404') }
+    const usersession = supabase.auth.session();
+    const userid = usersession.user.id;
+    const sessioncheck = CheckSessionMember(userid, sessionId);
+    const channelcheck = CheckChannelMember(userid, channelId);
+    if (sessioncheck) {
+      console.log("[Main] This user is a member of this session");
+    } else {
+      router.push("/404");
     }
-  
-  const { messages, channels } = useStore({ channelId })
+  }
+
+  const { messages, channels } = useStore({ channelId });
 
   useEffect(() => {
     messagesEndRef.current.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    })
-  }, [messages])
+      block: "start",
+      behavior: "smooth"
+    });
+  }, [messages]);
 
   // redirect to public channel when current channel is deleted
   useEffect(() => {
@@ -46,7 +51,7 @@ const ChannelsPage = (props) => {
     if (process.browser) {
       document.title = channelId + " - Sessions";
     }
-  }, [channels, channelId])
+  }, [channels, channelId]);
 
   // Render the channels and messages
   return (
@@ -61,11 +66,13 @@ const ChannelsPage = (props) => {
           </div>
         </div>
         <div className="p-2 absolute bottom-0 left-0 w-full">
-          <MessageInput onSubmit={async (text) => addMessage(text, channelId, user.id)} />
+          <MessageInput
+            onSubmit={async (text) => addMessage(text, channelId, user.id)}
+          />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ChannelsPage
+export default ChannelsPage;

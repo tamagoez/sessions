@@ -141,7 +141,7 @@ const ChannelsPage = (props) => {
           "https://web-sessions.vercel.app/app/frame/chat/" +
           sessionId +
           "/" +
-          channelId
+          secondchannelId
         }
       ></iframe>
     </div>

@@ -14,8 +14,8 @@ import getfromsec from "~/lib/GetFromSec";
 const ChannelsPage = (props) => {
   const router = useRouter();
   const { id: secondchannelId, sessionid: sessionId } = router.query;
-  // const channelId = getfromsec(sessionId, secondchannelId);
-  const channelID = 1;
+  const channelId = getfromsec(sessionId, secondchannelId);
+  // const channelID = 1;
 
   const { user, authLoaded, signOut } = useContext(UserContext);
   const messagesEndRef = useRef(null);
@@ -45,9 +45,9 @@ const ChannelsPage = (props) => {
 
   // redirect to public channel when current channel is deleted
   useEffect(() => {
-    if (!channels.some((channel) => channel.id === Number(channelId))) {
-      // router.push('/channels/1')
-    }
+    //if (!channels.some((channel) => channel.id === Number(channelId))) {
+    // router.push('/channels/1')
+    //}
     if (process.browser) {
       document.title = channelId + " - Sessions";
     }

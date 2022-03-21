@@ -22,7 +22,7 @@ const ChannelsPage = (props) => {
 
   // const [channelId, setChannelId] = useState(null);
   // setChannelId(getfromsec(secondchannelId));
-  const channelId = getfromsec(secondchannelId);
+  const channelId = getfromsec(sessionId, secondchannelId);
 
   const session = supabase.auth.session();
   if (process.browser) {

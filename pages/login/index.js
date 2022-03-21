@@ -16,14 +16,13 @@ const Home = () => {
       } else {
         setNextlink(query.next);
       }
+      if (process.browser) {
+        const session = supabase.auth.session();
+        if (session) router.push(nextlink);
+        document.title = "Login - Sessions";
+      }
     }
   }, [query, router]);
-
-  if (process.browser) {
-    const session = supabase.auth.session();
-    if (session) router.push(nextlink);
-    document.title = "Login - Sessions";
-  }
 
   const handleLogin = async (type, username, password) => {
     try {
@@ -94,7 +93,7 @@ const Home = () => {
               Login
             </a>
             <a
-              href={"/signup"}
+              href={"/signup?next=" + nextlink}
               className="border border-green-400 text-green-500 py-1 px-4 rounded w-full text-center transition duration-150 hover:bg-green-400 hover:text-white"
             >
               or SignUp

@@ -1,18 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "lib/Store";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [nextlink, setNextlink] = useState("");
+  const router = useRouter();
+  const query = router.query;
 
-  if (process.browser) {
-    document.title = "SignUp - Sessions";
-  }
+  useEffect(() => {
+    if (router.isReady) {
+      if (!query.next) {
+        setNextlink("/profiles");
+      } else {
+        setNextlink(query.next);
+      }
+      if (process.browser) {
+        const session = supabase.auth.session();
+        if (session) router.push(nextlink);
+        document.title = "Signup - Sessions";
+      }
+    }
+  }, [query, router]);
 
   const handleLogin = async (type, username, password, name) => {
     try {
-      const userid = username + '@web-sessions.vercel.app'
+      const userid = username + "@web-sessions.vercel.app";
       const { error, user } =
         type === "LOGIN"
           ? await supabase.auth.signIn({ email: userid, password })
@@ -22,19 +37,18 @@ const Home = () => {
       // NOTE: Confirming your email address is required by default.
       if (error) {
         alert("Error with auth: " + error.message);
-      } else if (!user)
-        alert("Signup successful! Your UserId is " + userid);
+      } else if (!user) alert("Signup successful! Your UserId is " + userid);
       const { data, err } = await supabase
-        .from('users')
+        .from("users")
         .update({ username: name })
-        .match({ username: userid })
+        .match({ username: userid });
       if (err) {
         alert("Error with setting: " + err.message);
       }
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);
-    } 
+    }
   };
 
   return (

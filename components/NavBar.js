@@ -10,6 +10,14 @@ export default function NavBar({ channelname, sessionname, thispage }) {
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
+              <a
+                className="btn btn-ghost normal-case text-lg visible"
+                href="/app/chat"
+              >
+                Chat
+              </a>
+            </li>
+            <li>
               <a className="btn btn-ghost normal-case text-xl">
                 @ {sessionname}
               </a>

@@ -10,14 +10,19 @@ import supabase from "~/utils/supabaseClient";
 // import { ChannelName, SessionName } from "~/lib/GetName";
 import NavBar from "~/components/NavBar";
 import { getWindowSize } from "~/utils/GetWindowSize";
+import getfromsec from "~/lib/GetFromSec";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
-  const { id: channelId, sessionid: sessionId } = router.query;
+  const { id: secondchannelId, sessionid: sessionId } = router.query;
 
   if (!router.isReady) {
     return null;
   }
+
+  // const [channelId, setChannelId] = useState(null);
+  // setChannelId(getfromsec(secondchannelId));
+  const channelId = getfromsec(secondchannelId);
 
   const session = supabase.auth.session();
   if (process.browser) {
@@ -56,11 +61,9 @@ const ChannelsPage = (props) => {
       // router.push('/channels/1')
     }
     if (process.browser) {
-      document.title = channelId + " - Sessions";
-      const pcn = getChannelName(channelId);
-      setChannelname(pcn.length);
-      console.log("[Main] Got channel name: " + pcn.name);
       getCName();
+      getSName();
+      document.title = "#" + channelname + " @" + sessionname + " - Sessions";
       // setSessionname(SessionName(sessionId))
     }
   }, [channels, channelId]);
@@ -94,6 +97,34 @@ const ChannelsPage = (props) => {
     } finally {
     }
   }
+
+  async function getSName() {
+    try {
+      // const cname = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("sessions")
+        .select("name")
+        .eq("id", sessionId)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setSessionname(data.name);
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+    }
+  }
+
+  useEffect(() => {
+    if (process.browser)
+      document.title = "#" + channelname + " < @" + sessionname + " - Sessions";
+  }, [channelname, sessionname]);
 
   // Render the channels and messages
   return (

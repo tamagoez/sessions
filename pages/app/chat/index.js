@@ -29,7 +29,7 @@ export default function CardPage() {
       <div>
         <NavBar thispage="Chat" />
       </div>
-      {card("test", "test", "1/1")}
+      {card("test", "test", "1")}
     </div>
   );
 }

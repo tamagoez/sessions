@@ -33,10 +33,10 @@ const ChannelsPage = (props) => {
     }
   }
 
-  const [channelname, setChannelname] = useState("channelname");
-  const [sessionname, setSessionname] = useState("sessionname");
+  const [channelname, setChannelname] = useState("Loading");
+  const [sessionname, setSessionname] = useState("Loading");
 
-  const { user, authLoaded, signOut } = useContext(UserContext);
+  // const { user, authLoaded, signOut } = useContext(UserContext);
   const { channels } = useStore({ channelId });
 
   // Else load up the page

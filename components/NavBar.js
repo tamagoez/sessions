@@ -9,16 +9,13 @@ export default function NavBar({ channelname, sessionname, thispage }) {
       return (
         <div className="text-sm breadcrumbs">
           <ul>
-            <li>
-              <a
-                className="btn btn-ghost normal-case text-lg visible"
-                href="/app/chat"
-              >
+            <li className="invisible md:visible">
+              <a className="btn btn-ghost normal-case text-lg" href="/app/chat">
                 Chat
               </a>
             </li>
-            <li>
-              <a className="btn btn-ghost normal-case text-xl">
+            <li className="invisible sm:visible">
+              <a className="btn btn-ghost normal-case text-xl" href="./">
                 @ {sessionname}
               </a>
             </li>
@@ -34,6 +31,14 @@ export default function NavBar({ channelname, sessionname, thispage }) {
       return (
         <div className="text-sm breadcrumbs">
           <ul>
+            <li>
+              <a
+                className="btn btn-ghost normal-case text-lg visible"
+                href="/app/chat"
+              >
+                Chat
+              </a>
+            </li>
             <li>
               <a className="btn btn-ghost normal-case text-xl">
                 @ {sessionname}

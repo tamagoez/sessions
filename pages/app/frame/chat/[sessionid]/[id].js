@@ -9,10 +9,12 @@ import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
 import supabase from '~/utils/supabaseClient'
 import { ChannelName, SessionName } from '~/lib/GetName'
 // import NavBar from '~/components/NavBar'
+import getfromsec from "~/lib/GetFromSec";
 
 const ChannelsPage = (props) => {  
   const router = useRouter()
-  const { id: channelId, sessionid: sessionId } = router.query
+  const { id: secondchannelId, sessionid: sessionId } = router.query
+  const channelId = getfromsec(sessionId, secondchannelId);
     
   const { user, authLoaded, signOut } = useContext(UserContext)
   const messagesEndRef = useRef(null)

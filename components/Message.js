@@ -17,8 +17,14 @@ const Message = ({ message }) => {
   }
 
   return (
-    <div className="py-1 flex items-center space-x-2">
-      <div className="text-gray-100 w-4">
+    <div
+      className={
+        user?.id === message.userid
+          ? "py-1 flex items-center space-x-3 right-0"
+          : "py-1 flex items-center space-x-3"
+      }
+    >
+      <div className="text-gray-400 w-4">
         {(user?.id === message.userid ||
           userRoles.some((role) => ["admin", "moderator"].includes(role))) && (
           <button onClick={() => delconf(message.id)}>
@@ -30,7 +36,7 @@ const Message = ({ message }) => {
         <p className="text-black font-bold" id={message.id}>
           {message.author.username}
         </p>
-        <p className="text-black">
+        <p className="text-black-800">
           <ReactMarkdown plugins={[gfm]} unwrapDisallowed={false}>
             {message.message}
           </ReactMarkdown>

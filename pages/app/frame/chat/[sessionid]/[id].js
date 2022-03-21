@@ -14,6 +14,9 @@ import getfromsec from "~/lib/GetFromSec";
 const ChannelsPage = (props) => {
   const router = useRouter();
   const { id: secondchannelId, sessionid: sessionId } = router.query;
+  if (!router.isReady) {
+    return null;
+  }
   const channelId = getfromsec(sessionId, secondchannelId);
   // const channelID = 1;
 

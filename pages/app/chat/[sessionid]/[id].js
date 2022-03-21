@@ -28,7 +28,7 @@ const ChannelsPage = (props) => {
   if (process.browser) {
     if (!session) {
       const tempredirectlink =
-        "/login?next=/app/chat/" + sessionId + "/" + channelId;
+        "/login?next=/app/chat/" + sessionId + "/" + secondchannelId;
       router.push(tempredirectlink);
     }
   }

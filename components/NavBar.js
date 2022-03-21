@@ -154,7 +154,7 @@ export default function NavBar({ channelname, sessionname, thispage }) {
                 </a>
               </li>
               <li>
-                <a>Logout</a>
+                <a href="/logout">Logout</a>
               </li>
             </ul>
           </div>

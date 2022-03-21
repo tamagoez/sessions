@@ -104,7 +104,7 @@ const Home = () => {
               Sign up
             </a>
             <a
-              href={"../login"}
+              href={"/login?next=" + nextlink}
               className="bg-green-400 hover:bg-teal text-white py-1 px-4 rounded text-center transition duration-150 hover:bg-white hover:text-green-400 border hover:border-green-400"
             >
               or Login

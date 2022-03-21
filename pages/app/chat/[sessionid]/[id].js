@@ -58,8 +58,9 @@ const ChannelsPage = (props) => {
     if (process.browser) {
       document.title = channelId + " - Sessions";
       const pcn = getChannelName(channelId);
-      setChannelname(pcn.name);
-
+      setChannelname(pcn.length);
+      console.log("[Main] Got channel name: " + pcn.name);
+      getCName();
       // setSessionname(SessionName(sessionId))
     }
   }, [channels, channelId]);
@@ -68,6 +69,30 @@ const ChannelsPage = (props) => {
     const { height } = getWindowSize();
   } else {
     const height = 1000;
+  }
+
+  // const [loading, setLoading] = useState(false);
+  async function getCName() {
+    try {
+      // const cname = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("channels")
+        .select("name")
+        .eq("id", channelId)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setChannelname(data.name);
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+    }
   }
 
   // Render the channels and messages

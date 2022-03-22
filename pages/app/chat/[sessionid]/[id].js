@@ -1,6 +1,6 @@
 import Layout from "~/components/Layout";
-import Message from "~/components/Message";
-import MessageInput from "~/components/MessageInput";
+// import Message from "~/components/Message";
+// import MessageInput from "~/components/MessageInput";
 import { useRouter } from "next/router";
 import { useStore, getChannelName } from "~/lib/Store";
 import { useEffect, useState } from "react";

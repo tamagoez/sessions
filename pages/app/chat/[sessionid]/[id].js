@@ -34,6 +34,10 @@ const ChannelsPage = (props) => {
     }
   }
 
+  if (!session) {
+    return null;
+  }
+
   const [channelname, setChannelname] = useState("Loading");
   const [sessionname, setSessionname] = useState("Loading");
 

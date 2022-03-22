@@ -133,7 +133,7 @@ const ChannelsPage = (props) => {
         <NavBar sessionname={sessionname} channelname={channelname} />
       </div>
       <div className="flex">
-        <ChannelFrame id={channelId} sid={secondchannelId} />
+        <ChannelFrame id={sessionId} sid={secondchannelId} />
       </div>
     </div>
   );

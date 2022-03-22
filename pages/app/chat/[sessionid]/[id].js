@@ -11,6 +11,7 @@ import supabase from "~/utils/supabaseClient";
 import NavBar from "~/components/NavBar";
 import { getWindowSize } from "~/utils/GetWindowSize";
 import getfromsec from "~/lib/GetFromSec";
+import SideChannel from "~/components/SideChannel";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
@@ -129,18 +130,21 @@ const ChannelsPage = (props) => {
       <div>
         <NavBar sessionname={sessionname} channelname={channelname} />
       </div>
-      <iframe
-        id="chat-frame"
-        title="Chat Frame"
-        width="100%"
-        height={height - 100}
-        src={
-          "https://web-sessions.vercel.app/app/frame/chat/" +
-          sessionId +
-          "/" +
-          secondchannelId
-        }
-      ></iframe>
+      <div className="flex">
+        <SideChannel id={channelId} />
+        <iframe
+          id="chat-frame"
+          title="Chat Frame"
+          width="100%"
+          height={height - 100}
+          src={
+            "https://web-sessions.vercel.app/app/frame/chat/" +
+            sessionId +
+            "/" +
+            secondchannelId
+          }
+        ></iframe>
+      </div>
     </div>
   );
 };

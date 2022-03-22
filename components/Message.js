@@ -5,6 +5,7 @@ import TrashIcon from "~/components/TrashIcon";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import { AvatarUrl } from "~/components/Avatar";
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext);
@@ -16,15 +17,21 @@ const Message = ({ message }) => {
     }
   }
 
+  function getURL(id) {
+    // const defgot = "https://hygtcrytqmrpkximlbnx.supabase.in/storage/v1/object/sign/avatars/default.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzL2RlZmF1bHQuc3ZnIiwiaWF0IjoxNjQ3OTUyNTYxLCJleHAiOjE5NjMzMTI1NjF9.BJfe97pv_5zPCe0eWPVFYktfVLUfsveX6uBjatX_b6M";
+    const urlgot = AvatarUrl(id);
+    return urlgot;
+  }
+
   return (
     <div
       className={
         user?.id === message.userid
-          ? "py-1 flex items-center space-x-3 right-0"
+          ? "py-1 flex justify-items-end items-center space-x-3"
           : "py-1 flex items-center space-x-3"
       }
     >
-      <div className="text-gray-400 w-4">
+      <div className="text-gray-300 w-4">
         {(user?.id === message.userid ||
           userRoles.some((role) => ["admin", "moderator"].includes(role))) && (
           <button onClick={() => delconf(message.id)}>
@@ -32,15 +39,33 @@ const Message = ({ message }) => {
           </button>
         )}
       </div>
+      <div>
+        <label tabindex="0" className="btn btn-ghost btn-circle avatar">
+          <div className="w-10 rounded-full">
+            <img
+              src={getURL(message.userid)}
+              alt={"Avatar of " + message.author.username}
+            />
+          </div>
+        </label>
+      </div>
       <div id="Message">
         <p className="text-black font-bold" id={message.id}>
           {message.author.username}
         </p>
-        <p className="text-black-800">
-          <ReactMarkdown plugins={[gfm]} unwrapDisallowed={false}>
-            {message.message}
-          </ReactMarkdown>
-        </p>
+        <div
+          className={
+            user?.id === message.id
+              ? "rounded-bl-xl shadow-md justify-items-center"
+              : "rounded-br-xl shadow-md"
+          }
+        >
+          <p className="text-black-900 m-2">
+            <ReactMarkdown plugins={[gfm]} unwrapDisallowed={false}>
+              {message.message}
+            </ReactMarkdown>
+          </p>
+        </div>
       </div>
     </div>
   );

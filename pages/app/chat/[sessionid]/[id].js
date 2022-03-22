@@ -21,6 +21,10 @@ const ChannelsPage = (props) => {
     return null;
   }
 
+  if (secondchannelId === 0) {
+    return null;
+  }
+
   // const [channelId, setChannelId] = useState(null);
   // setChannelId(getfromsec(secondchannelId));
   const channelId = getfromsec(sessionId, secondchannelId);

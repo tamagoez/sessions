@@ -3,15 +3,15 @@ import Message from "~/components/Message";
 import MessageInput from "~/components/MessageInput";
 import { useRouter } from "next/router";
 import { useStore, getChannelName } from "~/lib/Store";
-import { useContext, useEffect, useState } from "react";
-import UserContext from "~/lib/UserContext";
+import { useEffect, useState } from "react";
+// import UserContext from "~/lib/UserContext";
 import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
 import supabase from "~/utils/supabaseClient";
 // import { ChannelName, SessionName } from "~/lib/GetName";
 import NavBar from "~/components/NavBar";
-import { getWindowSize } from "~/utils/GetWindowSize";
+// import { getWindowSize } from "~/utils/GetWindowSize";
 import getfromsec from "~/lib/GetFromSec";
-import SideChannel from "~/components/SideChannel";
+import ChannelFrame from "~/components/ChannelFrame";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
@@ -69,12 +69,6 @@ const ChannelsPage = (props) => {
       // setSessionname(SessionName(sessionId))
     }
   }, [channels, channelId]);
-
-  if (process.browser) {
-    const { height } = getWindowSize();
-  } else {
-    const height = 1000;
-  }
 
   // const [loading, setLoading] = useState(false);
   async function getCName() {
@@ -135,19 +129,7 @@ const ChannelsPage = (props) => {
         <NavBar sessionname={sessionname} channelname={channelname} />
       </div>
       <div className="flex">
-        <SideChannel id={channelId} />
-        <iframe
-          id="chat-frame"
-          title="Chat Frame"
-          width="100%"
-          height={height - 100}
-          src={
-            "https://web-sessions.vercel.app/app/frame/chat/" +
-            sessionId +
-            "/" +
-            secondchannelId
-          }
-        ></iframe>
+        <ChannelFrame id={channelId} sid={secondchannelId} />
       </div>
     </div>
   );

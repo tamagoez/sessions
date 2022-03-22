@@ -69,15 +69,19 @@ export default function NavBar({ channelname, sessionname, thispage }) {
   }
 
   if (user) {
-    console.log("[NavBar]: Got props" + channelname + " / " + sessionname);
-    return getnavbar();
+    console.log("[NavBar] Got props: " + channelname + " / " + sessionname);
+    if (!user.id) {
+      return null;
+    } else {
+      const AURL = AvatarUrl(user.id);
+      return getnavbar(AURL);
+    }
   } else {
     console.log("not user");
     return null;
   }
 
-  function getnavbar() {
-    const avatarurl = AvatarUrl(user.id);
+  function getnavbar(avatarurl) {
     const navtitle = getnavtitle();
     return (
       <div className="navbar bg-base-100 mb-2 shadow-md rounded-box">

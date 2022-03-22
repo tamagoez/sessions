@@ -27,6 +27,7 @@ export default function ChannelFrame({ id, sid }) {
             </svg>
           </label>
         </div>
+        <div class="divider divider-horizontal" />
         <iframe
           id="chat-frame"
           title="Chat Frame"

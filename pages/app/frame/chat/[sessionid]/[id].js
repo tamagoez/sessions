@@ -17,8 +17,16 @@ const ChannelsPage = (props) => {
   if (!router.isReady) {
     return null;
   }
+
+  if (secondchannelId === 0) {
+    return null;
+  }
+
   const channelId = getfromsec(sessionId, secondchannelId);
   // const channelID = 1;
+  if (channelId === 0) {
+    return null;
+  }
 
   const { user, authLoaded, signOut } = useContext(UserContext);
   const messagesEndRef = useRef(null);

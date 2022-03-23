@@ -36,14 +36,29 @@ const Home = () => {
       // that must mean that a confirmation email has been sent.
       // NOTE: Confirming your email address is required by default.
       if (error) {
-        alert("Error with auth: " + error.message);
-      } else if (!user) alert("Signup successful! Your UserId is " + userid);
-      const { data, err } = await supabase
-        .from("users")
-        .update({ username: name })
-        .match({ username: userid });
-      if (err) {
-        alert("Error with setting: " + err.message);
+        throw error;
+      }
+      // Generate
+      //
+      const users = supabase.auth.user();
+      const updates = {
+        id: users.id,
+        username: name,
+        statustext: "",
+        avatar_url: "default.png",
+        website: "",
+        signed_at: new Date(),
+        last_login: new Date(),
+        hardload: false,
+        login_id: userid
+      };
+
+      let { error_upsert } = await supabase.from("profiles").upsert(updates, {
+        returning: "minimal" // Don't return the value after inserting
+      });
+
+      if (error_upsert) {
+        throw error;
       }
     } catch (error) {
       console.log("error", error);

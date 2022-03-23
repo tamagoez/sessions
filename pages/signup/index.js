@@ -24,21 +24,10 @@ const Home = () => {
       }
     }
   }, [query, router]);
-
-  const handleLogin = async (type, username, password, name) => {
+  
+  async function GenProfile(loginid, name){
     try {
-      const userid = username + "@web-sessions.vercel.app";
-      const { error, user } =
-        type === "LOGIN"
-          ? await supabase.auth.signIn({ email: userid, password })
-          : await supabase.auth.signUp({ email: userid, password });
-      // If the user doesn't exist here and an error hasn't been raised yet,
-      // that must mean that a confirmation email has been sent.
-      // NOTE: Confirming your email address is required by default.
-      if (error) {
-        throw error;
-      }
-      // Generate
+    // Generate
       //
       const users = supabase.auth.user();
       const updates = {
@@ -60,6 +49,25 @@ const Home = () => {
       if (error_upsert) {
         throw error;
       }
+    } catch (error) {
+      alert(error.message)
+    } finally {}
+  }
+
+  const handleLogin = async (type, username, password, name) => {
+    try {
+      const userid = username + "@web-sessions.vercel.app";
+      const { error, user } =
+        type === "LOGIN"
+          ? await supabase.auth.signIn({ email: userid, password })
+          : await supabase.auth.signUp({ email: userid, password });
+      // If the user doesn't exist here and an error hasn't been raised yet,
+      // that must mean that a confirmation email has been sent.
+      // NOTE: Confirming your email address is required by default.
+      if (error) {
+        throw error;
+      }
+      GenProfile(username, name)
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

@@ -39,7 +39,7 @@ const Home = () => {
         signed_at: new Date(),
         last_login: new Date(),
         hardload: false,
-        login_id: userid
+        login_id: loginid
       };
 
       let { error_upsert } = await supabase.from("profiles").upsert(updates, {

@@ -49,6 +49,7 @@ const Home = () => {
       if (error_upsert) {
         throw error;
       }
+      router.push(nextlink);
     } catch (error) {
       alert(error.message)
     } finally {}

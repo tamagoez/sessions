@@ -1,4 +1,5 @@
 import { getWindowSize } from "~/utils/GetWindowSize";
+import { ImNewTab } from "react-icons/im";
 
 export default function ChannelFrame({ id, sid }) {
   if (process.browser) {
@@ -6,17 +7,35 @@ export default function ChannelFrame({ id, sid }) {
   } else {
     const height = 1000;
   }
+
+  if (process.browser) {
+    //document.getElementById("chat-frame").style.display = "hidden";
+    //document.getElementById("chat-frame").onload = function () {
+    //  alert("myframe is loaded");
+    //};
+    // const subwinurl = "window.open('" + "/app/frame/chat/" + id + "/" + sid + "','subwin','width=300,height=300'); return false;"
+  }
+
+  function subwinopen() {
+    window.open(
+      "/app/frame/chat/" + id + "/" + sid,
+      "subwin",
+      "width=400,height=500"
+    );
+    return false;
+  }
+
   return (
     <div class="drawer drawer-mobile w-full">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex items-center justify-center">
-        <div class="flex-none lg:hidden">
+        <div class="flex-col lg:hidden">
           <label for="my-drawer-2" class="btn btn-square btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              class="inline-block w-6 h-6 stroke-current"
+              className="inline-block w-6 h-6 stroke-current"
             >
               <path
                 stroke-linecap="round"
@@ -26,6 +45,12 @@ export default function ChannelFrame({ id, sid }) {
               ></path>
             </svg>
           </label>
+          <button
+            className="btn btn-square btn-ghost"
+            onClick={() => subwinopen()}
+          >
+            <ImNewTab />
+          </button>
         </div>
         <div class="divider divider-horizontal" />
         <iframe
@@ -33,14 +58,17 @@ export default function ChannelFrame({ id, sid }) {
           title="Chat Frame"
           width="100%"
           height={height - 100}
-          src={
-            "https://web-sessions.vercel.app/app/frame/chat/" + id + "/" + sid
-          }
+          src={"/app/frame/chat/" + id + "/" + sid}
         ></iframe>
       </div>
       <div class="drawer-side">
         <label for="my-drawer-2" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-64 bg-base-100 text-base-content">
+          <li class="hover-bordered">
+            <a onClick={() => subwinopen()}>
+              <ImNewTab /> Open in child window
+            </a>
+          </li>
           <li>
             <a>Sidebar Item 1</a>
           </li>

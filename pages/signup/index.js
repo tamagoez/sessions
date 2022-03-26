@@ -24,36 +24,6 @@ const Home = () => {
       }
     }
   }, [query, router]);
-  
-  async function GenProfile(loginid, name){
-    try {
-    // Generate
-      //
-      const users = supabase.auth.user();
-      const updates = {
-        id: users.id,
-        username: name,
-        statustext: "",
-        avatar_url: "default.png",
-        website: "",
-        signed_at: new Date(),
-        last_login: new Date(),
-        hardload: false,
-        login_id: loginid
-      };
-
-      let { error_upsert } = await supabase.from("profiles").upsert(updates, {
-        returning: "minimal" // Don't return the value after inserting
-      });
-
-      if (error_upsert) {
-        throw error;
-      }
-      router.push(nextlink);
-    } catch (error) {
-      alert(error.message)
-    } finally {}
-  }
 
   const handleLogin = async (type, username, password, name) => {
     try {
@@ -68,7 +38,28 @@ const Home = () => {
       if (error) {
         throw error;
       }
-      GenProfile(username, name)
+      // Generate
+      //
+      const users = supabase.auth.user();
+      const updates = {
+        id: users.id,
+        username: name,
+        statustext: "",
+        avatar_url: "default.png",
+        website: "",
+        signed_at: new Date(),
+        last_login: new Date(),
+        hardload: false,
+        login_id: userid
+      };
+
+      let { error_upsert } = await supabase.from("profiles").upsert(updates, {
+        returning: "minimal" // Don't return the value after inserting
+      });
+
+      if (error_upsert) {
+        throw error;
+      }
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

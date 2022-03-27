@@ -6,6 +6,7 @@ const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [nextlink, setNextlink] = useState("");
+  const [session, setSession] = useState(null)
   const router = useRouter();
   const query = router.query;
 
@@ -16,13 +17,18 @@ const Home = () => {
       } else {
         setNextlink(query.next);
       }
+      console.log("Got query: " + nextlink)
       if (process.browser) {
-        const session = supabase.auth.session();
-        if (session) router.push(nextlink);
+        setSession(supabase.auth.session());
+        // if (session) router.push(nextlink);
         document.title = "Login - Sessions";
       }
     }
   }, [query, router]);
+
+  useEffect(() => {
+    if (session) router.push(nextlink)
+  }, [session, nextlink])
 
   const handleLogin = async (type, username, password) => {
     try {

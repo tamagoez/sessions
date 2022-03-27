@@ -153,7 +153,7 @@ function AccountData({ session }) {
               type="checkbox"
               id="hardload"
               className="toggle"
-              {...(!hardload ? null : "checked")}
+              checked={!hardload ? false: true}
               onChange={() => switchHL()}
             />
           </label>

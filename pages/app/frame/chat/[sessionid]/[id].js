@@ -41,7 +41,7 @@ const ChannelsPage = (props) => {
     }
   }
 
-  const { messages, channels } = useStore({ channelId });
+  const { messages, channels } = useStore({ channelId, hardload });
 
   useEffect(() => {
     messagesEndRef.current.scrollIntoView({
@@ -59,6 +59,34 @@ const ChannelsPage = (props) => {
       document.title = channelId + " - Sessions";
     }
   }, [channels, channelId]);
+
+  const [hardload, setHardload] = useState(undefined);
+  async function getProfile() {
+    try {
+      const user = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("profiles")
+        .select("hardload")
+        .eq("id", user.id)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        //setUsername(data.username);
+        //setStatustext(data.statustext);
+        //setAvatarUrl(data.avatar_url);
+        //setWebsite(data.website);
+        //setLogin_id(data.login_id);
+        setHardload(data.hardload);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   // Render the channels and messages
   return (

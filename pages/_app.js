@@ -34,8 +34,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
         setUserLoaded(!!currentUser);
         if (currentUser) {
           signIn();
-          // Router.push("/app/dashboard");
-          console.log('Seems signed up')
+          Router.push("/app/dashboard");
         }
       }
     );

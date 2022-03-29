@@ -6,6 +6,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { AvatarUrl } from "~/components/Avatar";
+const { DateTime } = require("luxon");
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext);
@@ -21,6 +22,14 @@ const Message = ({ message }) => {
     // const defgot = "https://hygtcrytqmrpkximlbnx.supabase.in/storage/v1/object/sign/avatars/default.svg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJhdmF0YXJzL2RlZmF1bHQuc3ZnIiwiaWF0IjoxNjQ3OTUyNTYxLCJleHAiOjE5NjMzMTI1NjF9.BJfe97pv_5zPCe0eWPVFYktfVLUfsveX6uBjatX_b6M";
     const urlgot = AvatarUrl(id);
     return urlgot;
+  }
+
+  function replacetz(time) {
+    // const systemtz = DateTime.now().locale;
+    // Settings.defaultZone = "system";
+    const defaulttime = DateTime.fromISO(time);
+    const rezoned = defaulttime.setZone(DateTime.local().zoneName);
+    return rezoned.toFormat("ff").toString();
   }
 
   return (
@@ -52,6 +61,9 @@ const Message = ({ message }) => {
       <div id="Message">
         <p className="text-black font-bold" id={message.id}>
           {message.author.username}
+        </p>
+        <p className="text-slate-500 text-sm">
+          {replacetz(message.created_at)}
         </p>
         <div
           className={

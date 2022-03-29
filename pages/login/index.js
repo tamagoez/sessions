@@ -26,9 +26,9 @@ const Home = () => {
     }
   }, [query, router]);
 
-  useEffect(() => {
-    if (session) router.push(nextlink)
-  }, [session, nextlink])
+  //useEffect(() => {
+  //  if (session) router.push(nextlink)
+  //}, [session, nextlink])
 
   const handleLogin = async (type, username, password) => {
     try {
@@ -42,8 +42,10 @@ const Home = () => {
       // NOTE: Confirming your email address is required by default.
       if (error) {
         alert("Error with auth: " + error.message);
-      } else if (!user)
+      } else if (!user) {
         alert("Signup successful, confirmation mail should be sent soon!");
+      }
+      if (user) {router.push(nextlink)}
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

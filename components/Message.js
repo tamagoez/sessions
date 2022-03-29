@@ -55,7 +55,7 @@ const Message = ({ message }) => {
         </p>
         <div
           className={
-            user?.id === message.id
+            user?.id === message.userid
               ? "rounded-bl-xl shadow-md justify-items-center"
               : "rounded-br-xl shadow-md"
           }

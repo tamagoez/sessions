@@ -58,7 +58,7 @@ export default function ChannelFrame({ id, sid }) {
           title="Chat Frame"
           width="100%"
           height={height - 50}
-          src={"https://web-sessions.vercel.app/app/frame/chat/" + id + "/" + sid}
+          src={"/app/frame/chat/" + id + "/" + sid}
         ></iframe>
       </div>
       <div class="drawer-side">
@@ -68,8 +68,6 @@ export default function ChannelFrame({ id, sid }) {
             <a onClick={() => subwinopen()}>
               <ImNewTab /> Open in child window
             </a>
-          </li>
-          <li>
             <a href="/app/chat/1/1">Testの奴</a>
           </li>
           <li>

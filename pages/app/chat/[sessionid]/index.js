@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import supabase from "~/utils/supabaseClient";
 import NavBar from "~/components/NavBar";
+import { fetchChannels } from "~/lib/GetArray";
 
 export default function CardPage() {
   const router = useRouter();
@@ -10,6 +11,7 @@ export default function CardPage() {
   }
   const { sessionid: sessionId } = router.query;
   const [sessionname, setSessionname] = useState("Loading");
+  const { channels } = fetchChannels(sessionId);
 
   async function getSName() {
     try {
@@ -34,7 +36,7 @@ export default function CardPage() {
     }
   }
 
-  function card(title, description, link) {
+  function card({ title, description, link }) {
     return (
       <div class="indicator">
         <div class="indicator-item indicator-bottom">
@@ -60,7 +62,13 @@ export default function CardPage() {
       <div>
         <NavBar sessionname={sessionname} />
       </div>
-      {card("test", null, "1/1")}
+      {channels.map((x) => (
+        <card
+          title={x.name}
+          description={x.description}
+          link={"/app/chat/" + sessionId + "/" + x.id}
+        />
+      ))}
     </div>
   );
 }

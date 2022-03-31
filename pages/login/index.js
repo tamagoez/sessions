@@ -6,7 +6,7 @@ const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [nextlink, setNextlink] = useState("");
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState(null);
   const router = useRouter();
   const query = router.query;
 
@@ -17,7 +17,7 @@ const Home = () => {
       } else {
         setNextlink(query.next);
       }
-      console.log("Got query: " + nextlink)
+      console.log("Got query: " + nextlink);
       if (process.browser) {
         setSession(supabase.auth.session());
         // if (session) router.push(nextlink);
@@ -45,7 +45,14 @@ const Home = () => {
       } else if (!user) {
         alert("Signup successful, confirmation mail should be sent soon!");
       }
-      if (user) {router.push(nextlink)}
+      if (user) {
+        if (!query.next) {
+          setNextlink("/app/dashboard");
+        } else {
+          setNextlink(query.next);
+        }
+        router.push(nextlink);
+      }
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

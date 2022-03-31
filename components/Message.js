@@ -48,7 +48,7 @@ const Message = ({ message }) => {
           </button>
         )}
       </div>
-      <div class="dropdown dropdown-right">
+      <div class="dropdown dropdown-right dropdown-end">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img

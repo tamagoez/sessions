@@ -58,7 +58,7 @@ export default function ChannelFrame({ id, sid }) {
           title="Chat Frame"
           width="100%"
           height={height - 50}
-          src={"/app/frame/chat/" + id + "/" + sid}
+          src={"https://web-sessions.vercel.app/app/frame/chat/" + id + "/" + sid}
         ></iframe>
       </div>
       <div class="drawer-side">

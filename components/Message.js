@@ -48,7 +48,7 @@ const Message = ({ message }) => {
           </button>
         )}
       </div>
-      <div>
+      <div class="dropdown dropdown-right">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img
@@ -57,6 +57,19 @@ const Message = ({ message }) => {
             />
           </div>
         </label>
+        <div
+          tabindex="0"
+          class="divide-y divide-dashed dropdown-content p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <div>
+            <p className="text-lg font-bold">{message.author.username}</p>
+            <p className="text-xs">{message.author.id}</p>
+          </div>
+          <div>
+            <p>{replacetz(message.created_at)}</p>
+            <p>ID: {message.id}</p>
+          </div>
+        </div>
       </div>
       <div id="Message">
         <p className="text-black font-bold" id={message.id}>

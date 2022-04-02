@@ -144,7 +144,7 @@ const ChannelsPage = (props) => {
     <>
       <button className="btn" ref={btnRef} onClick={onOpen}>
         Sidebar
-      </buttom>
+      </button>
       <Drawer
         isOpen={isOpen}
         placement='left'

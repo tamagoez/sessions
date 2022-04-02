@@ -170,8 +170,9 @@ const ChannelsPage = (props) => {
       >
         <DrawerOverlay />
         <DrawerContent>
+          <div>
           <DrawerCloseButton />
-          <DrawerHeader>{sessionname} Channels</DrawerHeader>
+          <DrawerHeader><p className="text-lg">@ {sessionname} Channels</DrawerHeader>
           <DrawerBody>
             <ul className="menu bg-base-100 w-56 p-2 rounded-box">
               <li><a>Item 1</a></li>
@@ -181,6 +182,7 @@ const ChannelsPage = (props) => {
           </DrawerBody>
           <DrawerFooter>
           </DrawerFooter>
+          </div>
         </DrawerContent>
       </Drawer>
     </>

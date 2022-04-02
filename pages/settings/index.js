@@ -63,6 +63,14 @@ function AccountData({ session }) {
       setLoading(false);
     }
   }
+  
+  function switchHL() {
+    if (document.getElementById("hardload").checked) {
+      setHardload(true);
+    } else {
+      setHardload(false);
+    }
+  }
 
   return (
     <div>

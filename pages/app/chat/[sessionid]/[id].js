@@ -13,6 +13,16 @@ import NavBar from "~/components/NavBar";
 import getfromsec from "~/lib/GetFromSec";
 import ChannelFrame from "~/components/ChannelFrame";
 
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from '@chakra-ui/react'
+
 const ChannelsPage = (props) => {
   const router = useRouter();
   const { id: secondchannelId, sessionid: sessionId } = router.query;
@@ -125,6 +135,32 @@ const ChannelsPage = (props) => {
     if (process.browser)
       document.title = "#" + channelname + " < @" + sessionname + " - Sessions";
   }, [channelname, sessionname]);
+  
+  function DrawerChakra() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
+
+  return (
+    <>
+      <button className="btn" ref={btnRef} onClick={onOpen}>
+        Sidebar
+      </buttom>
+      <Drawer
+        isOpen={isOpen}
+        placement='left'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerFooter>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    </>
+  )
+}
 
   // Render the channels and messages
   return (
@@ -132,7 +168,8 @@ const ChannelsPage = (props) => {
       <div>
         <NavBar sessionname={sessionname} channelname={channelname} />
       </div>
-      <div className="">
+      <DrawerChakra />
+      <div className="flex">
         <ChannelFrame
           channelname={channelname}
           sessionname={sessionname}

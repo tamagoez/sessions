@@ -170,7 +170,7 @@ const ChannelsPage = (props) => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <div>
+          <div className="artboard">
           <DrawerCloseButton />
           <DrawerHeader><p className="text-lg">@ {sessionname} Channels</p></DrawerHeader>
           <DrawerBody>

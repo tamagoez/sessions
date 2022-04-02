@@ -156,6 +156,11 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
+                <a>
+                  <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS" />
+                </a>
+              </li>
+              <li>
                 <a className="justify-between" href="/profile">
                   Profile
                 </a>

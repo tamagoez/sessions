@@ -139,12 +139,13 @@ const ChannelsPage = (props) => {
       document.title = "#" + channelname + " < @" + sessionname + " - Sessions";
   }, [channelname, sessionname]);
   
-  function DrawerChakra() {
+  function SideProps() {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const btnRef = React.useRef()
 
   return (
     <>
+      <div className="flex-col">
       <button className="btn" ref={btnRef} onClick={onOpen}>
         <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -160,6 +161,7 @@ const ChannelsPage = (props) => {
               ></path>
             </svg>
       </button>
+      </div>
       <Drawer
         isOpen={isOpen}
         placement='left'
@@ -191,14 +193,18 @@ const ChannelsPage = (props) => {
       <div>
         <NavBar sessionname={sessionname} channelname={channelname} />
       </div>
-      <div className="flex-col">
-      <DrawerChakra />
+      <div className="flex">
+        <div>
+          <SideProps />
+        </div>
+        <div>
         <ChannelFrame
           channelname={channelname}
           sessionname={sessionname}
           id={sessionId}
           sid={secondchannelId}
         />
+        </div>
       </div>
     </div>
   );

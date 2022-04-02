@@ -8,6 +8,7 @@ import { supabase, fetchUserRoles } from "lib/Store";
 // import NavBar from '~/components/NavBar'
 // import { Sandpack } from "@codesandbox/sandpack-react";
 // import "@codesandbox/sandpack-react/dist/index.css";
+import { themeChange } from 'theme-change'
 
 export default function SupabaseSlackClone({ Component, pageProps }) {
   // App.getInitialProps = async () => ({ pageProps: {} })
@@ -15,6 +16,11 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
   const [user, setUser] = useState(null);
   const [session, setSession] = useState(null);
   const [userRoles, setUserRoles] = useState([]);
+  
+  useEffect(() => {
+    themeChange(false)
+    // 👆 false parameter is required for react project
+  }, [])
 
   useEffect(() => {
     const session = supabase.auth.session();

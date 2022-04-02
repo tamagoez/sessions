@@ -13,6 +13,8 @@ import NavBar from "~/components/NavBar";
 import getfromsec from "~/lib/GetFromSec";
 import ChannelFrame from "~/components/ChannelFrame";
 
+import React from 'react';
+
 import {
   Drawer,
   DrawerBody,

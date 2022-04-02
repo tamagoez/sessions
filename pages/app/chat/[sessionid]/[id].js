@@ -191,9 +191,6 @@ const ChannelsPage = (props) => {
         <NavBar sessionname={sessionname} channelname={channelname} />
       </div>
       <div className="flex">
-        <div>
-          <SideProps />
-        </div>
         <div className="grow">
         <ChannelFrame
           channelname={channelname}

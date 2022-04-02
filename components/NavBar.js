@@ -157,7 +157,11 @@ export default function NavBar({ channelname, sessionname, thispage }) {
             >
               <li>
                 <a>
-                  <button data-toggle-theme="dark,light" data-act-class="ACTIVECLASS" />
+                  <select data-choose-theme className="select w-full max-w-xs">
+  <option value="">Default</option>
+  <option value="dark">Dark</option>
+  <option value="pink">Pink</option>
+</select>
                 </a>
               </li>
               <li>

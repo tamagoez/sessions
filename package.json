@@ -15,6 +15,7 @@
     "browserslist": ">=4.20.0",
     "crypto-js": "^4.1.1",
     "daisyui": "2.13.5",
+    "theme-change": "^2.0.2",
     "luxon": "^2.3.1",
     "next": ">=12.1.0",
     "postcss": "^8.4.4",

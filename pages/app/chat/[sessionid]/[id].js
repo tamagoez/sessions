@@ -172,7 +172,7 @@ const ChannelsPage = (props) => {
         <DrawerContent>
           <div>
           <DrawerCloseButton />
-          <DrawerHeader><p className="text-lg">@ {sessionname} Channels</DrawerHeader>
+          <DrawerHeader><p className="text-lg">@ {sessionname} Channels</p></DrawerHeader>
           <DrawerBody>
             <ul className="menu bg-base-100 w-56 p-2 rounded-box">
               <li><a>Item 1</a></li>

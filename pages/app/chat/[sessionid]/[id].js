@@ -197,7 +197,7 @@ const ChannelsPage = (props) => {
         <div>
           <SideProps />
         </div>
-        <div className"grow">
+        <div className="grow">
         <ChannelFrame
           channelname={channelname}
           sessionname={sessionname}

@@ -3,7 +3,9 @@
 **Simple** design, **useful** tools, **no ADs** to concentrate.  
 **100% Free** to use.  
 Try it now!  
-[https://web-sessions.vercel.app](https://web-sessions.vercel.app)
+[https://web-sessions.vercel.app](https://web-sessions.vercel.app)  
+![Shields.io](https://img.shields.io/github/commit-activity/w/tamagoez/sessions)  
+
 
 ## Status
 [![CodeFactor](https://www.codefactor.io/repository/github/tamagoez/sessions/badge)](https://www.codefactor.io/repository/github/tamagoez/sessions)  

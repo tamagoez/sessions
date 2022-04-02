@@ -170,19 +170,14 @@ const ChannelsPage = (props) => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <div className="artboard">
-          <DrawerCloseButton />
-          <DrawerHeader><p className="text-lg">@ {sessionname} Channels</p></DrawerHeader>
-          <DrawerBody>
-            <ul className="menu bg-base-100 w-56 p-2 rounded-box">
-              <li><a>Item 1</a></li>
-              <li><a>Item 2</a></li>
-              <li><a>Item 3</a></li>
-          </ul>
-          </DrawerBody>
-          <DrawerFooter>
-          </DrawerFooter>
-          </div>
+             <div className="drawer-side">
+    <label for="my-drawer" className="drawer-overlay"></label>
+    <DrawerCloseButton />
+    <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+      <li><a>Sidebar Item 1</a></li>
+      <li><a>Sidebar Item 2</a></li>
+    </ul>
+  </div>
         </DrawerContent>
       </Drawer>
     </>

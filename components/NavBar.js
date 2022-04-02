@@ -15,14 +15,22 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               </a>
             </li>
             <li className="hidden sm:block">
-              <a className="btn btn-ghost normal-case text-xl" href="./">
-                @ {sessionname}
-              </a>
+              <div className="dropdown">
+  <label tabindex="0" className="btn m-1">@ {sessionname}</label>
+  <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
             </li>
             <li>
-              <a className="btn btn-ghost normal-case text-xl">
-                # {channelname}
-              </a>
+              <div className="dropdown">
+  <label tabindex="0" className="btn m-1"># {channelname}</label>
+  <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</div>
             </li>
           </ul>
         </div>

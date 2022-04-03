@@ -125,7 +125,7 @@ function AvatarUrl(id) {
       }
       const url = URL.createObjectURL(data)
       setAvatarUrl(url)
-      // return url
+      return url
       //return data
     } catch (error) {
       console.log('Error downloading image: ', error.message)
@@ -133,7 +133,7 @@ function AvatarUrl(id) {
       console.log('[AvatarUrl] Got url: ' + avatarUrl)
     }
   }
-  return avatarUrl;
+  // return avatarUrl;
 }
 
 export { AvatarSetting, AvatarUrl }

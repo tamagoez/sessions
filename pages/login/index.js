@@ -26,9 +26,9 @@ const Home = () => {
     }
   }, [query, router]);
 
-  //useEffect(() => {
-  //  if (session) router.push(nextlink)
-  //}, [session, nextlink])
+  useEffect(() => {
+    if (session) router.push(nextlink)
+  }, [session])
 
   const handleLogin = async (type, username, password) => {
     try {

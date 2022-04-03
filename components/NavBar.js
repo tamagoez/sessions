@@ -156,13 +156,14 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>
-                  <select data-choose-theme className="select w-full max-w-xs">
+                  <select data-choose-theme className="select select-sm w-full max-w-xs">
   <option value="">Default</option>
   <option value="dark">Dark</option>
-  <option value="pink">Pink</option>
+  <option value="winter">Winter</option>
+  <option value="emerald">Emerald</option>
+  <option value="black">Black</option>
+  <option value="cupcake">Cupcake</option>
 </select>
-                </a>
               </li>
               <li>
                 <a className="justify-between" href="/profile">

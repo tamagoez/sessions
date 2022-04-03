@@ -10,7 +10,7 @@ import supabase from "~/utils/supabaseClient";
 import { ChannelName, SessionName } from "~/lib/GetName";
 import getfromsec from "~/lib/GetFromSec";
 
-import deleteLStorage from "~/utils/deleteLStorage";
+// import deleteLStorage from "~/utils/deleteLStorage";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
@@ -31,7 +31,7 @@ const ChannelsPage = (props) => {
   // Else load up the page
 
   if (process.browser) {
-    deleteLStorage();
+    // deleteLStorage();
     const usersession = supabase.auth.session();
     const userid = usersession.user.id;
     const sessioncheck = CheckSessionMember(userid, sessionId);

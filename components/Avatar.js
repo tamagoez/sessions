@@ -131,7 +131,7 @@ function AvatarUrl(id) {
       reader.readAsDataURL(xhr.response);
     };
     xhr.open('GET', url);
-    // xhr.responseType = 'blob';
+    xhr.responseType = 'blob';
     xhr.send();
   }
 
@@ -142,7 +142,7 @@ function AvatarUrl(id) {
         throw error
       }
       const url = URL.createObjectURL(data)
-      toBase64Url('images/star.png', function(base64Url){
+      toBase64Url(url, function(base64Url){
         console.log('base64Url : ', base64Url);
         localStorage.setItem('avatar_' + id, base64Url);
         setAvatarUrl(base64Url)

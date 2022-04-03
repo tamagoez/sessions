@@ -30,18 +30,20 @@ const ChannelsPage = (props) => {
 
   // Else load up the page
 
-  if (process.browser) {
-    // deleteLStorage();
-    const usersession = supabase.auth.session();
-    const userid = usersession.user.id;
-    const sessioncheck = CheckSessionMember(userid, sessionId);
-    const channelcheck = CheckChannelMember(userid, channelId);
-    if (sessioncheck) {
-      console.log("[Main] This user is a member of this session");
-    } else {
-      router.push("/404");
+  useEffect(() => {
+    if (process.browser) {
+      // deleteLStorage();
+      const usersession = supabase.auth.session();
+      const userid = usersession.user.id;
+      const sessioncheck = CheckSessionMember(userid, sessionId);
+      const channelcheck = CheckChannelMember(userid, channelId);
+      if (sessioncheck) {
+        console.log("[Main] This user is a member of this session");
+      } else {
+        router.push("/404");
+      }
     }
-  }
+  }, [])
 
   const { messages, channels } = useStore({ channelId, hardload });
 

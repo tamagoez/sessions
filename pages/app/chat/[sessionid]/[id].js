@@ -1,19 +1,11 @@
-import Layout from "~/components/Layout";
-// import Message from "~/components/Message";
-// import MessageInput from "~/components/MessageInput";
 import { useRouter } from "next/router";
-import { useStore, getChannelName } from "~/lib/Store";
-import { useEffect, useState } from "react";
-// import UserContext from "~/lib/UserContext";
+import { useStore } from "~/lib/Store";
+import { useEffect, useRef, useState } from "react";
 import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
 import supabase from "~/utils/supabaseClient";
-// import { ChannelName, SessionName } from "~/lib/GetName";
 import NavBar from "~/components/NavBar";
-// import { getWindowSize } from "~/utils/GetWindowSize";
 import getfromsec from "~/lib/GetFromSec";
 import ChannelFrame from "~/components/ChannelFrame";
-
-import React from 'react';
 
 import {
   Drawer,
@@ -37,9 +29,6 @@ const ChannelsPage = (props) => {
   if (secondchannelId === 0) {
     return null;
   }
-
-  // const [channelId, setChannelId] = useState(null);
-  // setChannelId(getfromsec(secondchannelId));
   const channelId = getfromsec(sessionId, secondchannelId);
 
   const session = supabase.auth.session();
@@ -57,8 +46,6 @@ const ChannelsPage = (props) => {
 
   const [channelname, setChannelname] = useState("Loading");
   const [sessionname, setSessionname] = useState("Loading");
-
-  // const { user, authLoaded, signOut } = useContext(UserContext);
   const { channels } = useStore({ channelId });
 
   // Else load up the page
@@ -68,7 +55,6 @@ const ChannelsPage = (props) => {
       const usersession = supabase.auth.session();
       setUserid(usersession.user.id);
       const sessioncheck = CheckSessionMember(userid, sessionId);
-      const channelcheck = CheckChannelMember(userid, channelId);
       if (sessioncheck) {
         console.log("[Main] This user is a member of this session");
       } else {
@@ -86,8 +72,6 @@ const ChannelsPage = (props) => {
       // setSessionname(SessionName(sessionId))
     }
   }, [channels, channelId]);
-
-  // const [loading, setLoading] = useState(false);
   async function getCName() {
     try {
       // const cname = supabase.auth.user();
@@ -107,14 +91,11 @@ const ChannelsPage = (props) => {
       }
     } catch (error) {
       alert(error.message);
-    } finally {
     }
   }
 
   async function getSName() {
     try {
-      // const cname = supabase.auth.user();
-
       let { data, error, status } = await supabase
         .from("sessions")
         .select("name")
@@ -130,7 +111,6 @@ const ChannelsPage = (props) => {
       }
     } catch (error) {
       alert(error.message);
-    } finally {
     }
   }
 
@@ -141,7 +121,7 @@ const ChannelsPage = (props) => {
   
   function SideProps() {
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = React.useRef()
+  const btnRef = useRef()
 
   return (
     <>

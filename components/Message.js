@@ -51,6 +51,23 @@ const toBase64 = (str) =>
     const rezoned = defaulttime.setZone(DateTime.local().zoneName);
     return rezoned.toFormat("ff").toString();
   }
+  
+  function imgavatar(id, username){
+    if (id) {
+      return (
+        <Image
+              src={getURL(id)}
+              alt={"Avatar of " + username}
+              placeholder="blur"
+              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
+              width={100}
+              height={100}
+            />
+          )
+      } else {
+        return null
+      }
+  }
 
   return (
     <div
@@ -71,18 +88,7 @@ const toBase64 = (str) =>
       <div class="dropdown dropdown-right dropdown-end">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            {if (message.userid){
-             return (
-            <Image
-              src={getURL(message.userid)}
-              alt={"Avatar of " + message.author.username}
-              placeholder="blur"
-              blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(700, 475))}`}
-              width={100}
-              height={100}
-            />
-            )}
-            }
+            {imgavatar(message.author.id, message.author.username)}
           </div>
         </label>
         <div

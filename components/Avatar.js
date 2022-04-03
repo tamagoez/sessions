@@ -88,7 +88,11 @@ function AvatarUrl(id) {
   console.log('[AvatarUrl] Got prop: ' + id)
   const [avatarUrl, setAvatarUrl] = useState(null)
   useEffect(() => {
-    getProfile(id)
+    if (!localStorage.getItem("avatar_" + id)){
+      getProfile(id)
+    } else {
+      setAvatarUrl(localStorage.getItem("avatar_" + id))
+    }
   }, [])
   
   async function getProfile(id) {
@@ -116,6 +120,20 @@ function AvatarUrl(id) {
   useEffect(() => {
     if (avatarUrl) downloadImage(avatarUrl)
   }, [avatarUrl])
+  
+  function toBase64Url(url, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function() {
+      var reader = new FileReader();
+      reader.onloadend = function() {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
 
   async function downloadImage(path) {
     try {
@@ -124,8 +142,13 @@ function AvatarUrl(id) {
         throw error
       }
       const url = URL.createObjectURL(data)
-      setAvatarUrl(url)
-      return url
+      toBase64Url('images/star.png', function(base64Url){
+        console.log('base64Url : ', base64Url);
+        localStorage.setItem('avatar_' + id, base64Url);
+        setAvatarUrl(base64Url)
+      });
+      // setAvatarUrl(url)
+      // return url
       //return data
     } catch (error) {
       console.log('Error downloading image: ', error.message)

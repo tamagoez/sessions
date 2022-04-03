@@ -3,11 +3,7 @@ import "~/styles/globals.css";
 import React, { useState, useEffect } from "react";
 import Router from "next/router";
 import UserContext from "lib/UserContext";
-import { supabase, fetchUserRoles } from "lib/Store";
-// import App from 'next/app'
-// import NavBar from '~/components/NavBar'
-// import { Sandpack } from "@codesandbox/sandpack-react";
-// import "@codesandbox/sandpack-react/dist/index.css";
+import { supabase, fetchUserRoles } from "lib/Store"
 import { themeChange } from 'theme-change'
 
 export default function SupabaseSlackClone({ Component, pageProps }) {
@@ -33,7 +29,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     }
 
     const { data: authListener } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
+      async (_event, session) => {
         setSession(session);
         const currentUser = session?.user;
         setUser(currentUser ?? null);

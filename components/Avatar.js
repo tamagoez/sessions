@@ -133,7 +133,7 @@ function AvatarUrl(id) {
       console.log('[AvatarUrl] Got url: ' + avatarUrl)
     }
   }
-  // return avatarUrl;
+  return avatarUrl;
 }
 
 export { AvatarSetting, AvatarUrl }

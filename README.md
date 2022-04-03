@@ -3,10 +3,13 @@
 **Simple** design, **useful** tools, **no ADs** to concentrate.  
 **100% Free** to use.  
 Try it now!  
-[https://web-sessions.vercel.app](https://web-sessions.vercel.app)
+[https://web-sessions.vercel.app](https://web-sessions.vercel.app)  
+![Shields.io](https://img.shields.io/github/commit-activity/w/tamagoez/sessions)  
+
 
 ## Status
 [![CodeFactor](https://www.codefactor.io/repository/github/tamagoez/sessions/badge)](https://www.codefactor.io/repository/github/tamagoez/sessions)  
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=tamagoez_sessions)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)  
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)  
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=bugs)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=tamagoez_sessions&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=tamagoez_sessions)

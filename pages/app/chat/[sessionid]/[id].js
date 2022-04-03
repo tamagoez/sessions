@@ -1,87 +1,187 @@
-import Layout from '~/components/Layout'
-import Message from '~/components/Message'
-import MessageInput from '~/components/MessageInput'
-import { useRouter } from 'next/router'
-import { useStore, addMessage } from '~/lib/Store'
-import { useContext, useEffect, useRef, useState } from 'react'
-import UserContext from '~/lib/UserContext'
-import { CheckSessionMember, CheckChannelMember } from '~/lib/CheckUser'
-import supabase from '~/utils/supabaseClient'
-import { ChannelName, SessionName } from '~/lib/GetName'
-import NavBar from '~/components/NavBar'
+import { useRouter } from "next/router";
+import { useStore } from "~/lib/Store";
+import { useEffect, useRef, useState } from "react";
+import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
+import supabase from "~/utils/supabaseClient";
+import NavBar from "~/components/NavBar";
+import getfromsec from "~/lib/GetFromSec";
+import ChannelFrame from "~/components/ChannelFrame";
 
-const ChannelsPage = (props) => {  
-  const router = useRouter()
-  const { id: channelId, sessionid: sessionId } = router.query
-  
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+} from '@chakra-ui/react'
+
+const ChannelsPage = (props) => {
+  const router = useRouter();
+  const { id: secondchannelId, sessionid: sessionId } = router.query;
+
+  if (!router.isReady) {
+    return null;
+  }
+
+  if (secondchannelId === 0) {
+    return null;
+  }
+  const channelId = getfromsec(sessionId, secondchannelId);
+
   const session = supabase.auth.session();
   if (process.browser) {
     if (!session) {
-      const tempredirectlink = '/login?next=/app/chat/' + sessionId + '/' + channelId
-      router.push(tempredirectlink)
+      const tempredirectlink =
+        "/login?next=/app/chat/" + sessionId + "/" + secondchannelId;
+      router.push(tempredirectlink);
     }
   }
-  
-  const [channelname, setChannelname] = useState(null)
-  const [sessionname, setSessionname] = useState(null)
-  useEffect(() => {
-    setChannelname = ChannelName(channelId)
-    setSessionname = SessionName(sessionId)
-  }, [])
-  
-  const { user, authLoaded, signOut } = useContext(UserContext)
-  const messagesEndRef = useRef(null)
+
+  if (!session) {
+    return null;
+  }
+
+  const [channelname, setChannelname] = useState("Loading");
+  const [sessionname, setSessionname] = useState("Loading");
+  const { channels } = useStore({ channelId });
 
   // Else load up the page
-  
-  if (process.browser) {
-    const usersession = supabase.auth.session()
-    const userid = usersession.user.id
-    const sessioncheck = CheckSessionMember(userid, sessionId)
-    const channelcheck = CheckChannelMember(userid, channelId)
-    if (sessioncheck) { console.log('[Main] This user is a member of this session') } else { router.push('/404') }
-    }
-  
-  const { messages, channels } = useStore({ channelId })
-
+  const [userid, setUserid] = useState(null);
   useEffect(() => {
-    messagesEndRef.current.scrollIntoView({
-      block: 'start',
-      behavior: 'smooth',
-    })
-  }, [messages])
+    if (process.browser) {
+      const usersession = supabase.auth.session();
+      setUserid(usersession.user.id);
+      const sessioncheck = CheckSessionMember(userid, sessionId);
+      if (sessioncheck) {
+        console.log("[Main] This user is a member of this session");
+      } else {
+        router.push("/404");
+      }
+    }
+  }, []);
 
   // redirect to public channel when current channel is deleted
   useEffect(() => {
-    if (!channels.some((channel) => channel.id === Number(channelId))) {
-      // router.push('/channels/1')
-    }
     if (process.browser) {
-      document.title = channelId + " - Sessions";
+      getCName();
+      getSName();
+      document.title = "#" + channelname + " @" + sessionname + " - Sessions";
+      // setSessionname(SessionName(sessionId))
     }
-  }, [channels, channelId])
+  }, [channels, channelId]);
+  async function getCName() {
+    try {
+      // const cname = supabase.auth.user();
+
+      let { data, error, status } = await supabase
+        .from("channels")
+        .select("name")
+        .eq("id", channelId)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setChannelname(data.name);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  async function getSName() {
+    try {
+      let { data, error, status } = await supabase
+        .from("sessions")
+        .select("name")
+        .eq("id", sessionId)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        setSessionname(data.name);
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  }
+
+  useEffect(() => {
+    if (process.browser)
+      document.title = "#" + channelname + " < @" + sessionname + " - Sessions";
+  }, [channelname, sessionname]);
+  
+  function SideProps() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef()
+
+  return (
+    <>
+      <div className="flex-col">
+      <button className="btn" ref={btnRef} onClick={onOpen}>
+        <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="inline-block w-6 h-6 stroke-current"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+      </button>
+      </div>
+      <Drawer
+        isOpen={isOpen}
+        placement='left'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+           <DrawerCloseButton />
+             <div className="drawer-side">
+    <label for="my-drawer" className="drawer-overlay"></label>
+    <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+      <li><a>Sidebar Item 1</a></li>
+      <li><a>Sidebar Item 2</a></li>
+    </ul>
+  </div>
+        </DrawerContent>
+      </Drawer>
+    </>
+  )
+}
 
   // Render the channels and messages
   return (
     <div>
-    <NavBar channelname={channelname} sessionname={sessionname} />
-    <Layout channels={channels} activeChannelId={channelId}>
-      <div className="relative h-screen">
-        <div className="Messages h-full pb-16">
-          <div className="p-2 overflow-y-auto">
-            {messages.map((x) => (
-              <Message key={x.id} message={x} />
-            ))}
-            <div ref={messagesEndRef} style={{ height: 0 }} />
-          </div>
-        </div>
-        <div className="p-2 absolute bottom-0 left-0 w-full">
-          <MessageInput onSubmit={async (text) => addMessage(text, channelId, user.id)} />
+      <div>
+        <NavBar sessionname={sessionname} channelname={channelname} />
+      </div>
+      <div className="flex">
+        <div className="grow">
+        <ChannelFrame
+          channelname={channelname}
+          sessionname={sessionname}
+          id={sessionId}
+          sid={secondchannelId}
+        />
         </div>
       </div>
-    </Layout>
     </div>
-  )
-}
+  );
+};
 
-export default ChannelsPage
+export default ChannelsPage;

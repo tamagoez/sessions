@@ -1,18 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "lib/Store";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [nextlink, setNextlink] = useState("");
+  const router = useRouter();
+  const query = router.query;
 
-  if (process.browser) {
-    document.title = "SignUp - Sessions";
-  }
+  useEffect(() => {
+    if (router.isReady) {
+      if (!query.next) {
+        setNextlink("/profiles");
+      } else {
+        setNextlink(query.next);
+      }
+      if (process.browser) {
+        const session = supabase.auth.session();
+        if (session) router.push(nextlink);
+        document.title = "Signup - Sessions";
+      }
+    }
+  }, [query, router]);
 
   const handleLogin = async (type, username, password, name) => {
     try {
-      const userid = username + '@web-sessions.vercel.app'
+      const userid = username + "@web-sessions.vercel.app";
       const { error, user } =
         type === "LOGIN"
           ? await supabase.auth.signIn({ email: userid, password })
@@ -21,20 +36,34 @@ const Home = () => {
       // that must mean that a confirmation email has been sent.
       // NOTE: Confirming your email address is required by default.
       if (error) {
-        alert("Error with auth: " + error.message);
-      } else if (!user)
-        alert("Signup successful! Your UserId is " + userid);
-      const { data, err } = await supabase
-        .from('users')
-        .update({ username: name })
-        .match({ username: userid })
-      if (err) {
-        alert("Error with setting: " + err.message);
+        throw error;
+      }
+      // Generate
+      //
+      const users = supabase.auth.user();
+      const updates = {
+        id: users.id,
+        username: name,
+        statustext: "",
+        avatar_url: "default.png",
+        website: "",
+        signed_at: new Date(),
+        last_login: new Date(),
+        hardload: false,
+        login_id: userid
+      };
+
+      let { error_upsert } = await supabase.from("profiles").upsert(updates, {
+        returning: "minimal" // Don't return the value after inserting
+      });
+
+      if (error_upsert) {
+        throw error;
       }
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);
-    } 
+    }
   };
 
   return (
@@ -90,7 +119,7 @@ const Home = () => {
               Sign up
             </a>
             <a
-              href={"../login"}
+              href={"/login?next=" + nextlink}
               className="bg-green-400 hover:bg-teal text-white py-1 px-4 rounded text-center transition duration-150 hover:bg-white hover:text-green-400 border hover:border-green-400"
             >
               or Login

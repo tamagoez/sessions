@@ -1,17 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { supabase } from "lib/Store";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [nextlink, setNextlink] = useState("");
+  const [session, setSession] = useState(null);
+  const router = useRouter();
+  const query = router.query;
 
-  if (process.browser) {
-    document.title = "Login - Sessions";
-  }
+  useEffect(() => {
+    if (router.isReady) {
+      if (!query.next) {
+        setNextlink("/app/dashboard");
+      } else {
+        setNextlink(query.next);
+      }
+      console.log("Got query: " + nextlink);
+      if (process.browser) {
+        setSession(supabase.auth.session());
+        // if (session) router.push(nextlink);
+        document.title = "Login - Sessions";
+      }
+    }
+  }, [query, router]);
+
+  //useEffect(() => {
+  //  if (session) router.push(nextlink)
+  //}, [session, nextlink])
 
   const handleLogin = async (type, username, password) => {
     try {
-      const userid = username + '@web-sessions.vercel.app'
+      const userid = username + "@web-sessions.vercel.app";
       const { error, user } =
         type === "LOGIN"
           ? await supabase.auth.signIn({ email: userid, password })
@@ -21,8 +42,17 @@ const Home = () => {
       // NOTE: Confirming your email address is required by default.
       if (error) {
         alert("Error with auth: " + error.message);
-      } else if (!user)
+      } else if (!user) {
         alert("Signup successful, confirmation mail should be sent soon!");
+      }
+      if (user) {
+        if (!query.next) {
+          setNextlink("/app/dashboard");
+        } else {
+          setNextlink(query.next);
+        }
+        router.push(nextlink);
+      }
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);
@@ -34,7 +64,7 @@ const Home = () => {
     if (event.keyCode === 13) {
       handleLogin("LOGIN", username, password);
     }
-  }
+  };
 
   return (
     <div className="w-full h-full flex justify-center items-center p-4 bg-gray-300">
@@ -78,7 +108,7 @@ const Home = () => {
               Login
             </a>
             <a
-              href={"/signup"}
+              href={"/signup?next=" + nextlink}
               className="border border-green-400 text-green-500 py-1 px-4 rounded w-full text-center transition duration-150 hover:bg-green-400 hover:text-white"
             >
               or SignUp

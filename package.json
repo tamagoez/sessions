@@ -9,15 +9,27 @@
     "start": "next start"
   },
   "dependencies": {
+    "@codesandbox/sandpack-react": "0.15.2",
     "@supabase/supabase-js": "^1.13.1",
+    "autoprefixer": "^10.4.0",
+    "browserslist": ">=4.20.0",
+    "crypto-js": "^4.1.1",
+    "daisyui": "2.13.5",
+    "theme-change": "^2.0.2",
+    "luxon": "^2.3.1",
     "next": ">=12.1.0",
+    "postcss": "^8.4.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
+    "react-markdown": "^8.0.1",
+    "remark-gfm": "^3.0.1",
     "sass": "^1.49.9",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.4",
+    "snd-lib": "^1.0.2",
     "tailwindcss": "^3.0.23",
-    "daisyui": "^2.11.0",
-    "browserslist": ">=4.20.0"
+    "@chakra-ui/react": "^1.8.7",
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "framer-motion": "^6.2.8"
   }
 }

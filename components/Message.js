@@ -76,6 +76,7 @@ const Message = ({ message }) => {
             <img
               src={getURL(message.author.id)}
               alt={message.author.username}
+            />
           </div>
         </label>
         <div

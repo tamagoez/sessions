@@ -72,10 +72,10 @@ const Message = ({ message }) => {
         </div>
       </div>
       <div id="Message">
-        <p className="text-black font-bold" id={message.id}>
+        <p className="text-base-content font-bold" id={message.id}>
           {message.author.username}
         </p>
-        <p className="text-slate-500 text-sm">
+        <p className="text-slate-400 text-sm">
           {replacetz(message.created_at)}
         </p>
         <div

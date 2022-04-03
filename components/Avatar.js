@@ -131,7 +131,7 @@ function AvatarUrl(id) {
       reader.readAsDataURL(xhr.response);
     };
     xhr.open('GET', url);
-    xhr.responseType = 'blob';
+    // xhr.responseType = 'blob';
     xhr.send();
   }
 

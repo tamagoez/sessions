@@ -15,22 +15,10 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               </a>
             </li>
             <li className="hidden sm:block">
-              <div className="dropdown">
-  <label tabindex="0" className="btn m-1">@ {sessionname}</label>
-  <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </ul>
-</div>
+              <a>@ {sessionname}</a>
             </li>
             <li>
-              <div className="dropdown">
-  <label tabindex="0" className="btn m-1"># {channelname}</label>
-  <ul tabindex="0" className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-    <li><a>Item 1</a></li>
-    <li><a>Item 2</a></li>
-  </ul>
-</div>
+              <a># {channelname}</a>
             </li>
           </ul>
         </div>
@@ -156,11 +144,12 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                  <select data-choose-theme className="select select-sm w-full max-w-xs">
+                  <select data-choose-theme className="select w-full max-w-xs">
   <option value="">Default</option>
   <option value="dark">Dark</option>
   <option value="winter">Winter</option>
   <option value="emerald">Emerald</option>
+  <option value="cmyk">CMYK</option>
   <option value="black">Black</option>
   <option value="cupcake">Cupcake</option>
 </select>

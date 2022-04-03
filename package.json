@@ -1,6 +1,6 @@
 {
-  "name": "supabase-slack-clone-basic",
-  "version": "0.1.1",
+  "name": "sessions",
+  "version": "0.3.3",
   "license": "MIT",
   "scripts": {
     "dev": "next",
@@ -14,7 +14,7 @@
     "autoprefixer": "^10.4.0",
     "browserslist": ">=4.20.0",
     "crypto-js": "^4.1.1",
-    "daisyui": "2.13.5",
+    "daisyui": "^2.13.6",
     "theme-change": "^2.0.2",
     "luxon": "^2.3.1",
     "next": ">=12.1.0",

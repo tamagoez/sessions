@@ -1,42 +1,9 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
-import supabase from "~/utils/supabaseClient";
 import NavBar from "~/components/NavBar";
-import { fetchChannels } from "~/lib/GetArray";
 
 export default function CardPage() {
   const router = useRouter();
-  if (!router.isReady) {
-    return null;
-  }
-  const { sessionid: sessionId } = router.query;
-  const [sessionname, setSessionname] = useState("Loading");
-  const { channels } = fetchChannels(sessionId);
-
-  async function getSName() {
-    try {
-      // const cname = supabase.auth.user();
-
-      let { data, error, status } = await supabase
-        .from("sessions")
-        .select("name")
-        .eq("id", sessionId)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        setSessionname(data.name);
-      }
-    } catch (error) {
-      alert(error.message);
-    } finally {
-    }
-  }
-
-  function card({ title, description, link }) {
+  function card(title, description, link) {
     return (
       <div class="indicator">
         <div class="indicator-item indicator-bottom">
@@ -56,19 +23,14 @@ export default function CardPage() {
       </div>
     );
   }
-  getSName();
+
   return (
     <div>
       <div>
-        <NavBar sessionname={sessionname} />
+        <NavBar thispage="Chat" />
       </div>
-      {channels.map((x) => (
-        <card
-          title={x.name}
-          description={x.description}
-          link={"/app/chat/" + sessionId + "/" + x.id}
-        />
-      ))}
+      {card("テスト", "test", "1/1")}
+      {card("雑談", "雑談", "5/1")}
     </div>
   );
 }

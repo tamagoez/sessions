@@ -6,8 +6,12 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { AvatarUrl } from "~/components/Avatar";
+import { HiHeart, HiOutlineHeart } from "react-icons/hi";
+import { MdOutlineThumbUpAlt, MdOutlineThumbDownAlt } from "react-icons/md";
+import EngagementIcon from "~/components/EngagementIcon";
+import { getEng } from "~/lib/Eng";
 const { DateTime } = require("luxon");
-import Image from 'next/image'
+// import Image from "next/image";
 
 const Message = ({ message }) => {
   const { user, userRoles } = useContext(UserContext);
@@ -24,8 +28,7 @@ const Message = ({ message }) => {
     const urlgot = AvatarUrl(id);
     return urlgot;
   }
-  
-  
+
   function replacetz(time) {
     // const systemtz = DateTime.now().locale;
     // Settings.defaultZone = "system";
@@ -33,25 +36,25 @@ const Message = ({ message }) => {
     const rezoned = defaulttime.setZone(DateTime.local().zoneName);
     return rezoned.toFormat("ff").toString();
   }
-  
-  function imgavatar(id, username){
+
+  function imgavatar(id, username) {
     const myLoader = ({ src, width, quality }) => {
-      return `${getURL(src)}`
-    }
+      return `${getURL(src)}`;
+    };
     if (id) {
       return (
         <Image
-              src={getURL(id)}
-              alt={"Avatar of " + username}
-              placeholder="blur"
-              width={100}
-              height={100}
-              unoptimized={false}
-            />
-          )
-      } else {
-        return null
-      }
+          src={getURL(id)}
+          alt={"Avatar of " + username}
+          placeholder="blur"
+          width={100}
+          height={100}
+          unoptimized={false}
+        />
+      );
+    } else {
+      return null;
+    }
   }
 
   return (
@@ -62,13 +65,50 @@ const Message = ({ message }) => {
           : "py-1 flex items-center space-x-3"
       }
     >
-      <div className="text-gray-300 w-4">
-        {(user?.id === message.userid ||
-          userRoles.some((role) => ["admin", "moderator"].includes(role))) && (
-          <button onClick={() => delconf(message.id)}>
-            <TrashIcon />
-          </button>
-        )}
+      <div className="dropdown dropdown-right dropdown-end">
+        <div className="text-gray-300 w-4">
+          {(user?.id === message.userid ||
+            userRoles.some((role) =>
+              ["admin", "moderator"].includes(role)
+            )) && (
+            <button onClick={() => delconf(message.id)}>
+              <TrashIcon />
+            </button>
+          )}
+          {user?.id !== message.userid && (
+            <div className="dropdown dropdown-top">
+              <label tabindex="0">
+                <EngagementIcon />
+              </label>
+              <ul
+                tabindex="0"
+                className="text-base-content dropdown-content menu menu-horizontal bg-base-100 rounded-box"
+              >
+                <li>
+                  {getEng("heart", message.id, user?.id) ? (
+                    <a className="active">
+                      <HiHeart />
+                    </a>
+                  ) : (
+                    <a>
+                      <HiOutlineHeart />
+                    </a>
+                  )}
+                </li>
+                <li>
+                  <a>
+                    <MdOutlineThumbUpAlt />
+                  </a>
+                </li>
+                <li>
+                  <a>
+                    <MdOutlineThumbDownAlt />
+                  </a>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
       <div class="dropdown dropdown-right dropdown-end">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">

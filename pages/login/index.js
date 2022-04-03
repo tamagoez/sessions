@@ -5,30 +5,25 @@ import { useRouter } from "next/router";
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [nextlink, setNextlink] = useState("");
+  const [nextlink, setNextlink] = useState("/app/dashboard");
   const [session, setSession] = useState(null);
+  // const [nextQuery, setNextQuery] = useState(null);
   const router = useRouter();
   const query = router.query;
 
   useEffect(() => {
     if (router.isReady) {
-      if (!query.next) {
-        setNextlink("/app/dashboard");
-      } else {
+      if (query.next) {
         setNextlink(query.next);
       }
       console.log("Got query: " + nextlink);
       if (process.browser) {
         setSession(supabase.auth.session());
-        // if (session) router.push(nextlink);
+        if (session) router.push(nextlink);
         document.title = "Login - Sessions";
       }
     }
   }, [query, router]);
-
-  useEffect(() => {
-    if (session) router.push(nextlink)
-  }, [session])
 
   const handleLogin = async (type, username, password) => {
     try {
@@ -46,9 +41,7 @@ const Home = () => {
         alert("Signup successful, confirmation mail should be sent soon!");
       }
       if (user) {
-        if (!query.next) {
-          setNextlink("/app/dashboard");
-        } else {
+        if (query.next) {
           setNextlink(query.next);
         }
         router.push(nextlink);

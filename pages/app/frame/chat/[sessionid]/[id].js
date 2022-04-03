@@ -8,8 +8,9 @@ import UserContext from "~/lib/UserContext";
 import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
 import supabase from "~/utils/supabaseClient";
 import { ChannelName, SessionName } from "~/lib/GetName";
-// import NavBar from '~/components/NavBar'
 import getfromsec from "~/lib/GetFromSec";
+
+import deleteLStorage from "~/utils/deleteLStorage";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
@@ -30,6 +31,7 @@ const ChannelsPage = (props) => {
   // Else load up the page
 
   if (process.browser) {
+    deleteLStorage();
     const usersession = supabase.auth.session();
     const userid = usersession.user.id;
     const sessioncheck = CheckSessionMember(userid, sessionId);
@@ -76,11 +78,6 @@ const ChannelsPage = (props) => {
       }
 
       if (data) {
-        //setUsername(data.username);
-        //setStatustext(data.statustext);
-        //setAvatarUrl(data.avatar_url);
-        //setWebsite(data.website);
-        //setLogin_id(data.login_id);
         setHardload(data.hardload);
       }
     } catch (error) {

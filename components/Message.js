@@ -41,12 +41,12 @@ const Message = ({ message }) => {
     if (id) {
       return (
         <Image
-              loader={myLoader}
-              src={id}
+              src={getURL(id)}
               alt={"Avatar of " + username}
               placeholder="blur"
               width={100}
               height={100}
+              unoptimized={false}
             />
           )
       } else {

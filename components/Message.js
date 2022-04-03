@@ -35,10 +35,14 @@ const Message = ({ message }) => {
   }
   
   function imgavatar(id, username){
+    const myLoader = ({ src, width, quality }) => {
+      return `${getURL(src)}`
+    }
     if (id) {
       return (
         <Image
-              src={getURL(id)}
+              loader={myLoader}
+              src={id}
               alt={"Avatar of " + username}
               placeholder="blur"
               width={100}

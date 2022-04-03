@@ -73,7 +73,9 @@ const Message = ({ message }) => {
       <div class="dropdown dropdown-right dropdown-end">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            {imgavatar(message.author.id, message.author.username)}
+            <img
+              src={getURL(message.author.id)}
+              alt={message.author.username}
           </div>
         </label>
         <div

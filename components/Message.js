@@ -71,7 +71,8 @@ const toBase64 = (str) =>
       <div class="dropdown dropdown-right dropdown-end">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
-            {!getURL(message.userid) ? null : `
+            {if (message.userid){
+             return (
             <Image
               src={getURL(message.userid)}
               alt={"Avatar of " + message.author.username}
@@ -80,7 +81,8 @@ const toBase64 = (str) =>
               width={100}
               height={100}
             />
-            `}
+            )}
+            }
           </div>
         </label>
         <div

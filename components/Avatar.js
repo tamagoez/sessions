@@ -87,6 +87,7 @@ function AvatarSetting({ url, size, onUpload }) {
 function AvatarUrl(id) {
   console.log('[AvatarUrl] Got prop: ' + id)
   const [avatarUrl, setAvatarUrl] = useState(null)
+  const [avatarUrl2, setAvatarUrl2] = useState(null)
   useEffect(() => {
     if (!localStorage.getItem("avatar_" + id)){
       getProfile(id)
@@ -108,7 +109,7 @@ function AvatarUrl(id) {
         throw error
       }
       if (data) {
-        setAvatarUrl(data.avatar_url)
+        setAvatarUrl2(data.avatar_url)
       }
     } catch (error) {
       alert(error.message)
@@ -118,8 +119,8 @@ function AvatarUrl(id) {
   }
 
   useEffect(() => {
-    if (avatarUrl) downloadImage(avatarUrl)
-  }, [avatarUrl])
+    if (avatarUrl2) downloadImage(avatarUrl2)
+  }, [avatarUrl2])
   
   function toBase64Url(url, callback){
     var xhr = new XMLHttpRequest();

@@ -18,6 +18,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     themeChange(false)
     // 👆 false parameter is required for react project
   }, [])
+  setStatus()
 
   useEffect(() => {
     const session = supabase.auth.session();
@@ -26,7 +27,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     setUserLoaded(session ? true : false);
     if (user) {
       signIn();
-      setStatus()
+     // setStatus()
       // Router.push('/app/dashboard')
     }
 

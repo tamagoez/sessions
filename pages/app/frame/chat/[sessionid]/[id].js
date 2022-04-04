@@ -37,11 +37,11 @@ const ChannelsPage = (props) => {
       const userid = usersession.user.id;
       // const sessioncheck = CheckSessionMember(userid, sessionId);
       // const channelcheck = CheckChannelMember(userid, channelId);
-      if (sessioncheck) {
-        console.log("[Main] This user is a member of this session");
-      } else {
-        router.push("/404");
-      }
+      //if (sessioncheck) {
+      //  console.log("[Main] This user is a member of this session");
+      //} else {
+      //  router.push("/404");
+      //}
     }
   }, [])
 

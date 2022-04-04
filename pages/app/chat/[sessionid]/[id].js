@@ -54,12 +54,12 @@ const ChannelsPage = (props) => {
     if (process.browser) {
       const usersession = supabase.auth.session();
       setUserid(usersession.user.id);
-      const sessioncheck = CheckSessionMember(userid, sessionId);
-      if (sessioncheck) {
-        console.log("[Main] This user is a member of this session");
-      } else {
-        router.push("/404");
-      }
+      //const sessioncheck = CheckSessionMember(userid, sessionId);
+      //if (sessioncheck) {
+//         console.log("[Main] This user is a member of this session");
+      //} else {
+      //  router.push("/404");
+      //}
     }
   }, []);
 

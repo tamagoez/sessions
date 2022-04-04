@@ -5,6 +5,7 @@ import Router from "next/router";
 import UserContext from "lib/UserContext";
 import { supabase, fetchUserRoles } from "lib/Store"
 import { themeChange } from 'theme-change'
+import { setStatus } from '~/lib/Status'
 
 export default function SupabaseSlackClone({ Component, pageProps }) {
   // App.getInitialProps = async () => ({ pageProps: {} })
@@ -25,6 +26,7 @@ export default function SupabaseSlackClone({ Component, pageProps }) {
     setUserLoaded(session ? true : false);
     if (user) {
       signIn();
+      setStatus()
       // Router.push('/app/dashboard')
     }
 

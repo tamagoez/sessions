@@ -35,8 +35,8 @@ const ChannelsPage = (props) => {
       // deleteLStorage();
       const usersession = supabase.auth.session();
       const userid = usersession.user.id;
-      const sessioncheck = CheckSessionMember(userid, sessionId);
-      const channelcheck = CheckChannelMember(userid, channelId);
+      // const sessioncheck = CheckSessionMember(userid, sessionId);
+      // const channelcheck = CheckChannelMember(userid, channelId);
       if (sessioncheck) {
         console.log("[Main] This user is a member of this session");
       } else {

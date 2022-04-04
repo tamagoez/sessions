@@ -149,6 +149,11 @@ export default function NavBar({ channelname, sessionname, thispage }) {
                     不必要にチャットが強制的にスクロールされてしまう問題を修正しました。
                   </li>
                 </ul>
+                <div class="card-actions justify-end">
+                  <a href="/update" className="btn btn-primary">
+                    詳しく見る
+                  </a>
+                </div>
               </div>
             </div>
           </div>

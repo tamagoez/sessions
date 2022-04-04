@@ -11,7 +11,7 @@ import { MdOutlineThumbUpAlt, MdOutlineThumbDownAlt } from "react-icons/md";
 import EngagementIcon from "~/components/EngagementIcon";
 import { getEng } from "~/lib/Eng";
 const { DateTime } = require("luxon");
-import { getStatus } from '~/lib/Status'
+import { getStatus, getDate } from "~/lib/Status";
 // import Image from "next/image";
 
 const Message = ({ message }) => {
@@ -58,6 +58,12 @@ const Message = ({ message }) => {
     }
   }
 
+  function loadstatus(id) {
+    const status = getStatus(id);
+    console.log("[loadstatus] return: " + status);
+    return status;
+  }
+
   return (
     <div
       className={
@@ -66,55 +72,56 @@ const Message = ({ message }) => {
           : "py-1 flex items-center space-x-3"
       }
     >
-        <div className="text-gray-300 w-4">
-          {(user?.id === message.userid ||
-            userRoles.some((role) =>
-              ["admin", "moderator"].includes(role)
-            )) && (
-            <button onClick={() => delconf(message.id)}>
-              <TrashIcon />
-            </button>
-          )}
-          {user?.id !== message.userid && (
-            <div className="dropdown dropdown-right dropdown-end">
-              <label tabindex="0">
-                <EngagementIcon />
-              </label>
-              <ul
-                tabindex="0"
-                className="text-base-content dropdown-content p-2 menu menu-horizontal bg-base-100 rounded-box"
-              >
-                <li>
-                  {getEng("heart", message.id, user?.id) ? (
-                    <a className="active">
-                      <HiHeart />
-                    </a>
-                  ) : (
-                    <a>
-                      <HiOutlineHeart />
-                    </a>
-                  )}
-                </li>
-                <li>
-                  <a>
-                    <MdOutlineThumbUpAlt />
+      <div className="text-gray-300 w-4">
+        {(user?.id === message.userid ||
+          userRoles.some((role) => ["admin", "moderator"].includes(role))) && (
+          <button onClick={() => delconf(message.id)}>
+            <TrashIcon />
+          </button>
+        )}
+        {user?.id !== message.userid && (
+          <div className="dropdown dropdown-right dropdown-end">
+            <label tabindex="0">
+              <EngagementIcon />
+            </label>
+            <ul
+              tabindex="0"
+              className="text-base-content dropdown-content p-2 menu menu-horizontal bg-base-100 rounded-box"
+            >
+              <li>
+                {getEng("heart", message.id, user?.id) ? (
+                  <a className="active">
+                    <HiHeart />
                   </a>
-                </li>
-                <li>
+                ) : (
                   <a>
-                    <MdOutlineThumbDownAlt />
+                    <HiOutlineHeart />
                   </a>
-                </li>
-              </ul>
-            </div>
-          )}
-        </div>
+                )}
+              </li>
+              <li>
+                <a>
+                  <MdOutlineThumbUpAlt />
+                </a>
+              </li>
+              <li>
+                <a>
+                  <MdOutlineThumbDownAlt />
+                </a>
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
       <div className="dropdown dropdown-right dropdown-end">
-        <label tabindex="0" className={
-            getStatus(message.author.id)
+        <label
+          tabindex="0"
+          className={
+            loadstatus(message.author.id)
               ? "btn btn-ghost btn-circle avatar online"
               : "btn btn-ghost btn-circle avatar offline"
-          }>
+          }
+        >
           <div className="w-10 rounded-full">
             <img
               src={getURL(message.author.id)}
@@ -124,13 +131,13 @@ const Message = ({ message }) => {
         </label>
         <div
           tabindex="0"
-          class="divide-y divide-dashed dropdown-content p-2 shadow bg-base-100 rounded-box w-52"
+          class="divide-y divide-dashed dropdown-content p-3 shadow bg-base-100 rounded-box w-52"
         >
-          <div>
+          <div className="mb-1.5">
             <p className="text-lg font-bold">{message.author.username}</p>
             <p className="text-xs">{message.author.id}</p>
           </div>
-          <div>
+          <div className="pt-1.5">
             <p>{replacetz(message.created_at)}</p>
             <p>ID: {message.id}</p>
           </div>

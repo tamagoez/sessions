@@ -43,15 +43,24 @@ const ChannelsPage = (props) => {
       //  router.push("/404");
       //}
     }
-  }, [])
+  }, []);
 
   const { messages, channels } = useStore({ channelId, hardload });
 
   useEffect(() => {
-    messagesEndRef.current.scrollIntoView({
-      block: "start",
-      behavior: "smooth"
-    });
+    console.log(
+      "[messagesEndRef] ignore_scroll: " + localStorage.getItem("ignore_scroll")
+    );
+    if (localStorage.getItem("ignore_scroll") === "true") {
+      console.info("[messagesEndRef] scroll: ignore");
+      localStorage.setItem("ignore_scroll", "false");
+    } else {
+      console.info("[messagesEndRef] scroll: execute");
+      messagesEndRef.current.scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+      });
+    }
   }, [messages]);
 
   // redirect to public channel when current channel is deleted

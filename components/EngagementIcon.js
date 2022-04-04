@@ -1,5 +1,5 @@
 const TrashIcon = (props) => {
-  const { size = 18 } = props;
+  const { size = 17 } = props;
 
   return (
     <svg

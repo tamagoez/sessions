@@ -139,17 +139,16 @@ export default function NavBar({ channelname, sessionname, thispage }) {
             </button>
             <div class="card w-96 bg-base-100 shadow-xl dropdown-content">
               <div class="card-body">
-                <h2 class="card-title">Ver. 0.3.3</h2>
+                <h2 class="card-title">Ver. 0.4.1</h2>
                 <ul>
-                  <li>画像が一時的に保存されるようになりました。</li>
-                  <li>メンションボタンが追加されました。(未実装)</li>
-                  <li>テーマが追加されました。(一部バグあり)</li>
+                  <li>オンライン/オフラインのインジケーターを作成しました。</li>
+                  <li>
+                    チャット画面のアバターを押した際に表示されるカードのDividerに余白を追加しました。
+                  </li>
+                  <li>
+                    不必要にチャットが強制的にスクロールされてしまう問題を修正しました。
+                  </li>
                 </ul>
-                <div class="card-actions justify-end">
-                  <a href="/update" className="btn btn-primary">
-                    詳しく見る
-                  </a>
-                </div>
               </div>
             </div>
           </div>

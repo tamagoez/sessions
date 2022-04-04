@@ -65,7 +65,6 @@ const Message = ({ message }) => {
           : "py-1 flex items-center space-x-3"
       }
     >
-      <div className="dropdown dropdown-right dropdown-end">
         <div className="text-gray-300 w-4">
           {(user?.id === message.userid ||
             userRoles.some((role) =>
@@ -76,7 +75,7 @@ const Message = ({ message }) => {
             </button>
           )}
           {user?.id !== message.userid && (
-            <div className="dropdown dropdown-top">
+            <div className="dropdown dropdown-right dropdown-end">
               <label tabindex="0">
                 <EngagementIcon />
               </label>
@@ -109,8 +108,7 @@ const Message = ({ message }) => {
             </div>
           )}
         </div>
-      </div>
-      <div class="dropdown dropdown-right dropdown-end">
+      <div className="dropdown dropdown-right dropdown-end">
         <label tabindex="0" className="btn btn-ghost btn-circle avatar">
           <div className="w-10 rounded-full">
             <img

@@ -110,7 +110,11 @@ const Message = ({ message }) => {
           )}
         </div>
       <div className="dropdown dropdown-right dropdown-end">
-        <label tabindex="0" className="btn btn-ghost btn-circle avatar">
+        <label tabindex="0" className={
+            getStatus(message.author.id)
+              ? "btn btn-ghost btn-circle avatar online"
+              : "btn btn-ghost btn-circle avatar offline"
+          }">
           <div className="w-10 rounded-full">
             <img
               src={getURL(message.author.id)}

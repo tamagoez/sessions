@@ -3,11 +3,7 @@ const Dashboard = () => {
   return (
     <div>
       <div>
-        {process.browser ? (
           <NavBar thispage="Dashboard" />
-        ) : (
-          console.log("Ignored NavBar")
-        )}
       </div>
       <div class="divider">Menu</div>
       <div class="stack">

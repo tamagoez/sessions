@@ -114,7 +114,7 @@ const Message = ({ message }) => {
             getStatus(message.author.id)
               ? "btn btn-ghost btn-circle avatar online"
               : "btn btn-ghost btn-circle avatar offline"
-          }">
+          }>
           <div className="w-10 rounded-full">
             <img
               src={getURL(message.author.id)}

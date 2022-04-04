@@ -81,7 +81,7 @@ const Message = ({ message }) => {
               </label>
               <ul
                 tabindex="0"
-                className="text-base-content dropdown-content menu menu-horizontal bg-base-100 rounded-box"
+                className="text-base-content dropdown-content p-2 menu menu-horizontal bg-base-100 rounded-box"
               >
                 <li>
                   {getEng("heart", message.id, user?.id) ? (

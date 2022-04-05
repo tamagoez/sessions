@@ -158,7 +158,7 @@ const Message = ({ message }) => {
           }
         >
           <p className="text-black-900 m-2">
-            <ReactMarkdown plugins={[gfm]} unwrapDisallowed={false}>
+            <ReactMarkdown remarkPlugins={[gfm]} unwrapDisallowed={false}>
               {message.message}
             </ReactMarkdown>
           </p>

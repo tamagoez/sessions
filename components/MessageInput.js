@@ -11,15 +11,13 @@ const MessageInput = ({ onSubmit }) => {
     // http://nanoappli.com/blog/archives/1092
     if (event.keyCode === 13 && event.shiftKey) {
       sendmessage(messageText)
+      setMessageText("")
     }
   };
 
   function sendmessage(messageText){
     onSubmit(messageText);
     setMessageText("");
-    if (process.browser){
-    document.getElementById('messageinput').value = "";
-    }
   }
   
   async function uploadFile(event) {
@@ -80,7 +78,7 @@ const MessageInput = ({ onSubmit }) => {
         onKeyDown={(e) => submitOnEnter(e)}
       />
       </div>
-      <button className="btn btn-square" onClick={() => sendmessage(document.getElementById('messageinput'))}><IoSend /></button>
+      <button className="btn btn-square" onClick={() => sendmessage(document.getElementById('messageinput').value)}><IoSend /></button>
     </div>
   );
 };

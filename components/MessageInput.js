@@ -71,7 +71,7 @@ const MessageInput = ({ onSubmit }) => {
         />
       </div>
       <div className="grow">
-      <textarea
+      <input
         className="bg-base-200 input input-bordered w-full max-w-xspl-3"
         id="messageinput"
         type="text"

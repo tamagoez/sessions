@@ -17,7 +17,9 @@ const MessageInput = ({ onSubmit }) => {
   function sendmessage(messageText){
     onSubmit(messageText);
     setMessageText("");
-    document.getElementById('messageinput') = "";
+    if (process.browser){
+    document.getElementById('messageinput').value = "";
+    }
   }
   
   async function uploadFile(event) {

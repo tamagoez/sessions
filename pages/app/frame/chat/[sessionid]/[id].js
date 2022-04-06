@@ -111,6 +111,7 @@ const ChannelsPage = (props) => {
         <div className="p-2 absolute bottom-0 left-0 w-full">
           <MessageInput
             onSubmit={async (text) => addMessage(text, channelId, user.id)}
+            chid={channelId}
           />
         </div>
       </div>

@@ -1,11 +1,41 @@
 import { useState } from "react";
 import { MdUpload } from "react-icons/md";
 import { IoSend } from "react-icons/io5";
+import supabase from '~/utils/supabaseClient';
 
-const MessageInput = ({ onSubmit }) => {
+const MessageInput = ({ onSubmit, channelId }) => {
   const [messageText, setMessageText] = useState("");
   const [uploading, setUploading] = useState(false)
   const [ignorekey, setIgnorekey] = useState(false)
+
+  async function setdb(path) {
+    const user = supabase.auth.user();
+    try {
+      const { error } = await supabase
+        .from('profiles')
+        .insert([
+          { url: path, created_by: user.id, channel: channelId }
+        ])
+      if (error) {
+        throw error
+      }
+    } catch (error) {
+      console.error('Error uploading: ', error.message)
+    }
+    try {
+      const { data, error } = await supabase
+        .from('channels_chat')
+        .insert([
+          { userid: user.id, message: 'Attached file: ' , channel: channelId },
+          { userid: user.id, message: path , channel: channelId, type: 'storage' },
+        ])
+        if (error) {
+          throw error
+        }
+    } catch (error) {
+      console.error('Error uploading: ', error.message)
+    }
+  }
 
   const submitOnEnter = (event) => {
     // Watch for enter key
@@ -46,7 +76,7 @@ const MessageInput = ({ onSubmit }) => {
         throw uploadError
       }
 
-      onUpload(filePath)
+      setdb(filePath)
     } catch (error) {
       alert(error.message)
     } finally {

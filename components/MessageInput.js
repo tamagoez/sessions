@@ -10,9 +10,10 @@ const MessageInput = ({ onSubmit }) => {
   const submitOnEnter = (event) => {
     // Watch for enter key
     // http://nanoappli.com/blog/archives/1092
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13 && event.shiftKey) {
       sendmessage(messageText)
       setMessageText("");
+      document.getElementById('messageinput').value = ''
     }
   };
 
@@ -71,7 +72,7 @@ const MessageInput = ({ onSubmit }) => {
         />
       </div>
       <div className="grow">
-      <input
+      <textarea
         className="bg-base-200 input input-bordered w-full max-w-xspl-3"
         id="messageinput"
         type="text"

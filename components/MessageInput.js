@@ -5,19 +5,21 @@ import { IoSend } from "react-icons/io5";
 const MessageInput = ({ onSubmit }) => {
   const [messageText, setMessageText] = useState("");
   const [uploading, setUploading] = useState(false)
+  const [ignorekey, setIgnorekey] = useState(false)
 
   const submitOnEnter = (event) => {
     // Watch for enter key
     // http://nanoappli.com/blog/archives/1092
     if (event.keyCode === 13 && event.shiftKey) {
       sendmessage(messageText)
-      setMessageText("")
     }
   };
 
   function sendmessage(messageText){
+    setIgnorekey(true);
     onSubmit(messageText);
     setMessageText("");
+    setIgnorekey(false);
   }
   
   async function uploadFile(event) {
@@ -76,6 +78,7 @@ const MessageInput = ({ onSubmit }) => {
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}
         onKeyDown={(e) => submitOnEnter(e)}
+        disabled={ignorekey}
       />
       </div>
       <button className="btn btn-square" onClick={() => sendmessage(document.getElementById('messageinput').value)}><IoSend /></button>

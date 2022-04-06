@@ -13,7 +13,8 @@ const MessageInput = ({ onSubmit }) => {
     if (event.keyCode === 13 && event.shiftKey) {
       sendmessage(messageText)
       setMessageText("");
-      document.getElementById('messageinput').value = ''
+      document.getElementById('messageinput').value = '';
+      document.getElementById('messageinput').value = document.getElementById('messageinput').value.replace(/[\n\r]/g,"");
     }
   };
 

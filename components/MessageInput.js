@@ -64,13 +64,13 @@ const MessageInput = ({ onSubmit, channelId }) => {
       }
 
       const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const fileName = `${Math.random()}.${fileExt}`
-      const filePath = `${fileName}`
+      // const fileExt = file.name.split('.').pop()
+      // const fileName = `${Math.random()}.${fileExt}`
+      // const filePath = `${fileName}`
 
       let { error: uploadError } = await supabase.storage
         .from('files')
-        .upload(filePath, file)
+        .upload(file.name, file)
 
       if (uploadError) {
         throw uploadError

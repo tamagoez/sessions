@@ -17,6 +17,7 @@ const MessageInput = ({ onSubmit }) => {
   function sendmessage(messageText){
     onSubmit(messageText);
     setMessageText("");
+    document.getElementById('messageinput') = "";
   }
   
   async function uploadFile(event) {
@@ -68,7 +69,7 @@ const MessageInput = ({ onSubmit }) => {
       </div>
       <div className="grow">
       <textarea
-        className="bg-base-200 textarea textarea-bordered w-full max-w-xspl-3"
+        className="bg-base-200 input input-bordered w-full max-w-xspl-3"
         id="messageinput"
         type="text"
         placeholder="Type a Message (MarkDown available)"
@@ -76,8 +77,8 @@ const MessageInput = ({ onSubmit }) => {
         onChange={(e) => setMessageText(e.target.value)}
         onKeyDown={(e) => submitOnEnter(e)}
       />
-      <button className="btn btn-square" onClick={() => sendmessage(document.getElementById('messageinput'))}><IoSend /></button>
       </div>
+      <button className="btn btn-square" onClick={() => sendmessage(document.getElementById('messageinput'))}><IoSend /></button>
     </div>
   );
 };

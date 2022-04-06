@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MdUpload } from "react-icons/md";
+import { IoSend } from "react-icons/io5";
 
 const MessageInput = ({ onSubmit }) => {
   const [messageText, setMessageText] = useState("");
@@ -7,11 +8,16 @@ const MessageInput = ({ onSubmit }) => {
 
   const submitOnEnter = (event) => {
     // Watch for enter key
-    if (event.keyCode === 13) {
-      onSubmit(messageText);
-      setMessageText("");
+    // http://nanoappli.com/blog/archives/1092
+    if (event.keyCode === 13 && event.shiftKey) {
+      sendmessage(messageText)
     }
   };
+
+  function sendmessage(messageText){
+    onSubmit(messageText);
+    setMessageText("");
+  }
   
   async function uploadFile(event) {
     try {
@@ -61,14 +67,16 @@ const MessageInput = ({ onSubmit }) => {
         />
       </div>
       <div className="grow">
-      <input
+      <textarea
         className="bg-base-200 input input-bordered w-full max-w-xspl-3"
+        id="messageinput"
         type="text"
         placeholder="Type a Message (MarkDown available)"
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}
         onKeyDown={(e) => submitOnEnter(e)}
       />
+      <button className="btn btn-square" onClick={() => submitOnEnter(document.getElementById('messageinput'))}><IoSend /></button>
       </div>
     </div>
   );

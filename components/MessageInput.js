@@ -26,8 +26,7 @@ const MessageInput = ({ onSubmit, channelId }) => {
       const { data, error } = await supabase
         .from('channels_chat')
         .insert([
-          { userid: user.id, message: 'Attached file: ' , channel: channelId },
-          { userid: user.id, message: path , channel: channelId, type: 'storage' },
+          { userid: user.id, message: 'Attached file: ' + path , channel: channelId, type: 'storage' },
         ])
         if (error) {
           throw error

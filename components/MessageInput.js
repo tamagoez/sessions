@@ -45,7 +45,7 @@ const MessageInput = ({ onSubmit }) => {
   return (
     <div className="flex">
       <div>
-        <label className="btn btn-square btn-outline" htmlFor="single">
+        <label className={!uploading ? "btn" : "btn loading"} htmlFor="single">
           <MdUpload />
         </label>
         <input

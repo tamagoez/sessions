@@ -7,6 +7,23 @@ export default function update() {
         <NavBar thispage="Update" />
       </div>
       <div className="p-4">
+      <div class="card w-96 bg-base-100 shadow-xl dropdown-content mb-4 pt-1">
+          <div class="card-body">
+            <h2 class="card-title">Ver. 0.5.1</h2>
+            <ul>
+              <li>ファイルをアップロードできるようになりました。(仮)</li>
+              <li>
+                オンラインインジケーターのコードを調節/修正しました。
+              </li>
+              <li>
+                送信ボタンを追加しました。
+              </li>
+              <li>
+                react-markdownの設定を変更し、装飾のバリエーションが増え、URLは新規タブで開くようになりました。
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="card w-96 bg-base-100 shadow-xl dropdown-content mb-4 pt-1">
           <div class="card-body">
             <h2 class="card-title">Ver. 0.4.1</h2>

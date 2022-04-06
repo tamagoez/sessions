@@ -88,7 +88,7 @@ const MessageInput = ({ onSubmit, channelId }) => {
     <div className="flex w-full">
       <div>
         <label className={!uploading ? "btn btn-square bg-base-300" : "btn btn-square loading bg-base-300"} htmlFor="single">
-          <MdUpload />
+          {!uploading ? <MdUpload /> : null}
         </label>
         <input
           style={{

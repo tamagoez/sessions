@@ -45,7 +45,7 @@ const MessageInput = ({ onSubmit }) => {
   return (
     <div className="flex">
       <div>
-        <label className="button primary block" htmlFor="single">
+        <label className="btn btn-square btn-outline" htmlFor="single">
           <MdUpload />
         </label>
         <input

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdUpload } from "react-icons/md";
 
 const MessageInput = ({ onSubmit }) => {
   const [messageText, setMessageText] = useState("");

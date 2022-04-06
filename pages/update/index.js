@@ -7,7 +7,7 @@ export default function update() {
         <NavBar thispage="Update" />
       </div>
       <div className="p-4">
-      <div class="card w-96 bg-base-100 shadow-xl dropdown-content mb-4 pt-1">
+      <div class="card w-96 bg-base-100 shadow-xl dropdown-content mb-4 pt-1 w-full">
           <div class="card-body">
             <h2 class="card-title">Ver. 0.5.1</h2>
             <ul>

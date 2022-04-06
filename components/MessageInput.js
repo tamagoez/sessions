@@ -12,7 +12,7 @@ const MessageInput = ({ onSubmit, channelId }) => {
     const user = supabase.auth.user();
     try {
       const { error } = await supabase
-        .from('profiles')
+        .from('files')
         .insert([
           { url: path, created_by: user.id, channel: channelId }
         ])
@@ -87,7 +87,7 @@ const MessageInput = ({ onSubmit, channelId }) => {
   return (
     <div className="flex w-full">
       <div>
-        <label className={!uploading ? "btn btn-square bg-base-300" : "btn btn-square loading bg-base-300"} htmlFor="single">
+        <label className={!uploading ? "btn btn-square" : "btn btn-square loading"} htmlFor="single">
           {!uploading ? <MdUpload /> : null}
         </label>
         <input
@@ -104,7 +104,7 @@ const MessageInput = ({ onSubmit, channelId }) => {
       </div>
       <div className="grow">
       <input
-        className="bg-base-200 input input-bordered w-full max-w-xspl-3"
+        className="bg-base-100 input input-bordered w-full max-w-xspl-3"
         id="messageinput"
         type="text"
         placeholder="Type a Message (MarkDown available)"

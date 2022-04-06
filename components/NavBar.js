@@ -152,6 +152,11 @@ export default function NavBar({ channelname, sessionname, thispage }) {
                 react-markdownの設定を変更し、装飾のバリエーションが増え、URLは新規タブで開くようになりました。
               </li>
             </ul>
+            <div class="card-actions justify-end">
+                  <a href="/update" className="btn btn-primary">
+                    詳しく見る
+                  </a>
+                </div>
         </div>
             </div>
           </div>

@@ -45,7 +45,7 @@ const MessageInput = ({ onSubmit }) => {
   return (
     <div className="flex">
       <div>
-        <label className={!uploading ? "btn" : "btn loading"} htmlFor="single">
+        <label className={!uploading ? "btn btn-square bg-base-100" : "btn btn-square loading bg-base-100"} htmlFor="single">
           <MdUpload />
         </label>
         <input
@@ -62,7 +62,7 @@ const MessageInput = ({ onSubmit }) => {
       </div>
       <div className="grow">
       <input
-        className="bg-base-100 border border-solid border-gray-300 appearance-none rounded w-full py-2 px-3 text-black-800 leading-tight focus:shadow-outline"
+        className="bg-base-100 input input-ghost w-full max-w-xs"
         type="text"
         placeholder="Type a Message (MarkDown available)"
         value={messageText}

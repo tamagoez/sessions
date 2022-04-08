@@ -107,7 +107,7 @@ const ChannelsPage = (props) => {
   const loader = <ReactLoading type="spin" />;
   const items = (
     <>
-      {messages.map((x) => (
+      {list.map((x) => (
         <Message key={x.id} message={x} />
       ))}
     </>

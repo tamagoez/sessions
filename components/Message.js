@@ -63,8 +63,8 @@ const Message = ({ message }) => {
     return status;
   }
 
-  async function getonlinedate(id) {
-    const getdate = await getDate(id);
+  function getonlinedate(id) {
+    const getdate = getDate(id);
     console.log("[getonlinedate] return: " + getdate);
     return getdate;
   }

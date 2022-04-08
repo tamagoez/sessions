@@ -117,7 +117,7 @@ const ChannelsPage = (props) => {
       setHasMore(false);
     } else {
       setItemid(itemid + 15);
-      setList([...list, ...data]);
+      setList([...data, ...list]);
     }
   };
 

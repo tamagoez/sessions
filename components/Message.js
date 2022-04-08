@@ -63,6 +63,12 @@ const Message = ({ message }) => {
     return status;
   }
 
+  async function getonlinedate(id) {
+    const getdate = await getDate(id);
+    console.log("[getonlinedate] return: " + getdate);
+    return getdate;
+  }
+
   return (
     <div
       className={
@@ -135,6 +141,9 @@ const Message = ({ message }) => {
           <div className="mb-1.5">
             <p className="text-lg font-bold">{message.author.username}</p>
             <p className="text-xs">{message.author.id}</p>
+            <p className="text-xs">
+              Online: {getonlinedate(message.author.id)}
+            </p>
           </div>
           <div className="pt-1.5">
             <p>{replacetz(message.created_at)}</p>
@@ -157,7 +166,11 @@ const Message = ({ message }) => {
           }
         >
           <p className="text-black-900 m-2">
-            <ReactMarkdown remarkPlugins={[gfm]} unwrapDisallowed={false} linkTarget="_blank">
+            <ReactMarkdown
+              remarkPlugins={[gfm]}
+              unwrapDisallowed={false}
+              linkTarget="_blank"
+            >
               {message.message}
             </ReactMarkdown>
           </p>

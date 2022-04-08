@@ -64,13 +64,9 @@ const Message = ({ message }) => {
   }
 
   function getonlinedate(id) {
-    getDate(id)
-      .then((value) => {
-        console.log("[getonlinedate] return: " + value);
-      })
-      .then((value) => {
-        return value;
-      });
+    const statusdate = getDate(id);
+    console.log("[getonlinedate] return: " + statusdate);
+    return statusdate;
   }
 
   return (

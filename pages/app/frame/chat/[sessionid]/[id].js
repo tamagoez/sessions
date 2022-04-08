@@ -33,8 +33,6 @@ const ChannelsPage = (props) => {
 
   // Else load up the page
 
-  const [hasMore, setHasMore] = useState(true);
-
   useEffect(() => {
     if (process.browser) {
       // deleteLStorage();
@@ -104,6 +102,7 @@ const ChannelsPage = (props) => {
   //項目を読み込む
   const [list, setList] = useState([]);
   const [itemid, setItemid] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
   const loader = <ReactLoading type="spin" />;
   const items = (
     <>
@@ -132,6 +131,7 @@ const ChannelsPage = (props) => {
               loadMore={loadMore}
               hasMore={hasMore}
               loader={loader}
+              isReverse={true}
             >
               {items}
             </InfiniteScroll>

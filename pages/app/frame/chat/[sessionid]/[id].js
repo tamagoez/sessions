@@ -127,14 +127,9 @@ const ChannelsPage = (props) => {
       <div className="h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
-            <InfiniteScroll
-              loadMore={loadMore}
-              hasMore={hasMore}
-              loader={loader}
-              isReverse={true}
-            >
-              {items}
-            </InfiniteScroll>
+            {messages.map((x) => (
+              <Message key={x.id} message={x} />
+            ))}
             <div ref={messagesEndRef} style={{ height: 0 }} />
           </div>
         </div>

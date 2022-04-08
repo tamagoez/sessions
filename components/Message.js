@@ -64,7 +64,8 @@ const Message = ({ message }) => {
   }
 
   function getonlinedate(id) {
-    const statusdate = getDate(id);
+    const originaldate = getDate(id);
+    const statusdate = replacetz(originaldate);
     console.log("[getonlinedate] return: " + statusdate);
     return statusdate;
   }
@@ -142,7 +143,7 @@ const Message = ({ message }) => {
             <p className="text-lg font-bold">{message.author.username}</p>
             <p className="text-xs">{message.author.id}</p>
             <p className="text-xs">
-              Online: {replacetz(getonlinedate(message.author.id))}
+              Online: {getonlinedate(message.author.id)}
             </p>
           </div>
           <div className="pt-1.5">

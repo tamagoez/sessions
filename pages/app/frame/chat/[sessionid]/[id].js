@@ -104,7 +104,7 @@ const ChannelsPage = (props) => {
   //項目を読み込む
   const [list, setList] = useState([]);
   const [itemid, setItemid] = useState(0);
-  const loader = "";
+  const loader = <ReactLoading type="spin" />;
   const items = (
     <>
       {messages.map((x) => (
@@ -114,8 +114,12 @@ const ChannelsPage = (props) => {
   );
   const loadMore = async (page) => {
     const data = await additionalload(channelId, itemid, 15);
-    setItemid(itemid + 15);
-    setList([...list, ...data]);
+    if (data === false) {
+      setHasMore(false);
+    } else {
+      setItemid(itemid + 15);
+      setList([...list, ...data]);
+    }
   };
 
   // Render the channels and messages

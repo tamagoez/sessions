@@ -2,13 +2,16 @@ import Layout from "~/components/Layout";
 import Message from "~/components/Message";
 import MessageInput from "~/components/MessageInput";
 import { useRouter } from "next/router";
-import { useStore, addMessage } from "~/lib/Store";
+import { useStore, addMessage, additionalload } from "~/lib/Store";
 import { useContext, useEffect, useRef, useState } from "react";
 import UserContext from "~/lib/UserContext";
-import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
+// import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
 import supabase from "~/utils/supabaseClient";
-import { ChannelName, SessionName } from "~/lib/GetName";
+// import { ChannelName, SessionName } from "~/lib/GetName";
 import getfromsec from "~/lib/GetFromSec";
+// import { HashLoader } from "react-spinners";
+import ReactLoading from "react-loading";
+import InfiniteScroll from "react-infinite-scroller";
 
 // import deleteLStorage from "~/utils/deleteLStorage";
 
@@ -29,6 +32,8 @@ const ChannelsPage = (props) => {
   const messagesEndRef = useRef(null);
 
   // Else load up the page
+
+  const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
     if (process.browser) {
@@ -96,15 +101,36 @@ const ChannelsPage = (props) => {
     }
   }
 
+  //項目を読み込む
+  const [list, setList] = useState([]);
+  const [itemid, setItemid] = useState(0);
+  const loader = "";
+  const items = (
+    <>
+      {messages.map((x) => (
+        <Message key={x.id} message={x} />
+      ))}
+    </>
+  );
+  const loadMore = async (page) => {
+    const data = await additionalload(channelId, itemid, 15);
+    setItemid(itemid + 15);
+    setList([...list, ...data]);
+  };
+
   // Render the channels and messages
   return (
     <div>
       <div className="h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
-            {messages.map((x) => (
-              <Message key={x.id} message={x} />
-            ))}
+            <InfiniteScroll
+              loadMore={loadMore}
+              hasMore={hasMore}
+              loader={loader}
+            >
+              {items}
+            </InfiniteScroll>
             <div ref={messagesEndRef} style={{ height: 0 }} />
           </div>
         </div>

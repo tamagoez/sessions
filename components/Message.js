@@ -66,7 +66,7 @@ const Message = ({ message }) => {
   function getonlinedate(id) {
     const originaldate = getDate(id);
     const statusdate = replacetz(originaldate);
-    console.log("[getonlinedate] return: " + statusdate);
+    console.log("[getonlinedate] return: " + originaldate);
     return statusdate;
   }
 

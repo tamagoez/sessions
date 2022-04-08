@@ -65,8 +65,12 @@ const Message = ({ message }) => {
 
   function getonlinedate(id) {
     getDate(id)
-    .then(value => {console.log("[getonlinedate] return: " + value})
-    .then(value => {return value})
+      .then((value) => {
+        console.log("[getonlinedate] return: " + value);
+      })
+      .then((value) => {
+        return value;
+      });
   }
 
   return (

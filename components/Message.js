@@ -142,7 +142,7 @@ const Message = ({ message }) => {
             <p className="text-lg font-bold">{message.author.username}</p>
             <p className="text-xs">{message.author.id}</p>
             <p className="text-xs">
-              Online: {getonlinedate(message.author.id)}
+              Online: {replacetz(getonlinedate(message.author.id))}
             </p>
           </div>
           <div className="pt-1.5">

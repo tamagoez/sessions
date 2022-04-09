@@ -6,6 +6,7 @@ export function ErrorToast(title, description, duration) {
   toast({
           title: title,
           description: description,
+          position: 'top-right',
           status: 'error',
           duration: dur,
           isClosable: true,

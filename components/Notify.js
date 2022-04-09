@@ -2,11 +2,12 @@ import { createStandaloneToast } from '@chakra-ui/react'
 
 export function ErrorToast(title, description, duration) {
   const toast = createStandaloneToast()
+  const dur = (!duration ? 5000 : duration)
   toast({
           title: title,
           description: description,
           status: 'error',
-          duration: {!duration ? 5000 : duration},
+          duration: dur,
           isClosable: true,
         })
 }

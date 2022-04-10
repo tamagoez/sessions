@@ -58,16 +58,18 @@ const Message = ({ message }) => {
   }
 
   function loadstatus(id) {
-    const status = getStatus(id);
-    console.log("[loadstatus] return: " + status);
-    return status;
+    //const status = getStatus(id);
+    //console.log("[loadstatus] return: " + status);
+    //return status;
+    return false;
   }
 
   function getonlinedate(id) {
-    const originaldate = getDate(id);
-    const statusdate = replacetz(originaldate);
-    console.log("[getonlinedate] return: " + originaldate);
-    return statusdate;
+    //const originaldate = getDate(id);
+    //const statusdate = replacetz(originaldate);
+    //console.log("[getonlinedate] return: " + originaldate);
+    //return statusdate;
+    return undefined;
   }
 
   return (

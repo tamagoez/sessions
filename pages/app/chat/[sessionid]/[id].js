@@ -44,8 +44,8 @@ const ChannelsPage = (props) => {
     return null;
   }
 
-  const [channelname, setChannelname] = useState("Loading");
-  const [sessionname, setSessionname] = useState("Loading");
+  // const [channelname, setChannelname] = useState("Loading");
+  // const [sessionname, setSessionname] = useState("Loading");
   const { channels } = useStore({ channelId });
 
   // Else load up the page
@@ -64,14 +64,17 @@ const ChannelsPage = (props) => {
   }, []);
 
   // redirect to public channel when current channel is deleted
-  useEffect(() => {
+  const channelname = useMemo(() => {
     if (process.browser) {
-      getCName();
-      getSName();
-      document.title = "#" + channelname + " @" + sessionname + " - Sessions";
-      // setSessionname(SessionName(sessionId))
+      return getCName();
     }
-  }, [channels, channelId]);
+  }, [channelId]);
+  const sessionname = useMemo(() => {
+    if (process.browser) {
+      return getSName();
+    }
+  }, [sessionId]);
+
   async function getCName() {
     try {
       // const cname = supabase.auth.user();
@@ -87,7 +90,7 @@ const ChannelsPage = (props) => {
       }
 
       if (data) {
-        setChannelname(data.name);
+        return data.name;
       }
     } catch (error) {
       alert(error.message);
@@ -107,7 +110,7 @@ const ChannelsPage = (props) => {
       }
 
       if (data) {
-        setSessionname(data.name);
+        return data.name;
       }
     } catch (error) {
       alert(error.message);

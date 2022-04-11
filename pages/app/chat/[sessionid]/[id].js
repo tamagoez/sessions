@@ -64,10 +64,8 @@ const ChannelsPage = (props) => {
   }, []);
 
   // redirect to public channel when current channel is deleted
-  const getNames = useMemo(() => {
-    getCName()
-    getSName()
-  }, [channelId, sessionId]);
+  const channelname = useMemo(() => getCName(), [channelId])
+  const sessionname = useMemo(() => getSName(), [sessionId])
 
   async function getCName() {
     try {
@@ -116,51 +114,7 @@ const ChannelsPage = (props) => {
       document.title = "#" + channelname + " < @" + sessionname + " - Sessions";
   }, [channelname, sessionname]);
   
-  function SideProps() {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-  const btnRef = useRef()
-
-  return (
-    <>
-      <div className="flex-col">
-      <button className="btn" ref={btnRef} onClick={onOpen}>
-        <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block w-6 h-6 stroke-current"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
-      </button>
-      </div>
-      <Drawer
-        isOpen={isOpen}
-        placement='left'
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-           <DrawerCloseButton />
-             <div className="drawer-side">
-    <label for="my-drawer" className="drawer-overlay"></label>
-    <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-      <li><a>Sidebar Item 1</a></li>
-      <li><a>Sidebar Item 2</a></li>
-    </ul>
-  </div>
-        </DrawerContent>
-      </Drawer>
-    </>
-  )
-}
-
+  
   // Render the channels and messages
   const render = () => (
     <div>
@@ -180,7 +134,7 @@ const ChannelsPage = (props) => {
     </div>
   );
 
-  return [getNames, render]
+  return [render]
 };
 
 export default ChannelsPage;

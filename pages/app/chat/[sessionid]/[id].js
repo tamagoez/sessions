@@ -44,8 +44,8 @@ const ChannelsPage = (props) => {
     return null;
   }
 
-  // const [channelname, setChannelname] = useState("Loading");
-  // const [sessionname, setSessionname] = useState("Loading");
+  //const [channelname, setChannelname] = useState("Loading");
+  //const [sessionname, setSessionname] = useState("Loading");
   const { channels } = useStore({ channelId });
 
   // Else load up the page
@@ -64,16 +64,10 @@ const ChannelsPage = (props) => {
   }, []);
 
   // redirect to public channel when current channel is deleted
-  const channelname = useMemo(() => {
-    if (process.browser) {
-      return getCName();
-    }
-  }, [channelId]);
-  const sessionname = useMemo(() => {
-    if (process.browser) {
-      return getSName();
-    }
-  }, [sessionId]);
+  const getNames = useMemo(() => {
+    getCName()
+    getSName()
+  }, [channelId, sessionId]);
 
   async function getCName() {
     try {
@@ -168,7 +162,7 @@ const ChannelsPage = (props) => {
 }
 
   // Render the channels and messages
-  return (
+  const render = () => (
     <div>
       <div>
         <NavBar sessionname={sessionname} channelname={channelname} />
@@ -185,6 +179,8 @@ const ChannelsPage = (props) => {
       </div>
     </div>
   );
+
+  return [getNames, render]
 };
 
 export default ChannelsPage;

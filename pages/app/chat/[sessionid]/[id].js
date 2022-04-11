@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useStore } from "~/lib/Store";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
 import supabase from "~/utils/supabaseClient";
 import NavBar from "~/components/NavBar";

@@ -110,6 +110,7 @@ function AvatarUrl(id) {
       }
       if (data) {
         setAvatarUrl2(data.avatar_url)
+        downloadImage(avatarUrl2)
       }
     } catch (error) {
       alert(error.message)
@@ -118,9 +119,9 @@ function AvatarUrl(id) {
     }
   }
 
-  useEffect(() => {
-    if (avatarUrl2) downloadImage(avatarUrl2)
-  }, [avatarUrl2])
+  //useEffect(() => {
+  //  if (avatarUrl2) downloadImage(avatarUrl2)
+  //}, [avatarUrl2])
   
   function toBase64Url(url, callback){
     var xhr = new XMLHttpRequest();

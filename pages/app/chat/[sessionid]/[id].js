@@ -64,8 +64,14 @@ const ChannelsPage = (props) => {
   }, []);
 
   // redirect to public channel when current channel is deleted
-  const channelname = useMemo(() => getCName(), [channelId])
-  const sessionname = useMemo(() => getSName(), [sessionId])
+  const channelname = useMemo(() => {
+    getCName()
+      .then(value => { return value })
+  }, [channelId])
+  const sessionname = useMemo(() => {
+    getSName()
+    .then(value => { return value })
+  }, [sessionId])
 
   async function getCName() {
     try {
@@ -116,7 +122,7 @@ const ChannelsPage = (props) => {
   
   
   // Render the channels and messages
-  const render = () => (
+  return (
     <div>
       <div>
         <NavBar sessionname={sessionname} channelname={channelname} />
@@ -133,8 +139,6 @@ const ChannelsPage = (props) => {
       </div>
     </div>
   );
-
-  return [render]
 };
 
 export default ChannelsPage;

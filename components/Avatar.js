@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import supabase from '~/utils/supabaseClient'
 
 function AvatarSetting({ url, size, onUpload }) {
@@ -88,13 +88,13 @@ function AvatarUrl(id) {
   console.log('[AvatarUrl] Got prop: ' + id)
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [avatarUrl2, setAvatarUrl2] = useState(null)
-  useEffect(() => {
-    if (!localStorage.getItem("avatar_" + id)){
-      getProfile(id)
-    } else {
-      setAvatarUrl(localStorage.getItem("avatar_" + id))
-    }
-  }, [])
+  //useEffect(() => {
+  //  if (!localStorage.getItem("avatar_" + id)){
+  //    getProfile(id)
+  //  } else {
+  //    setAvatarUrl(localStorage.getItem("avatar_" + id))
+  //  }
+  //}, [])
   
   async function getProfile(id) {
     try {
@@ -110,7 +110,7 @@ function AvatarUrl(id) {
       }
       if (data) {
         setAvatarUrl2(data.avatar_url)
-        downloadImage(avatarUrl2)
+        // downloadImage(avatarUrl2)
       }
     } catch (error) {
       alert(error.message)
@@ -119,9 +119,9 @@ function AvatarUrl(id) {
     }
   }
 
-  //useEffect(() => {
-  //  if (avatarUrl2) downloadImage(avatarUrl2)
-  //}, [avatarUrl2])
+  useEffect(() => {
+    if (avatarUrl2) downloadImage(avatarUrl2)
+  }, [avatarUrl2])
   
   function toBase64Url(url, callback){
     var xhr = new XMLHttpRequest();
@@ -158,7 +158,15 @@ function AvatarUrl(id) {
       console.log('[AvatarUrl] Got url: ' + avatarUrl)
     }
   }
-  return avatarUrl;
+  
+  const avatarUrlReturn = useMemo(() => {
+    if (!localStorage.getItem("avatar_" + id)){
+      getProfile(id)
+    } else {
+      return localStorage.getItem("avatar_" + id)
+    }
+  }, [id])
+  return avatarUrlReturn;
 }
 
 export { AvatarSetting, AvatarUrl }

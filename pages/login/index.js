@@ -36,12 +36,7 @@ const Home = () => {
       } else if (!user) {
         alert("Signup successful, confirmation mail should be sent soon!");
       }
-      if (user) {
-        if (query.next) {
-          setNextlink(query.next);
-        }
-        router.push(nextlink);
-      }
+      router.push(nextlink);
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);

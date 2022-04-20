@@ -3,7 +3,7 @@ import Message from "~/components/Message";
 import MessageInput from "~/components/MessageInput";
 import { useRouter } from "next/router";
 import { useStore, addMessage, additionalload } from "~/lib/Store";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState, useMemo } from "react";
 import UserContext from "~/lib/UserContext";
 // import { CheckSessionMember, CheckChannelMember } from "~/lib/CheckUser";
 import supabase from "~/utils/supabaseClient";
@@ -18,7 +18,6 @@ import getUA from '~/lib/getUA'
 
 const ChannelsPage = (props) => {
   const router = useRouter();
-  const smartphone = getUA();
   const { id: secondchannelId, sessionid: sessionId } = router.query;
   if (!router.isReady) {
     return null;
@@ -40,6 +39,7 @@ const ChannelsPage = (props) => {
       // deleteLStorage();
       const usersession = supabase.auth.session();
       const userid = usersession.user.id;
+      const smartphone = useMemo(() => getUA(), [])
       // const sessioncheck = CheckSessionMember(userid, sessionId);
       // const channelcheck = CheckChannelMember(userid, channelId);
       //if (sessioncheck) {

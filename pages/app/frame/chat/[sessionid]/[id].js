@@ -1,5 +1,5 @@
 import Layout from "~/components/Layout";
-import Message from "~/components/Message";
+import { Message, MessageSM } from "~/components/Message";
 import MessageInput from "~/components/MessageInput";
 import { useRouter } from "next/router";
 import { useStore, addMessage, additionalload } from "~/lib/Store";
@@ -112,7 +112,7 @@ const ChannelsPage = (props) => {
     const items = (
       <>
       {list.map((x) => (
-        <Message key={x.id} message={x} />
+        <MessageSM key={x.id} message={x} />
       ))}
     </>
   );

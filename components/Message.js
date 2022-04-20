@@ -289,21 +289,6 @@ export function MessageSM({ message }) {
         )}
       </div>
       <div className="dropdown dropdown-right dropdown-end">
-        <label
-          tabindex="0"
-          className={
-            false
-              ? "btn btn-ghost btn-circle avatar online"
-              : "btn btn-ghost btn-circle avatar offline"
-          }
-        >
-          <div className="w-10 rounded-full">
-            <img
-              src={null}
-              alt={message.author.username}
-            />
-          </div>
-        </label>
         <div
           tabindex="0"
           class="divide-y divide-dashed dropdown-content p-3 shadow bg-base-100 rounded-box w-52"

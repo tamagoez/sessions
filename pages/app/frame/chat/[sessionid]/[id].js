@@ -137,15 +137,33 @@ const ChannelsPage = (props) => {
     }
   };
 
+  if (smartphone){
+    console.log("[id] smartphone view")
+    const returncomponents = (
+      <>
+      {messages.map((x) => (
+        <MessageSM key={x.id} message={x} />
+      ))}
+    </>
+  );
+  } else {
+    console.log("[id] PC view")
+    const returncomponents = (
+      <>
+      {messages.map((x) => (
+        <Message key={x.id} message={x} />
+      ))}
+    </>
+  );
+  }
+
   // Render the channels and messages
   return (
     <div>
       <div className="h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
-            {messages.map((x) => (
-              <Message key={x.id} message={x} />
-            ))}
+            {returncomponents}            
             <div ref={messagesEndRef} style={{ height: 0 }} />
           </div>
         </div>

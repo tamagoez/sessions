@@ -109,6 +109,7 @@ const ChannelsPage = (props) => {
   const [hasMore, setHasMore] = useState(true);
   const loader = <ReactLoading type="spin" />;
   if (smartphone){
+    console.log("[id] smartphone view")
     const items = (
       <>
       {list.map((x) => (
@@ -117,6 +118,7 @@ const ChannelsPage = (props) => {
     </>
   );
   } else {
+    console.log("[id] PC view")
     const items = (
       <>
       {list.map((x) => (

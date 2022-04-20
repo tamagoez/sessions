@@ -15,6 +15,7 @@ import { getStatus, getDate } from "~/lib/Status";
 // import Image from "next/image";
 
 export function Message({ message }) {
+  console.info("[Message] PC view")
   const { user, userRoles } = useContext(UserContext);
 
   function delconf(mid) {
@@ -183,6 +184,7 @@ export function Message({ message }) {
 };
 
 export function MessageSM({ message }) {
+  console.info("[Message] Smartphone view")
   const { user, userRoles } = useContext(UserContext);
 
   function delconf(mid) {

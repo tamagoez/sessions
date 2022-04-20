@@ -53,7 +53,7 @@ const ChannelsPage = (props) => {
   const { messages, channels } = useStore({ channelId, hardload });
 
   useEffect(() => {
-    if (!smartphone){
+    if (true){
       console.log(
         "[messagesEndRef] ignore_scroll: " + localStorage.getItem("ignore_scroll")
       );

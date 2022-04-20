@@ -18,7 +18,7 @@ import getUA from '~/lib/getUA'
 
 const ChannelsPage = (props) => {
   const router = useRouter();
-  const smartphone = useMemo(() => getUA(), []);
+  const smartphone = getUA()
   const { id: secondchannelId, sessionid: sessionId } = router.query;
   if (!router.isReady) {
     return null;

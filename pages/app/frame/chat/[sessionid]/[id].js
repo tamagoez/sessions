@@ -12,11 +12,13 @@ import getfromsec from "~/lib/GetFromSec";
 // import { HashLoader } from "react-spinners";
 import ReactLoading from "react-loading";
 import InfiniteScroll from "react-infinite-scroller";
+import getUA from '~/lib/getUA'
 
 // import deleteLStorage from "~/utils/deleteLStorage";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
+  const smartphone = getUA();
   const { id: secondchannelId, sessionid: sessionId } = router.query;
   if (!router.isReady) {
     return null;
@@ -51,18 +53,20 @@ const ChannelsPage = (props) => {
   const { messages, channels } = useStore({ channelId, hardload });
 
   useEffect(() => {
-    console.log(
-      "[messagesEndRef] ignore_scroll: " + localStorage.getItem("ignore_scroll")
-    );
-    if (localStorage.getItem("ignore_scroll") === "true") {
-      console.info("[messagesEndRef] scroll: ignore");
-      localStorage.setItem("ignore_scroll", "false");
-    } else {
-      console.info("[messagesEndRef] scroll: execute");
-      messagesEndRef.current.scrollIntoView({
-        block: "start",
-        behavior: "smooth"
-      });
+    if (!smartphone){
+      console.log(
+        "[messagesEndRef] ignore_scroll: " + localStorage.getItem("ignore_scroll")
+      );
+      if (localStorage.getItem("ignore_scroll") === "true") {
+        console.info("[messagesEndRef] scroll: ignore");
+        localStorage.setItem("ignore_scroll", "false");
+      } else {
+        console.info("[messagesEndRef] scroll: execute");
+        messagesEndRef.current.scrollIntoView({
+          block: "start",
+          behavior: "smooth"
+        });
+      }
     }
   }, [messages]);
 
@@ -104,13 +108,23 @@ const ChannelsPage = (props) => {
   const [itemid, setItemid] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const loader = <ReactLoading type="spin" />;
-  const items = (
-    <>
+  if (smartphone){
+    const items = (
+      <>
       {list.map((x) => (
         <Message key={x.id} message={x} />
       ))}
     </>
   );
+  } else {
+    const items = (
+      <>
+      {list.map((x) => (
+        <Message key={x.id} message={x} />
+      ))}
+    </>
+  );
+  }
   const loadMore = async (page) => {
     const data = await additionalload(channelId, itemid, 15);
     if (data === false) {

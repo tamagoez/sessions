@@ -12,14 +12,14 @@ const Home = () => {
   const query = router.query;
 
   useEffect(() => {
-    setNextlink(query.next);
-      console.log("Got query: " + nextlink);
-      if (process.browser) {
-        setSession(supabase.auth.session());
-        if (session) router.push(nextlink);
-        document.title = "Login - Sessions";
-      }
-  }, [query, router]);
+    if(router.isReady) setNextlink(query.next);
+  },[query, router]);
+
+  if (process.browser) {
+    setSession(supabase.auth.session());
+    if (session) router.push(nextlink);
+    document.title = "Login - Sessions";
+  }
 
   const handleLogin = async (type, username, password) => {
     try {
@@ -36,11 +36,12 @@ const Home = () => {
       } else if (!user) {
         alert("Signup successful, confirmation mail should be sent soon!");
       }
-      router.push(nextlink);
     } catch (error) {
       console.log("error", error);
       alert(error.error_description || error);
     }
+    const sessioncheck = supabase.auth.session();
+    if (!sessioncheck) { console.log('Error occured while login!') } else { router.push(nextlink);}
   };
 
   const submitOnEnter = (event) => {

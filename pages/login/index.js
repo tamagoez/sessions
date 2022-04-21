@@ -5,19 +5,21 @@ import { useRouter } from "next/router";
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  // const [nextlink, setNextlink] = useState("/app/dashboard");
+  const [nextlink, setNextlink] = useState("/app/dashboard");
   const [session, setSession] = useState(null);
   // const [nextQuery, setNextQuery] = useState(null);
   const router = useRouter();
   const query = router.query;
 
-  const nextlink = useMemo(() => {
-    if (router.isReady) {
-      // setNextlink(query.next);
-      console.log("[LOGIN] get query: " + nextlink)
-      if (query.nextlink) { return query.nextlink } else { return "/app/dashboard" }
-    }
+  useEffect(() => {
+    if(router.isReady) { if (query.nextlink) { return query.nextlink } }
   },[query, router]);
+
+  if (process.browser) {
+    const session = supabase.auth.session();
+    if (session) router.push(nextlink);
+    document.title = "Login - Sessions";
+  }
 
   const handleLogin = async (type, username, password) => {
     try {

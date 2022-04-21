@@ -137,7 +137,7 @@ const ChannelsPage = (props) => {
     }
   };
 
-  if (false){
+  if (true){
     console.log("[id] smartphone view")
     const returncomponents = (
       <>

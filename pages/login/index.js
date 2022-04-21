@@ -12,7 +12,7 @@ const Home = () => {
   const query = router.query;
 
   useEffect(() => {
-    if(router.isReady) { if (query.nextlink) { return query.nextlink } }
+    if(router.isReady) { if (query.nextlink) setNextlink(query.nextlink) }
   },[query, router]);
 
   if (process.browser) {

@@ -13,13 +13,12 @@ const Home = () => {
 
   useEffect(() => {
     if(router.isReady) setNextlink(query.next);
+    if (process.browser) {
+      setSession(supabase.auth.session());
+      if (session) router.push(nextlink);
+      document.title = "Login - Sessions";
+    }
   },[query, router]);
-
-  if (process.browser) {
-    setSession(supabase.auth.session());
-    if (session) router.push(nextlink);
-    document.title = "Login - Sessions";
-  }
 
   const handleLogin = async (type, username, password) => {
     try {

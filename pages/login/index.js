@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { supabase } from "lib/Store";
 import { useRouter } from "next/router";
 
@@ -11,12 +11,10 @@ const Home = () => {
   const router = useRouter();
   const query = router.query;
 
-  useEffect(() => {
-    if(router.isReady) setNextlink(query.next);
-    if (process.browser) {
-      setSession(supabase.auth.session());
-      if (session) router.push(nextlink);
-      document.title = "Login - Sessions";
+  const nextlink = useMemo(() => {
+    if (router.isReady) {
+      setNextlink(query.next);
+      console.log("[LOGIN] get query: " + nextlink)
     }
   },[query, router]);
 
@@ -40,7 +38,7 @@ const Home = () => {
       alert(error.error_description || error);
     }
     const sessioncheck = supabase.auth.session();
-    if (!sessioncheck) { console.log('Error occured while login!') } else { router.push(nextlink);}
+    if (!sessioncheck) { console.log('Error occured while login!') } else { router.push(nextlink) }
   };
 
   const submitOnEnter = (event) => {

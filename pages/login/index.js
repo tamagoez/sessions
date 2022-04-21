@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [nextlink, setNextlink] = useState("/app/dashboard");
+  // const [nextlink, setNextlink] = useState("/app/dashboard");
   const [session, setSession] = useState(null);
   // const [nextQuery, setNextQuery] = useState(null);
   const router = useRouter();
@@ -13,8 +13,9 @@ const Home = () => {
 
   const nextlink = useMemo(() => {
     if (router.isReady) {
-      setNextlink(query.next);
+      // setNextlink(query.next);
       console.log("[LOGIN] get query: " + nextlink)
+      if (query.nextlink) { return query.nextlink } else { return "/app/dashboard" }
     }
   },[query, router]);
 

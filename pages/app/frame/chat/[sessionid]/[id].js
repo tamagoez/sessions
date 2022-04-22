@@ -11,9 +11,11 @@ import supabase from "~/utils/supabaseClient";
 import getfromsec from "~/lib/GetFromSec";
 // import { HashLoader } from "react-spinners";
 import ReactLoading from "react-loading";
+
 import InfiniteScroll from 'react-infinite-scroll-component';
 import getUA from '~/lib/getUA'
-
+import fetchMoreChat from '~/lib/fetchMoreChat';
+import FetchChat from "~/lib/FetchChat";
 // import deleteLStorage from "~/utils/deleteLStorage";
 
 const ChannelsPage = (props) => {
@@ -104,8 +106,6 @@ const ChannelsPage = (props) => {
   }
 
   //項目を読み込む
-  const [list, setList] = useState([]);
-  const [itemid, setItemid] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const loader = <ReactLoading type="spin" />;
   if (smartphone){
@@ -133,14 +133,12 @@ const ChannelsPage = (props) => {
   );
 
   const [list, setList] = useState(
-    Array.from({ length: 2 }, () => <Card />)
+    FetchChat(channelId, 30)
   );
 
   const fetchMoreData = () => {
-    //非同期っぽくするためにsetTimeoutを使っている。実際はasyncでデータフェッチしたりを想定。
-    setTimeout(() => {
-      setList([...list, Array.from({ length: 2 }, () => <MessageSM message={x} />)]);
-    }, 500);
+    // deal
+    fetchMoreChat(list.length)
   };
 
   // Render the channels and messages
@@ -152,8 +150,9 @@ const ChannelsPage = (props) => {
           <InfiniteScroll
             dataLength={list.length} //現在のデータの長さ
             next={fetchMoreData} // スクロール位置を監視してコールバック（次のデータを読み込ませる）
-            hasMore={true} // さらにスクロールするかどうか（ある一定数のデータ数に達したらfalseを返すことで無限スクロールを回避）
+            hasMore={hasMore} // さらにスクロールするかどうか（ある一定数のデータ数に達したらfalseを返すことで無限スクロールを回避）
             loader={loader} // ローディング中のコンポーネント
+            inverse={true}
           >
             {list}
           </InfiniteScroll>            

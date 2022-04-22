@@ -11,7 +11,7 @@ import supabase from "~/utils/supabaseClient";
 import getfromsec from "~/lib/GetFromSec";
 // import { HashLoader } from "react-spinners";
 import ReactLoading from "react-loading";
-import InfiniteScroll from "react-infinite-scroller";
+import InfiniteScroll from 'react-infinite-scroll-component';
 import getUA from '~/lib/getUA'
 
 // import deleteLStorage from "~/utils/deleteLStorage";

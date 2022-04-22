@@ -127,35 +127,21 @@ const ChannelsPage = (props) => {
     </>
   );
   }
-  const loadMore = async (page) => {
-    const data = await additionalload(channelId, itemid, 15);
-    if (data === false) {
-      setHasMore(false);
-    } else {
-      setItemid(itemid + 15);
-      setList([...data, ...list]);
-    }
-  };
 
-  if (true){
-    console.log("[id] smartphone view")
-    const returncomponents = (
-      <>
-      {messages.map((x) => (
-        <MessageSM key={x.id} message={x} />
-      ))}
-    </>
+  const loader = (
+    <p>Loading... </p>
   );
-  } else {
-    console.log("[id] PC view")
-    const returncomponents = (
-      <>
-      {messages.map((x) => (
-        <Message key={x.id} message={x} />
-      ))}
-    </>
+
+  const [list, setList] = useState(
+    Array.from({ length: 2 }, () => <Card />)
   );
-  }
+
+  const fetchMoreData = () => {
+    //非同期っぽくするためにsetTimeoutを使っている。実際はasyncでデータフェッチしたりを想定。
+    setTimeout(() => {
+      setList([...list, Array.from({ length: 2 }, () => <MessageSM message={x} />)]);
+    }, 500);
+  };
 
   // Render the channels and messages
   return (
@@ -163,7 +149,14 @@ const ChannelsPage = (props) => {
       <div className="h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
-            {returncomponents}            
+          <InfiniteScroll
+            dataLength={list.length} //現在のデータの長さ
+            next={fetchMoreData} // スクロール位置を監視してコールバック（次のデータを読み込ませる）
+            hasMore={true} // さらにスクロールするかどうか（ある一定数のデータ数に達したらfalseを返すことで無限スクロールを回避）
+            loader={loader} // ローディング中のコンポーネント
+          >
+            {list}
+          </InfiniteScroll>            
             <div ref={messagesEndRef} style={{ height: 0 }} />
           </div>
         </div>

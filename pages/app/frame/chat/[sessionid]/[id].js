@@ -128,10 +128,6 @@ const ChannelsPage = (props) => {
   );
   }
 
-  const loader = (
-    <p>Loading... </p>
-  );
-
   const [list, setList] = useState(
     FetchChat(channelId, 30)
   );

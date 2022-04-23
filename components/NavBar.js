@@ -15,10 +15,40 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               </a>
             </li>
             <li className="hidden sm:block">
-              <a>@ {sessionname}</a>
+              <a>
+                @ {sessionname}　
+                <svg
+                  class="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
+              </a>
+              <ul class="menu menu-horizontal p-2 bg-base-100">
+                <li>
+                  <a>Submenu 1</a>
+                </li>
+                <li>
+                  <a>Submenu 2</a>
+                </li>
+              </ul>
             </li>
             <li>
-              <a># {channelname}</a>
+              <a>
+                # {channelname}　
+                <svg
+                  class="fill-current"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+                </svg>
+              </a>
             </li>
           </ul>
         </div>
@@ -138,26 +168,22 @@ export default function NavBar({ channelname, sessionname, thispage }) {
               </div>
             </button>
             <div class="card w-96 bg-base-100 shadow-xl dropdown-content">
-          <div class="card-body">
-            <h2 class="card-title">Ver. 0.5.1</h2>
-            <ul>
-              <li>ファイルをアップロードできるようになりました。(仮)</li>
-              <li>
-                オンラインインジケーターのコードを調節/修正しました。
-              </li>
-              <li>
-                送信ボタンを追加しました。
-              </li>
-              <li>
-                react-markdownの設定を変更し、装飾のバリエーションが増え、URLは新規タブで開くようになりました。
-              </li>
-            </ul>
-            <div class="card-actions justify-end">
+              <div class="card-body">
+                <h2 class="card-title">Ver. 0.5.1</h2>
+                <ul>
+                  <li>ファイルをアップロードできるようになりました。(仮)</li>
+                  <li>オンラインインジケーターのコードを調節/修正しました。</li>
+                  <li>送信ボタンを追加しました。</li>
+                  <li>
+                    react-markdownの設定を変更し、装飾のバリエーションが増え、URLは新規タブで開くようになりました。
+                  </li>
+                </ul>
+                <div class="card-actions justify-end">
                   <a href="/update" className="btn btn-primary">
                     詳しく見る
                   </a>
                 </div>
-        </div>
+              </div>
             </div>
           </div>
           <div className="dropdown dropdown-end">

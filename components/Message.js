@@ -15,7 +15,7 @@ import { getStatus, getDate } from "~/lib/Status";
 // import Image from "next/image";
 
 export function Message({ message }) {
-  console.info("[Message] PC view")
+  console.info("[Message] PC view");
   const { user, userRoles } = useContext(UserContext);
 
   function delconf(mid) {
@@ -76,7 +76,7 @@ export function Message({ message }) {
     <div
       className={
         user?.id === message.userid
-          ? "py-1 flex justify-items-end items-center space-x-3"
+          ? "py-1 flex justify-end items-center space-x-3"
           : "py-1 flex items-center space-x-3"
       }
     >
@@ -181,10 +181,10 @@ export function Message({ message }) {
       </div>
     </div>
   );
-};
+}
 
 export function MessageSM({ message }) {
-  console.info("[Message] Smartphone view")
+  console.info("[Message] Smartphone view");
   const { user, userRoles } = useContext(UserContext);
 
   function delconf(mid) {
@@ -335,6 +335,6 @@ export function MessageSM({ message }) {
       </div>
     </div>
   );
-};
+}
 
 /* {document.querySelector('#Message').innerHTML = returnmessage(message.message, message.id, message.author.username)} */

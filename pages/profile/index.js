@@ -83,8 +83,8 @@ function AccountData({ session }) {
   return (
     <div>
       <NavBar thispage="Profile" />
-      <div className="form-widget">
-        <div>
+      <div className="form-widget pl-2">
+        <div className="py-0.5">
           <AvatarSetting
             url={avatar_url}
             size={150}
@@ -94,33 +94,55 @@ function AccountData({ session }) {
             }}
           />
         </div>
-        <div>
-          <label htmlFor="login_id">Login ID (Use this ID to login)</label>
-          <input id="login_id" type="text" value={login_id || ""} disabled />
+        <div className="py-0.5">
+          <label class="input-group">
+            <span htmlFor="login_id">Login ID (Use this ID to login)</span>
+            <input
+              id="login_id"
+              type="text"
+              value={login_id || ""}
+              disabled
+              className="input input-bordered"
+            />
+          </label>
         </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input id="email" type="text" value={session.user.email} disabled />
+        <div className="py-0.5">
+          <label class="input-group">
+            <span htmlFor="email">Email</span>
+            <input
+              id="email"
+              type="text"
+              value={session.user.email}
+              disabled
+              className="input input-bordered"
+            />
+          </label>
         </div>
-        <div>
-          <label htmlFor="username">Username (should use Nickname)</label>
-          <input
-            id="username"
-            type="text"
-            value={username || ""}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+        <div className="py-0.5">
+          <label class="input-group">
+            <span htmlFor="username">Username (Nickname)</span>
+            <input
+              id="username"
+              type="text"
+              value={username || ""}
+              onChange={(e) => setUsername(e.target.value)}
+              className="input input-bordered"
+            />
+          </label>
         </div>
-        <div>
-          <label htmlFor="website">Website</label>
-          <input
-            id="website"
-            type="text"
-            value={website || ""}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
+        <div className="py-0.5">
+          <label class="input-group">
+            <span htmlFor="website">Website</span>
+            <input
+              id="website"
+              type="text"
+              value={website || ""}
+              onChange={(e) => setWebsite(e.target.value)}
+              className="input input-bordered"
+            />
+          </label>
         </div>
-        <div>
+        <div className="py-0.5">
           <div className="form-control">
             <label className="label">
               <span className="label-text">Status text / bio</span>
@@ -134,9 +156,9 @@ function AccountData({ session }) {
             />
           </div>
         </div>
-        <div>
+        <div className="py-0.5">
           <button
-            className="button block primary"
+            className="btn btn-wide"
             onClick={() =>
               updateProfile({
                 username,

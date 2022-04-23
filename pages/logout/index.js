@@ -1,13 +1,13 @@
 import supabase from "~/utils/supabaseClient";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 export default function Logout() {
-  const router = useRouter();
+  // const router = useRouter();
   async function deal() {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-      router.push("/");
+      window.location.replace("/");
     } catch (error) {
       alert("[Logout] Failed: " + error.message);
     } finally {

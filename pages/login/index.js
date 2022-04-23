@@ -12,12 +12,14 @@ const Home = () => {
   const query = router.query;
 
   useEffect(() => {
-    if(router.isReady) { if (query.nextlink) setNextlink(query.nextlink) }
-  },[query, router]);
+    if (router.isReady) {
+      if (query.nextlink) setNextlink(query.nextlink);
+    }
+  }, [query, router]);
 
   if (process.browser) {
     const session = supabase.auth.session();
-    if (session) router.push(nextlink);
+    if (session) window.location.replace(nextlink);
     document.title = "Login - Sessions";
   }
 
@@ -41,7 +43,11 @@ const Home = () => {
       alert(error.error_description || error);
     }
     const sessioncheck = supabase.auth.session();
-    if (!sessioncheck) { console.log('Error occured while login!') } else { router.push(nextlink) }
+    if (!sessioncheck) {
+      console.log("Error occured while login!");
+    } else {
+      window.location.replace(nextlink);
+    }
   };
 
   const submitOnEnter = (event) => {

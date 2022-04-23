@@ -12,15 +12,15 @@ import getfromsec from "~/lib/GetFromSec";
 // import { HashLoader } from "react-spinners";
 import ReactLoading from "react-loading";
 
-import InfiniteScroll from 'react-infinite-scroll-component';
-import getUA from '~/lib/getUA'
-import fetchMoreChat from '~/lib/fetchMoreChat';
+import InfiniteScroll from "react-infinite-scroll-component";
+import getUA from "~/lib/getUA";
+import fetchMoreChat from "~/lib/fetchMoreChat";
 import FetchChat from "~/lib/FetchChat";
 // import deleteLStorage from "~/utils/deleteLStorage";
 
 const ChannelsPage = (props) => {
   const router = useRouter();
-  const smartphone = getUA()
+  const smartphone = getUA();
   const { id: secondchannelId, sessionid: sessionId } = router.query;
   if (!router.isReady) {
     return null;
@@ -55,9 +55,10 @@ const ChannelsPage = (props) => {
   const { messages, channels } = useStore({ channelId, hardload });
 
   useEffect(() => {
-    if (true){
+    if (true) {
       console.log(
-        "[messagesEndRef] ignore_scroll: " + localStorage.getItem("ignore_scroll")
+        "[messagesEndRef] ignore_scroll: " +
+          localStorage.getItem("ignore_scroll")
       );
       if (localStorage.getItem("ignore_scroll") === "true") {
         console.info("[messagesEndRef] scroll: ignore");
@@ -106,35 +107,32 @@ const ChannelsPage = (props) => {
   }
 
   //項目を読み込む
+  const [list, setList] = useState(FetchChat(channelId, 30));
   const [hasMore, setHasMore] = useState(true);
   const loader = <ReactLoading type="spin" />;
-  if (smartphone){
-    console.log("[id] smartphone view")
+  if (smartphone) {
+    console.log("[id] smartphone view");
     const items = (
       <>
-      {list.map((x) => (
-        <MessageSM key={x.id} message={x} />
-      ))}
-    </>
-  );
+        {list.map((x) => (
+          <MessageSM key={x.id} message={x} />
+        ))}
+      </>
+    );
   } else {
-    console.log("[id] PC view")
+    console.log("[id] PC view");
     const items = (
       <>
-      {list.map((x) => (
-        <Message key={x.id} message={x} />
-      ))}
-    </>
-  );
+        {list.map((x) => (
+          <Message key={x.id} message={x} />
+        ))}
+      </>
+    );
   }
-
-  const [list, setList] = useState(
-    FetchChat(channelId, 30)
-  );
 
   const fetchMoreData = () => {
     // deal
-    fetchMoreChat(list.length)
+    fetchMoreChat(list.length);
   };
 
   // Render the channels and messages
@@ -143,15 +141,15 @@ const ChannelsPage = (props) => {
       <div className="h-screen">
         <div className="Messages h-full pb-16">
           <div className="p-2 overflow-y-auto">
-          <InfiniteScroll
-            dataLength={list.length} //現在のデータの長さ
-            next={fetchMoreData} // スクロール位置を監視してコールバック（次のデータを読み込ませる）
-            hasMore={hasMore} // さらにスクロールするかどうか（ある一定数のデータ数に達したらfalseを返すことで無限スクロールを回避）
-            loader={loader} // ローディング中のコンポーネント
-            inverse={true}
-          >
-            {list}
-          </InfiniteScroll>            
+            <InfiniteScroll
+              dataLength={list.length} //現在のデータの長さ
+              next={fetchMoreData} // スクロール位置を監視してコールバック（次のデータを読み込ませる）
+              hasMore={hasMore} // さらにスクロールするかどうか（ある一定数のデータ数に達したらfalseを返すことで無限スクロールを回避）
+              loader={loader} // ローディング中のコンポーネント
+              inverse={true}
+            >
+              {list}
+            </InfiniteScroll>
             <div ref={messagesEndRef} style={{ height: 0 }} />
           </div>
         </div>

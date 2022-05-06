@@ -5,6 +5,7 @@ import TrashIcon from "~/components/TrashIcon";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
+import remarkBreaks from 'remark-breaks'
 import { AvatarUrl } from "~/components/Avatar";
 import { HiHeart, HiOutlineHeart } from "react-icons/hi";
 import { MdOutlineThumbUpAlt, MdOutlineThumbDownAlt } from "react-icons/md";
@@ -170,7 +171,7 @@ export function Message({ message }) {
         >
           <p className="text-black-900 m-2">
             <ReactMarkdown
-              remarkPlugins={[gfm]}
+              remarkPlugins={[gfm, remarkBreaks]}
               unwrapDisallowed={false}
               linkTarget="_blank"
             >
